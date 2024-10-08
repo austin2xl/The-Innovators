@@ -1,0 +1,10 @@
+C:\Users\abchi\source\repos\NCRApp\bin\Debug\NCRApp.exe.config
+C:\Users\abchi\source\repos\NCRApp\bin\Debug\NCRApp.exe
+C:\Users\abchi\source\repos\NCRApp\bin\Debug\NCRApp.pdb
+C:\Users\abchi\source\repos\NCRApp\obj\Debug\NCRApp.csproj.AssemblyReference.cache
+C:\Users\abchi\source\repos\NCRApp\obj\Debug\NCRApp.Form1.resources
+C:\Users\abchi\source\repos\NCRApp\obj\Debug\NCRApp.Properties.Resources.resources
+C:\Users\abchi\source\repos\NCRApp\obj\Debug\NCRApp.csproj.GenerateResource.cache
+C:\Users\abchi\source\repos\NCRApp\obj\Debug\NCRApp.csproj.CoreCompileInputs.cache
+C:\Users\abchi\source\repos\NCRApp\obj\Debug\NCRApp.exe
+C:\Users\abchi\source\repos\NCRApp\obj\Debug\NCRApp.pdb
