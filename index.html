@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR-CROSS</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header> 
+        <div class="hamburger" >
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar" >
+            <ul>
+                <li>
+                 <a href="index.html" class="option">MY NCR</a>
+                </li> 
+                <li>
+                 <a href="new.html" class="option">NEW NCR</a>
+                </li> 
+                <li>
+                    <a href="help.html" class="option">HELP</a>
+                   </li> 
+                <li>
+                 <a href="form.html" class="option">LOG IN</a>
+                </li> 
+             </ul>
+
+        </nav>
+    
+    </header>
+    <main>
+
+        <section class="ncr-list">
+            <h2>List of NCRs</h2>
+            <!-- Search bar -->
+            <input type="text" id="search-bar" placeholder="Search NCRs by number, supplier, product">
+
+            <!-- Filter by status -->
+            <label for="status-filter">Filter by Status:</label>
+            <select id="status-filter">
+                <option value="all">All</option>
+                <option value="open">Open</option>
+                <option value="closed">Closed</option>
+            </select>
+
+            <!-- NCR Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>NCR Number</th>
+                        <th>Supplier Name</th>
+                        <th>Product Name</th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic NCR rows will go here -->
+                    <tr>
+                        <td>2024-001</td>
+                        <td>Supplier A</td>
+                        <td>Product X</td>
+                        <td>Open</td>
+                        <td>01/15/2024</td>
+                        <td><button>View</button> <button>Edit</button></td>
+                    </tr>
+                    <!-- More rows... -->
+                </tbody>
+            </table>
+        </section>
+       
+
+    </main>
+    <footer>
+        <small>NCR-CROSS</small>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

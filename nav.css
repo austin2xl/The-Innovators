@@ -1,0 +1,173 @@
+/* Base Styles */
+.hamburger {
+    display: block;
+    cursor: pointer;
+    margin-left: auto; /* Pushes the hamburger to the right */
+    
+}
+
+.hamburger .line {
+    width: 30px;
+    height: 3px;
+    background: #5897c9;
+    margin: 6px 0;
+    transition: 0.3s ease;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #ffffff, #e2e9fa); /* White to light blue gradient */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: fixed; /* Fix the header to the top */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: 0.1s ease; /* Smooth background color transition */
+    
+}
+header.active {
+    background: #5897c9; /* Blue background when active */
+}
+header.active .hamburger .line {
+    background: #ffffff; /* White lines when active */
+}
+.logo {
+    margin-right: auto;  /*Pushes the logo to the left */
+    max-width: 60%; /* Adjust logo size on small screens */
+   
+}
+
+.nav-bar {
+    height: 0;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transition: 0.2s ease;
+    background: #5897c9;
+    overflow: hidden;
+    z-index: 999; /* Ensure the nav-bar stays below the header */
+    
+}
+
+.nav-bar.active {
+    height: 450px;
+    
+}
+
+.nav-bar ul {
+    display: block;
+    width: fit-content;
+    margin: 80px auto 0 auto;
+    text-align: center;
+    transition: 0.5s;
+    opacity: 0;
+    list-style: none;
+    
+}
+
+.nav-bar.active ul {
+    opacity: 1;
+}
+
+.nav-bar ul li a {
+    display: block;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.2s;
+    margin-bottom: 12px;
+    white-space: nowrap; /* Prevent text from overflowing */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+.nav-bar ul li a:hover,
+.nav-bar ul li a.active {
+    color: #fff;
+    background-color: #5897c9;
+}
+
+/* Responsive Styles for Tablets */
+@media screen and (min-width: 768px) {
+    header {
+        padding: 0 50px; /* Adjust padding for larger screens */
+    }
+
+    .hamburger {
+        margin-left: auto;
+        padding-right: 0;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+}
+
+/* Larger Screen Styles */
+@media screen and (min-width: 1024px) {
+    header {
+        padding: 0 10px;
+        
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .logo {
+        max-width: 50%; /* Reduce the logo width to free up space */
+    }
+    .nav-bar {
+        height: auto;
+        position: static;
+        background: transparent;
+        display: flex;
+        justify-content: flex-start;
+        overflow: visible;
+    }
+
+    .nav-bar ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        opacity: 1;
+        white-space: nowrap; /* Ensure text doesn't wrap */
+    }
+    .nav-bar ul li {
+        margin: 0; /* Remove any unnecessary margins */
+        padding: 0 10px; /* Reduce padding between items */
+        list-style: none;
+    }
+
+    .nav-bar ul li a {
+        margin: 0;
+        color: #5897c9;
+        font-size: 18px;
+        white-space: nowrap; /* Prevent text from wrapping */
+        padding: 8px 10px; /* Reduce padding inside links */
+    }
+}
+@media screen and (min-width: 1440px) {
+
+    header {
+        padding: 0 30px;
+        
+    }
+    .nav-bar ul li {
+        padding: 0 20px; /* Reduce padding between items */
+  
+    }
+    .nav-bar ul li a {
+        font-size: 20px;
+    }
+}

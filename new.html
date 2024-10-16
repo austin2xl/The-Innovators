@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR-CROSS</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        /* Styling for the form */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #173451;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="reset"] {
+            background-color: #5897c9;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+
+
+    </style>
+    <header> 
+        <div class="hamburger" >
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar" >
+            <ul>
+                <li>
+                 <a href="index.html" class="option">MY NCR</a>
+                </li> 
+                <li>
+                 <a href="new.html" class="option">NEW NCR</a>
+                </li> 
+                <li>
+                    <a href="help.html" class="option">HELP</a>
+                   </li> 
+                <li>
+                 <a href="form.html" class="option">LOG IN</a>
+                </li> 
+             </ul>
+
+        </nav>
+    
+    </header>
+    <main>
+        <!-- NCR Creation/Edit Form -->
+    <h2>Create Non-Conformance Report (NCR)</h2>
+    <form id="ncrForm">
+        <label for="ncr-number">NCR Number (Auto-generated):</label>
+        <input type="text" id="ncr-number" name="ncrNumber" value="2024-001" readonly><br><br>
+
+        <label for="supplier-name">Supplier Name:</label>
+        <input type="text" id="supplier-name" name="supplierName" placeholder="Enter supplier name" required><br><br>
+
+        <label for="product-name">Product Name:</label>
+        <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
+
+        <label for="description">Description of Non-Conformance:</label>
+        <textarea id="description" name="description" placeholder="Describe the non-conformance" rows="5" required></textarea><br><br>
+
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority" required>
+            <option value="">Select Priority</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select><br><br>
+
+        <label for="attachments">Attachments (Images, Videos):</label>
+        <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4" multiple><br><br>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Cancel</button>
+
+        <!-- Success/Error message -->
+        <div id="formMessage"></div>
+    </form>
+
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
