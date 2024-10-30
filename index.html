@@ -56,7 +56,8 @@
     background-color: #5897c9;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 4px 8px;
+    font-size: 10px;
     cursor: pointer;
     border-radius: 4px;
     margin-right: 5px;
@@ -71,6 +72,12 @@ button.update-btn, button.cancel-btn {
 }
 button.delete-btn,button.cancel-btn {
     background-color: #f44336; /* Red color for delete button */
+}
+ @media screen and (min-width: 768px) {
+    button{
+        padding: 8px 12px;
+        font-size: 14px;
+    }
 }
     </style>
     <header>
@@ -104,7 +111,7 @@ button.delete-btn,button.cancel-btn {
             <select id="status-filter" aria-label="Filter by Status">
                 <option value="all">All</option>
                 <option value="open">Open</option>
-                <option value="closed">Closed</option>
+                <option value="close">Closed</option>
             </select>
             
             <!-- NCR Table -->
