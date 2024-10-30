@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>      
+        <div class="logo">
+            <img src="images/CrossfireLogo.png" alt="NCR Logo">
+        </div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="index.html" class="option">MY NCR</a></li> 
+                <li><a href="new.html" class="option">NEW NCR</a></li> 
+                <li><a href="login.html" class="option">LOG IN</a></li> 
+                <li><a href="help.html" class="option">HELP</a></li> 
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required aria-label="Username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required aria-label="Password"><br><br>
+            <button type="submit">Log In</button>
+        </form>
+        <div id="formMessage"></div>
+    </main>
+    <footer>
+        <small>NCR-CROSS</small> | <a href="help.html">Privacy and Security</a>
+    </footer>
+    <script src="javascript/app.js"></script>
+    <script src="javascript/login.js"></script>
+</body>
+</html>

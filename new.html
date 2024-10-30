@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NCR-CROSS</title>
-    <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,15 +15,15 @@
         }
         form {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto; 
         }
         label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
         }
-        input, textarea, select {
-            width: 100%;
+        input, textarea, select , text{
+            width: 90%;
             padding: 8px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -37,6 +36,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin-top: 10px;
         }
         button[type="reset"] {
             background-color: #5897c9;
@@ -44,69 +44,101 @@
         button:hover {
             opacity: 0.8;
         }
-
-
+       
     </style>
+
     <header> 
-        <div class="hamburger" >
+        <div class="logo">
+            <img src="images/CrossfireLogo.png" alt="NCR Logo">
+        </div>
+        <div class="hamburger">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
         </div>
-        <nav class="nav-bar" >
+        <nav class="nav-bar">
             <ul>
-                <li>
-                 <a href="index.html" class="option">MY NCR</a>
-                </li> 
-                <li>
-                 <a href="new.html" class="option">NEW NCR</a>
-                </li> 
-                <li>
-                    <a href="help.html" class="option">HELP</a>
-                   </li> 
-                <li>
-                 <a href="form.html" class="option">LOG IN</a>
-                </li> 
-             </ul>
-
+                <li><a href="index.html" class="option">MY NCR</a></li> 
+                <li><a href="new.html" class="option">NEW NCR</a></li> 
+                <li><a href="login.html" class="option">LOG IN</a></li> 
+                <li><a href="help.html" class="option">HELP</a></li> 
+            </ul>
         </nav>
-    
     </header>
+
     <main>
-        <!-- NCR Creation/Edit Form -->
-    <h2>Create Non-Conformance Report (NCR)</h2>
-    <form id="ncrForm">
-        <label for="ncr-number">NCR Number (Auto-generated):</label>
-        <input type="text" id="ncr-number" name="ncrNumber" value="2024-001" readonly><br><br>
+        <!-- NCR Creation Form -->
+        <h2>Create Non-Conformance Report (NCR)</h2>
+        <form id="ncrForm">
+            <label for="ncr-number">NCR Number:</label>
+            <input type="text" id="ncr-number" name="ncrNumber" value="2024-001" readonly><br><br>
 
-        <label for="supplier-name">Supplier Name:</label>
-        <input type="text" id="supplier-name" name="supplierName" placeholder="Enter supplier name" required><br><br>
+            <label for="supplier-name">Supplier Name:</label>
+            <input type="text" id="supplier-name" name="supplierName" placeholder="Enter supplier name" required><br><br>
 
-        <label for="product-name">Product Name:</label>
-        <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
 
-        <label for="description">Description of Non-Conformance:</label>
-        <textarea id="description" name="description" placeholder="Describe the non-conformance" rows="5" required></textarea><br><br>
+            <label for="description">Description of Non-Conformance:</label>
+            <textarea id="description" name="description" placeholder="Describe the non-conformance" rows="5" required></textarea><br><br>
 
-        <label for="priority">Priority:</label>
-        <select id="priority" name="priority" required>
-            <option value="">Select Priority</option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-        </select><br><br>
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority" required>
+                <option value="">Select Priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select><br><br>
 
-        <label for="attachments">Attachments (Images, Videos):</label>
-        <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4" multiple><br><br>
+            <label for="attachments">Attachments (Images, Videos):</label>
+            <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4" multiple><br><br>
 
-        <button type="submit">Submit</button>
-        <button type="reset">Cancel</button>
+            <button type="submit">Submit</button>
+            <button type="reset">Cancel</button>
 
-        <!-- Success/Error message -->
-        <div id="formMessage"></div>
-    </form>
-
+            <!-- Success/Error message -->
+            <div id="formMessage"></div>
+        </form>
     </main>
-    <script src="app.js"></script>
+    <footer>
+        <small>NCR-CROSS</small> | <a href="help.html">Privacy and Security</a>
+    </footer>
+    <script src="javascript/app.js"></script>
+    <script src="javascript/login.js"></script>
+    <script>
+        document.getElementById('ncrForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const ncrNumber = document.getElementById('ncr-number').value;
+            const supplierName = document.getElementById('supplier-name').value;
+            const productName = document.getElementById('product-name').value;
+            const description = document.getElementById('description').value;
+            const priority = document.getElementById('priority').value;
+            const attachments = [...document.getElementById('attachments').files].map(file => file.name).join(', ') || 'None';
+
+            const newNCR = {
+                ncrNumber,
+                supplierName,
+                productName,
+                description,
+                priority,
+                attachments
+            };
+
+            let ncrList = JSON.parse(localStorage.getItem('ncrList')) || [];
+
+            ncrList.push(newNCR);
+
+            localStorage.setItem('ncrList', JSON.stringify(ncrList));
+
+            document.getElementById('formMessage').textContent = 'NCR created successfully!';
+            this.reset();
+
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000); 
+        });
+    </script>
 </body>
 </html>
