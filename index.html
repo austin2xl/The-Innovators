@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MY NCR</title>
-    
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
     <style>
         /* Modal Styles */
-.modal {
+    .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1000; /* Sit on top */
@@ -20,39 +17,39 @@
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
-}
-
-.modal-content {
+    }
+    
+    .modal-content {
     background-color: #fefefe; /* White background for modal content */
     margin: 15% auto; /* Center modal content */
     padding: 20px;
     border: 1px solid #888; /* Border for modal */
     width: 80%; /* Width of the modal content */
     border-radius: 8px; /* Rounded corners */
-}
-
-.close {
+    }
+    
+    .close {
     color: #aaa; /* Color for close button */
     float: right; /* Position close button to the right */
     font-size: 28px; /* Font size */
     font-weight: bold; /* Bold font */
-}
-
-.close:hover,
-.close:focus {
+    }
+    
+    .close:hover,
+    .close:focus {
     color: black; /* Change color on hover/focus */
     text-decoration: none; /* No underline */
     cursor: pointer; /* Pointer cursor on hover */
-}
-
-/* Optional: Additional styling for modal description */
-.modal-description {
+    }
+    
+    /* Optional: Additional styling for modal description */
+    .modal-description {
     margin-top: 10px; /* Space above description */
     font-size: 16px; /* Font size for description */
     line-height: 1.5; /* Improved readability */
-}
- /* Button styling */
- button {
+    }
+    /* Button styling */
+    button {
     background-color: #5897c9;
     color: white;
     border: none;
@@ -62,24 +59,26 @@
     border-radius: 4px;
     margin-right: 5px;
     margin-top: 5px;
-}
-button:hover {
+    }
+    button:hover {
     opacity: 0.8;
     background-color: green;
-}
-button.update-btn, button.cancel-btn {
+    }
+    button.update-btn, button.cancel-btn {
     display: none;
-}
-button.delete-btn,button.cancel-btn {
+    }
+    button.delete-btn,button.cancel-btn {
     background-color: #f44336; /* Red color for delete button */
-}
- @media screen and (min-width: 768px) {
+    }
+    @media screen and (min-width: 768px) {
     button{
         padding: 8px 12px;
         font-size: 14px;
     }
-}
+    }
     </style>
+</head>
+<body>
     <header>
         <div class="hamburger">
             <div class="line"></div>
@@ -90,14 +89,13 @@ button.delete-btn,button.cancel-btn {
             <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
         </div>
         <nav class="nav-bar">
-            <ul>
                 <ul>
                     <li><a href="index.html" class="option">MY NCR</a></li> 
                     <li><a href="new.html" class="option">NEW NCR</a></li> 
                     <li><a href="login.html" class="option">LOG IN</a></li> 
                     <li><a href="help.html" class="option">HELP</a></li> 
                 </ul> 
-            </ul>
+            
         </nav>
     </header>
     <main>
@@ -123,6 +121,7 @@ button.delete-btn,button.cancel-btn {
                         <th>Product Name</th>
                         <th>Status</th>
                         <th>Created Date</th>
+                        <th>Edit/Delete</th>
                     </tr>
                 </thead>
                 <tbody>
