@@ -27,8 +27,9 @@ function displayNCRs(filteredNCRs) {
             <td><span class="editable" data-field="createdDate">${ncr.CreatedDate}</span></td>
             <td>
                 <button class="edit-btn" onclick="toggleEditMode(this.closest('tr'), true)">Edit</button>
+                <button class="update-btn" style="display: none;" onclick="updateNCR(this.closest('tr'))">Update</button>
                 <button class="cancel-btn" style="display: none;" onclick="toggleEditMode(this.closest('tr'), false)">Cancel</button>
-                <button class="view-btn" onclick="viewDescription('${ncr.Description}')">View</button>
+                <button class="view-btn" onclick='viewDescription(${JSON.stringify(ncr)})'>View</button>
             </td>
         `;
         ncrTableBody.appendChild(row);
@@ -46,15 +47,33 @@ function toggleEditMode(row, isEditing) {
             // Restore the original or edited value when exiting edit mode
             const input = span.querySelector("input");
             if (input) {
-                span.textContent = input.getAttribute("data-original"); // Restore original value on cancel
+                span.textContent = isEditing ? input.value : input.getAttribute("data-original");
             }
         }
     });
 
-    // Toggle visibility of the "Edit" and "Cancel" buttons
+    // Toggle visibility of the "Edit", "Cancel", "Update", and "View" buttons
     row.querySelector(".edit-btn").style.display = isEditing ? "none" : "inline-block";
     row.querySelector(".cancel-btn").style.display = isEditing ? "inline-block" : "none";
+    row.querySelector(".update-btn").style.display = isEditing ? "inline-block" : "none";
     row.querySelector(".view-btn").style.display = isEditing ? "none" : "inline-block";
+}
+
+// Function to update NCR data
+function updateNCR(row) {
+    const ncrData = {};
+    row.querySelectorAll(".editable").forEach(span => {
+        const input = span.querySelector("input");
+        if (input) {
+            const field = span.getAttribute("data-field");
+            ncrData[field] = input.value;
+        }
+    });
+
+    alert("NCR updated successfully:\n" + JSON.stringify(ncrData, null, 2));
+
+    // Exit editing mode after updating
+    toggleEditMode(row, false);
 }
 
 // Function to show NCR description in modal
@@ -68,30 +87,7 @@ function viewDescription(ncr) {
     document.getElementById("ncrModal").style.display = "block";
 }
 
-// Update displayNCRs function to call viewDescription with the full NCR object
-function displayNCRs(filteredNCRs) {
-    const ncrTableBody = document.getElementById("ncrTableBody");
-    ncrTableBody.innerHTML = ""; // Clear existing rows
-
-    filteredNCRs.forEach(ncr => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td><span class="editable" data-field="ncrNumber">${ncr.NCRNumber}</span></td>
-            <td><span class="editable" data-field="supplier">${ncr.SupplierName}</span></td>
-            <td><span class="editable" data-field="product">${ncr.ProductName}</span></td>
-            <td><span class="editable" data-field="status">${ncr.Status}</span></td>
-            <td><span class="editable" data-field="createdDate">${ncr.CreatedDate}</span></td>
-            <td>
-                <button class="edit-btn" onclick="toggleEditMode(this.closest('tr'), true)">Edit</button>
-                <button class="cancel-btn" style="display: none;" onclick="toggleEditMode(this.closest('tr'), false)">Cancel</button>
-                <button class="view-btn" onclick='viewDescription(${JSON.stringify(ncr)})'>View</button>
-            </td>
-        `;
-        ncrTableBody.appendChild(row);
-    });
-}
-
-// Function to close modal
+// Close modal function
 function closeModal() {
     document.getElementById("ncrModal").style.display = "none";
 }
@@ -117,7 +113,6 @@ statusFilter.addEventListener("change", function() {
     const filteredNCRs = status == "all" ? ncrs : ncrs.filter(ncr => ncr.Status == status);
     displayNCRs(filteredNCRs);
 });
-
 
 // Initialize the data load when the page loads
 window.onload = loadData;
