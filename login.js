@@ -14,6 +14,31 @@ async function loadUserData() {
 // Call the loadUserData function when the page loads
 window.onload = loadUserData;
 
+const timeoutDuration = 15 * 60 * 1000; // 15 minutes (in milliseconds)
+let timeoutTimer; // Variable to hold the timeout timer
+
+// Function to start the session timeout
+function startSessionTimeout() {
+    // Clear any existing timer
+    clearTimeout(timeoutTimer);
+
+    // Set a new timer
+    timeoutTimer = setTimeout(() => {
+        alert("Session expired due to inactivity.");
+        logout(); // Log out user on timeout
+    }, timeoutDuration);
+}
+
+// Reset session timeout on user activity
+function resetSessionTimeout() {
+    startSessionTimeout(); // Reset the session timeout
+}
+
+['click', 'mousemove', 'keypress', 'scroll', 'touchstart'].forEach(event => {
+    document.addEventListener(event, resetSessionTimeout);
+});
+
+
 // Adjusted login function to use fetched data
 async function login(event) {
     event.preventDefault(); // Prevent form submission
@@ -35,6 +60,9 @@ async function login(event) {
         formMessage.textContent = "Login successful!";
         formMessage.style.color = "green";
 
+        // Start session timeout after successful login
+        startSessionTimeout();
+
         // Redirect based on role
         if (user.Role == 'admin') {
             window.location.href = 'admin.html';
@@ -52,25 +80,35 @@ async function login(event) {
 document.getElementById('loginForm').addEventListener('submit', login);
 
 // Logout function to clear role from localStorage and redirect to login
+// Retrieve user info from localStorage (or sessionStorage)
+const userName = localStorage.getItem("userName") || "Guest";
+const userRole = localStorage.getItem("userRole") || "User";
+
+
+// Display user info on the page
+document.getElementById("userName").textContent = userName;
+document.getElementById("userRole").textContent = userRole;
+
+// Logout function
 function logout() {
-    localStorage.removeItem('role');
-    window.location.href = 'index.html';
+    const confirmation = confirm("Are you sure you want to log out?");
+    if (confirmation) {
+        // Clear user data from localStorage or sessionStorage
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userRole");
+        sessionStorage.removeItem('loggedIn');
+        sessionStorage.removeItem('userRole'); // Clear the role as well
+        clearTimeout(timeoutTimer); // Clear the session timeout
+    
+        
+
+        // Redirect to login page
+        window.location.href = "index.html";
+    } else {
+        // If the user cancels, simply return and do nothing
+        return;
+    }
 }
 
-// Access control for protected pages (e.g., admin or client pages)
-(function checkAccess() {
-    const role = localStorage.getItem('role');
-    const isAdminPage = window.location.pathname.includes('admin.html');
-    const isClientPage = window.location.pathname.includes('client.html');
 
-    if (!role) {
-        // Redirect to login if no role is found
-        window.location.href = 'index.html';
-    } else if (role === 'client' && isAdminPage) {
-        alert("Access denied: Clients cannot access the admin dashboard");
-        window.location.href = 'client.html';
-    } else if (role === 'admin' && isClientPage) {
-        alert("Access denied: Admins cannot access the client dashboard");
-        window.location.href = 'admin.html';
-    }
-})();
+

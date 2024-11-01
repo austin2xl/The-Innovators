@@ -34,3 +34,44 @@ document.addEventListener("DOMContentLoaded", function() {
     // Set the active link on page load
     setActiveLink();
 });
+
+// Access control for protected pages (e.g., admin or client pages)
+(function checkAccess() {
+    const role = localStorage.getItem('role');
+
+    // Define admin and client page paths
+    const adminPages = ['admin.html', 'admin_create.html', 'admin_report.html', 'admintools.html', 'admin_logout.html'];
+    const clientPages = ['client.html', 'client_create.html', 'client_report.html', 'client_help.html', 'client_logout.html'];
+
+    // Get the current page path
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (!role) {
+        // Redirect to login if no role is found
+        window.location.href = 'index.html';
+    } else if (role === 'client' && adminPages.includes(currentPage)) {
+        // Redirect clients trying to access admin pages
+        alert("Access denied: Clients cannot access the admin dashboard");
+        window.location.href = 'client.html';
+    } else if (role === 'admin' && clientPages.includes(currentPage)) {
+        // Redirect admins trying to access client pages
+        alert("Access denied: Admins cannot access the client dashboard");
+        window.location.href = 'admin.html';
+    }
+})();
+(function checkLoginStatus() {
+    const isLoggedIn = sessionStorage.getItem('loggedIn');
+    const role = sessionStorage.getItem('role');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (!isLoggedIn) {
+        alert("Please log in to access this page.");
+        window.location.href = 'index.html';
+    } else if (role === 'client' && currentPage.startsWith('admin')) {
+        alert("Access denied: Clients cannot access admin pages.");
+        window.location.href = 'client.html';
+    } else if (role === 'admin' && currentPage.startsWith('client')) {
+        alert("Access denied: Admins cannot access client pages.");
+        window.location.href = 'admin.html';
+    }
+})();
