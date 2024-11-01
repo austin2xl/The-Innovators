@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR | Client Dashboard</title>
+    <link rel="stylesheet" href="client.css">
+    <style>
+        /* Styles for the feature blocks section */
+        .features-section {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+            gap: 10px; /* Add gap for more space between feature blocks */
+        }
+    
+        .feature-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+    
+        .feature-block:hover {
+            transform: scale(1.05);
+        }
+    
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+    
+        .feature-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0 5px;
+        }
+    
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            cursor: pointer;
+        }
+    
+        .modal-description {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    
+        /* Button styling */
+        button {
+            background-color: #173451;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+    
+        button:hover {
+            opacity: 0.8;
+        }
+    
+        /* Responsive Design for Smaller Screens */
+        @media (max-width: 768px) {
+            .features-section {
+                gap: 20px; /* Add more space between feature blocks */
+            }
+    
+            .feature-block {
+                width: 120px; /* Reduce width for mobile view */
+                padding: 15px; /* Reduce padding for a more compact design */
+            }
+    
+            .feature-icon {
+                width: 40px;
+                height: 40px; /* Reduce icon size */
+            }
+    
+            .feature-title {
+                font-size: 14px; /* Smaller font size for titles */
+                margin: 8px 0 4px;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .features-section {
+                flex-direction: column; /* Stack feature blocks vertically on small screens */
+                align-items: center;
+            }
+    
+            .feature-block {
+                width: 100%; /* Full width on very small screens */
+                max-width: 200px;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <header>      
+        <div class="logo">
+            <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+        </div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="client.html" class="option">MY NCR</a></li> 
+                <li><a href="create_client.html" class="option">NEW NCR</a></li>
+                <li><a href="report_client.html" class="option">REPORT</a></li>
+                <li><a href="help_client.html" class="option">HELP</a></li>  
+                <li><a href="logout_client.html" class="option">LOG OUT</a></li>     
+            </ul>
+        </nav>
+    </header>
+   
+    <main>
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="feature-block" onclick="window.location.href='create_client.html'">
+                <img src="IMAGES/new.png" alt="Create NCR Icon" class="feature-icon">
+                <div class="feature-title">Create NCR</div>
+            </div>
+            <div class="feature-block" onclick="window.location.href='report_client.html'">
+                <img src="IMAGES/report.png" alt="Reports Icon" class="feature-icon">
+                <div class="feature-title">Reports</div>
+            </div>
+            <div class="feature-block" onclick="window.location.href='help_client.html'">
+                <img src="IMAGES/help.png" alt="Help Icon" class="feature-icon">
+                <div class="feature-title">Help</div>
+            </div>
+        </section>
+
+        <!-- NCR List Section -->
+        <section class="ncr-list">
+            <h1>List of Current NCRs</h1>
+            <!-- Search bar -->
+            <input type="text" id="search-bar" placeholder="Search NCRs by number, supplier, product" aria-label="Search NCRs">
+            
+            
+            <!-- Filter by status -->
+            <label for="status-filter">Filter by Status:</label>
+            <select id="status-filter" aria-label="Filter by Status">
+                <option value="all">All</option>
+                <option value="Open">Open</option>
+                <option value="Closed">Closed</option>
+            </select>
+            
+            <!-- NCR Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>NCR Number</th>
+                        <th>Supplier</th>
+                        <th>Product</th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ncrTableBody">
+                    <!-- Example Row (Replace with actual data) -->
+                    <tr>
+                        <td>2024-001</td>
+                        <td>Supplier A</td>
+                        <td>Product X</td>
+                        <td>Open</td>
+                        <td>01/15/2024</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="view-btn" onclick="viewDescription('Description of NCR #2024-001')">View</button>
+                        </td>
+                    </tr>
+                    <!-- More rows will be generated dynamically -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Modal Structure -->
+        <div id="ncrModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>NCR Details</h2>
+                
+                <!-- NCR Fields -->
+                <p><strong>NCR Number:</strong> <span id="modal-ncr-number"></span></p>
+                <p><strong>Supplier Name:</strong> <span id="modal-supplier-name"></span></p>
+                <p><strong>Product Name:</strong> <span id="modal-product-name"></span></p>
+                <p><strong>Status:</strong> <span id="modal-status"></span></p>
+                <p><strong>Created Date:</strong> <span id="modal-created-date"></span></p>
+                <p><strong>Description:</strong></p>
+                <p id="modal-description" class="modal-description"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <small>NCR-CROSS</small>
+    </footer>
+
+<script src="Client_JS/client_dashboard.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
