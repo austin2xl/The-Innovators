@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR | LOG OUT</title>
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        /* Center content on the page */
+        body, html {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+        }
+    /* Container for logout info */
+    .logout-container {
+        text-align: center;
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+
+    /* Circular profile image */
+    .profile-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 5px;
+        background-image: url('IMAGES/profile.png'); /* Replace with actual profile picture */
+        background-size: cover;
+        background-position: center;
+        margin: 0 auto 20px;
+    }
+
+    /* Styling for name and role */
+    .user-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .user-role {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    /* Logout button */
+    .logout-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #ff4d4d;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .logout-button:hover {
+        background-color: #d43f3f;
+    }
+</style>
+</head>
+<body>
+    <header>      
+        <div class="logo">
+            <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+        </div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="client.html" class="option">MY NCR</a></li> 
+                <li><a href="client_create.html" class="option">NEW NCR</a></li>
+                <li><a href="client_report.html" class="option">REPORT</a></li>
+                <li><a href="client_help.html" class="option">HELP</a></li>  
+                <li><a href="client_logout.html" class="option">LOG OUT</a></li>     
+            </ul>
+        </nav>
+    </header>
+    <div class="logout-container">
+        <div class="profile-circle" id="profilePicture"></div>
+        <div class="user-name" id="userName">User Name</div>
+        <div class="user-role" id="userRole">User Role</div>
+        <button class="logout-button" onclick="logout()">Log Out</button>
+    </div>
+    <script src="app.js"></script>
+    <script src="logout.js"></script>
+</body>
+</html>
