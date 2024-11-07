@@ -84,7 +84,7 @@
             font-size: 16px;
             line-height: 1.5;
         }
-    
+        
         /* Button styling */
         button {
             background-color: #173451;
@@ -97,7 +97,10 @@
             margin-right: 5px;
             margin-top: 5px;
         }
-    
+        .cancel-btn{
+            background-color: red;
+
+        }
         button:hover {
             opacity: 0.8;
         }
@@ -187,9 +190,11 @@
             <!-- Filter by status -->
             <label for="status-filter">Filter by Status:</label>
             <select id="status-filter" aria-label="Filter by Status">
-                <option value="all">All</option>
                 <option value="Open">Open</option>
                 <option value="Closed">Closed</option>
+                <option value="all">All</option>
+                
+                
             </select>
             
             <!-- NCR Table -->
@@ -207,6 +212,7 @@
                 <tbody id="ncrTableBody">
                     <!-- Example Row (Replace with actual data) -->
                     <tr>
+                        
                     </tr>
                     <!-- More rows will be generated dynamically -->
                 </tbody>
@@ -235,7 +241,8 @@
         <small>NCR-CROSS</small>
     </footer>
 
-<script src="Client_JS/client_dashboard.js"></script>
+
 <script src="app.js"></script>
+<script src="Client_JS/client_dashboard.js"></script>
 </body>
 </html>

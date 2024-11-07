@@ -1,5 +1,3 @@
-let ncrs = []; // Array to store NCRs loaded from JSON
-
 // Fetch JSON data from the file
 async function loadData() {
     try {
@@ -7,15 +5,22 @@ async function loadData() {
         const data = await response.json();
         ncrs = data.NCR; // Store the NCRs from the JSON file
         displayNCRs(ncrs); // Display the NCRs in the table after loading
+        applyStatusFilter(ncrs);
     } catch (error) {
         console.error('Error loading JSON data:', error);
     }
 }
 
+// Function to apply the status filter
+function applyStatusFilter() {
+    const status = document.getElementById("status-filter").value;
+    const filteredNCRs = status == "all" ? ncrs : ncrs.filter(ncr => ncr.Status == status);
+    displayNCRs(filteredNCRs);
+}
 // Function to display NCRs in the table
 function displayNCRs(filteredNCRs) {
-    const ncrTableBody = document.getElementById("ncrTableBody");
-    ncrTableBody.innerHTML = ""; // Clear existing rows
+    const ncrTableBody = document.querySelector("tbody");
+    ncrTableBody.innerHTML = '';
 
     filteredNCRs.forEach(ncr => {
         const row = document.createElement("tr");
@@ -26,13 +31,49 @@ function displayNCRs(filteredNCRs) {
             <td><span class="editable" data-field="status">${ncr.Status}</span></td>
             <td><span class="editable" data-field="createdDate">${ncr.CreatedDate}</span></td>
             <td>
-                <button class="edit-btn" onclick="toggleEditMode(this.closest('tr'), true)">Edit</button>
-                <button class="update-btn" style="display: none;" onclick="updateNCR(this.closest('tr'))">Update</button>
-                <button class="cancel-btn" style="display: none;" onclick="toggleEditMode(this.closest('tr'), false)">Cancel</button>
-                <button class="view-btn" onclick='viewDescription(${JSON.stringify(ncr)})'>View</button>
+                <button class="edit-btn">Edit</button>
+                <button class="update-btn" style="display: none;">Update</button>
+                <button class="cancel-btn" style="display: none;">Cancel</button>
+                <button class="view-btn">View</button>
             </td>
         `;
         ncrTableBody.appendChild(row);
+    });
+
+    // Add event listeners to dynamically created buttons after rows are rendered
+    addRowEventListeners();
+}
+
+// Function to add event listeners to edit, update, and cancel buttons
+function addRowEventListeners() {
+    document.querySelectorAll(".edit-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const row = this.closest("tr");
+            toggleEditMode(row, true);
+        });
+    });
+
+    document.querySelectorAll(".update-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const row = this.closest("tr");
+            updateNCR(row);
+            toggleEditMode(row, false);
+        });
+    });
+
+    document.querySelectorAll(".cancel-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const row = this.closest("tr");
+            cancelEdit(row);
+            toggleEditMode(row, false);
+        });
+    });
+
+    document.querySelectorAll(".view-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const rowIndex = Array.from(this.closest("tbody").children).indexOf(this.closest("tr"));
+            viewDescription(ncrs[rowIndex]);
+        });
     });
 }
 
@@ -41,25 +82,22 @@ function toggleEditMode(row, isEditing) {
     row.querySelectorAll(".editable").forEach(span => {
         const fieldValue = span.textContent;
         if (isEditing) {
-            // Replace text content with an input field for editing
             span.innerHTML = `<input type="text" value="${fieldValue}" data-original="${fieldValue}" />`;
         } else {
-            // Restore the original or edited value when exiting edit mode
             const input = span.querySelector("input");
             if (input) {
-                span.textContent = isEditing ? input.value : input.getAttribute("data-original");
+                span.textContent = input.value;
             }
         }
     });
 
-    // Toggle visibility of the "Edit", "Cancel", "Update", and "View" buttons
     row.querySelector(".edit-btn").style.display = isEditing ? "none" : "inline-block";
-    row.querySelector(".cancel-btn").style.display = isEditing ? "inline-block" : "none";
-    row.querySelector(".update-btn").style.display = isEditing ? "inline-block" : "none";
     row.querySelector(".view-btn").style.display = isEditing ? "none" : "inline-block";
+    row.querySelector(".update-btn").style.display = isEditing ? "inline-block" : "none";
+    row.querySelector(".cancel-btn").style.display = isEditing ? "inline-block" : "none";
 }
 
-// Function to update NCR data
+// Update NCR with new values
 function updateNCR(row) {
     const ncrData = {};
     row.querySelectorAll(".editable").forEach(span => {
@@ -70,13 +108,20 @@ function updateNCR(row) {
         }
     });
 
-    alert("NCR updated successfully:\n" + JSON.stringify(ncrData, null, 2));
-
-    // Exit editing mode after updating
-    toggleEditMode(row, false);
+    alert("Updated NCR Data:\n" + JSON.stringify(ncrData, null, 2));
 }
 
-// Function to show NCR description in modal
+// Cancel the editing and restore original values
+function cancelEdit(row) {
+    row.querySelectorAll(".editable").forEach(span => {
+        const input = span.querySelector("input");
+        if (input) {
+            span.textContent = input.getAttribute("data-original");
+        }
+    });
+}
+
+// Function to show NCR details in a modal
 function viewDescription(ncr) {
     document.getElementById("modal-ncr-number").innerText = ncr.NCRNumber;
     document.getElementById("modal-supplier-name").innerText = ncr.SupplierName;
@@ -87,11 +132,10 @@ function viewDescription(ncr) {
     document.getElementById("ncrModal").style.display = "block";
 }
 
-// Close modal function
+// Function to close the modal
 function closeModal() {
     document.getElementById("ncrModal").style.display = "none";
 }
-
 // Search function to filter NCRs based on search input
 function searchNCRs() {
     const query = document.getElementById("search-bar").value.toLowerCase();
@@ -103,16 +147,11 @@ function searchNCRs() {
     displayNCRs(filteredNCRs);
 }
 
-// Event listener for the search bar
+// Event listener for the search bar and status filter
 document.getElementById("search-bar").addEventListener("input", searchNCRs);
-
-// Filter NCRs by status
-const statusFilter = document.getElementById("status-filter");
-statusFilter.addEventListener("change", function() {
-    const status = statusFilter.value;
-    const filteredNCRs = status == "all" ? ncrs : ncrs.filter(ncr => ncr.Status == status);
-    displayNCRs(filteredNCRs);
-});
+document.getElementById("status-filter").addEventListener("change", applyStatusFilter);
 
 // Initialize the data load when the page loads
 window.onload = loadData;
+
+

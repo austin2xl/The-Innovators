@@ -1,20 +1,28 @@
 // Fetch JSON data from the file
 async function loadData() {
     try {
-        const response = await fetch('data.json'); // Assuming the file is in the same directory
+        const response = await fetch('data.json');
         const data = await response.json();
         ncrs = data.NCR; // Store the NCRs from the JSON file
         displayNCRs(ncrs); // Display the NCRs in the table after loading
+        applyStatusFilter(ncrs)
     } catch (error) {
         console.error('Error loading JSON data:', error);
     }
 }
 
+// Function to apply the status filter
+function applyStatusFilter() {
+    const status = document.getElementById("status-filter").value;
+    const filteredNCRs = status == "all" ? ncrs : ncrs.filter(ncr => ncr.Status == status);
+    displayNCRs(filteredNCRs);
+}
 // Function to display NCRs in the table
-function displayNCRs(filteredNCRs) {
+    function displayNCRs(filteredNCRs) {
     const ncrTableBody = document.querySelector("tbody");
+    ncrTableBody.innerHTML = '';
     
-
+ 
     filteredNCRs.forEach(ncr => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -125,6 +133,7 @@ function deleteRow(row) {
         alert("NCR deleted.");
     }
 }
+document.getElementById("status-filter").addEventListener("change", applyStatusFilter);
 
 // Call the loadData function when the page loads
 window.onload = loadData;
