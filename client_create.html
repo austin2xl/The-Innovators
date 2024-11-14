@@ -28,19 +28,24 @@
     </header>
     <main>
         <h1>Create Non-Conformance Report (NCR)</h1>
-<form id="ncrForm">
+<form ><div id="ncrForm">
+    <div>
     <label for="ncr-number">NCR Number:</label>
     <input type="text" id="ncr-number" name="ncrNumber" value="2024-001" readonly><br><br>
-
+</div>
+<div>
     <label for="supplier-name">Supplier Name:</label>
     <input type="text" id="supplier-name" name="supplierName" placeholder="Enter supplier name" required><br><br>
-
+</div>
+<div>
     <label for="product-name">Product Name:</label>
     <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
-
+</div>
+<div>
     <label for="description">Description of Non-Conformance:</label>
-    <textarea id="description" name="description" placeholder="Describe the non-conformance" rows="5" required></textarea><br><br>
-
+    <textarea id="description" name="description" placeholder="Describe the non-conformance" rows="5" required></textarea><br>
+</div>
+<div>    
     <label for="priority">Priority:</label>
     <select id="priority" name="priority" required>
         <option value="">Select Priority</option>
@@ -48,7 +53,8 @@
         <option value="Medium">Medium</option>
         <option value="High">High</option>
     </select><br><br>
-
+</div>
+<div>
     <label for="status">Status:</label>
     <select id="status" name="status" required>
         <option value="">Select Status</option>
@@ -56,21 +62,27 @@
         <option value="In Progress">In Progress</option>
         <option value="Closed">Closed</option>
     </select><br><br>
-
+</div>
+<div>
     <label for="created-date">Created Date:</label>
     <input type="date" id="created-date" name="createdDate" required><br><br>
-
+</div>
+<div>
     <label for="last-modified-date">Last Modified Date:</label>
     <input type="date" id="last-modified-date" name="lastModifiedDate"><br><br>
-
+</div>
+<div>
     <label for="attachments">Attachments (Images, Videos):</label>
     <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4,.pdf,.docx" multiple><br><br>
-
-    <button type="submit">Submit</button>
-    <button type="button" onclick="saveNCR()">Save</button>
-
+</div>
     <!-- Success/Error message -->
     <div id="formMessage"></div>
+</div>
+    
+    <div id="submit">
+        <button type="submit">Submit</button>
+        <button type="button" onclick="saveNCR()">Save</button>
+    </div>
 </form>
 
     </main>

@@ -103,6 +103,22 @@ header.active .hamburger .line {
     
     font-weight: 600;
 }
+/*Help Page*/
+#helpPage{
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+#helpContent{
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+h1{
+    font-size: 25px;
+}
+h2{
+    font-size: 20px;
+}
 
 /* Main Content */
 main {
@@ -134,13 +150,15 @@ footer {
 
 /* Form Styles */
 form {
-    max-width: 400px;
+    max-width: 85%;
     margin: 0 auto;
     padding: 20px;
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
+
 
 label {
     font-weight: bold;
@@ -234,6 +252,23 @@ th {
     
     th {
         font-size: 16px;
+    }
+    h1{
+        font-size:  35px;
+    }
+    h2{
+        font-size: 30px;
+    }
+
+    #ncrForm{
+    
+    column-count: 2;
+    }
+    #submit{
+        display: grid;
+        align-items: center;
+        
+        width: 50%;
     }
 }
 
