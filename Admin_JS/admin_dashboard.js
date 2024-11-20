@@ -6,11 +6,96 @@ async function loadData() {
         ncrs = data.NCR; // Store the NCRs from the JSON file
         displayNCRs(ncrs); // Display the NCRs in the table after loading
         applyStatusFilter(ncrs)
+        updateMetrics(data);
+        createStatusChart(data);
+        populateRecentActivities(data);
+        
     } catch (error) {
         console.error('Error loading JSON data:', error);
     }
 }
+// Update metrics
+function updateMetrics(data) {
+    const ncrs = data.NCR;
+    document.getElementById('totalNCRs').textContent = ncrs.length;
+    document.getElementById('openNCRs').textContent = 
+        ncrs.filter(ncr => ncr.Status == 'Open').length;
+    document.getElementById('criticalNCRs').textContent = 
+        ncrs.filter(ncr => ncr.Priority == 'High').length;
+    document.getElementById('resolvedToday').textContent = 
+        ncrs.filter(ncr => ncr.Status == 'Closed' && 
+        new Date(ncr.ClosedDate).toDateString() == new Date().toDateString()).length;
+}
 
+// Create status distribution chart
+function createStatusChart(data) {
+    const statusCounts = {
+        Open: 0,
+        'In Progress': 0,
+        Closed: 0
+    };
+    
+    data.NCR.forEach(ncr => {
+        statusCounts[ncr.Status]++;
+    });
+
+    const ctx = document.getElementById('statusChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: Object.keys(statusCounts),
+            datasets: [{
+                data: Object.values(statusCounts),
+                backgroundColor: ['#dc3545', '#ffc107', '#28a745']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+}
+// Function to open a modal with NCR details
+function viewNCRDetails(ncrID) {
+    const ncr = window.data.NCR.find(n => n.NCRID == ncrID);
+    if (ncr) {
+        const modalContent = document.getElementById('modal-content');
+        modalContent.innerHTML = `
+            <h2>NCR #${ncr.NCRNumber}</h2>
+            <p><strong>Description:</strong> ${ncr.Description}</p>
+            <p><strong>Supplier:</strong> ${ncr.SupplierName}</p>
+            <p><strong>Product:</strong> ${ncr.ProductName}</p>
+            <p><strong>Status:</strong> ${ncr.Status}</p>
+            <p><strong>Priority:</strong> ${ncr.Priority}</p>
+            <p><strong>Created Date:</strong> ${new Date(ncr.CreatedDate).toLocaleDateString()}</p>
+            <p><strong>Last Modified Date:</strong> ${new Date(ncr.LastModifiedDate).toLocaleDateString()}</p>
+        `;
+        document.getElementById('ncrModal').style.display = 'block';
+    }
+}
+
+// Function to close the modal
+function closeModal() {
+    document.getElementById('ncrModal').style.display = 'none';
+}
+// Populate recent activities
+function populateRecentActivities(data) {
+    const activitiesContainer = document.getElementById('recentActivities');
+    const activities = data.NCR_Log.sort((a, b) => 
+        new Date(b.ActionDate) - new Date(a.ActionDate));
+
+    activities.slice(0, 5).forEach(activity => {
+        const user = data.Users.find(user => user.UserID === activity.ActionBy);
+        const ncr = data.NCR.find(ncr => ncr.NCRID === activity.NCRID);
+        const activityElement = document.createElement('div');
+        activityElement.className = 'activity-item';
+        activityElement.innerHTML = `
+        <strong>${user ? user.Username : 'Unknown User'}</strong> ${activity.Action} on NCR #${ncr ? ncr.NCRNumber : 'Unknown NCR'} 
+        <span class="activity-date">${new Date(activity.ActionDate).toLocaleString()}</span>
+        `;
+        activitiesContainer.appendChild(activityElement);
+    });
+}
 // Function to apply the status filter
 function applyStatusFilter() {
     const status = document.getElementById("status-filter").value;
@@ -35,7 +120,7 @@ function applyStatusFilter() {
                 <button class="edit-btn">Edit</button>
                 <button class="update-btn" style="display: none;">Update</button>
                 <button class="cancel-btn" style="display: none;">Cancel</button>
-                <button class="delete-btn">Delete</button>
+                <button class="view-btn">View</button>
             </td>
         `;
         ncrTableBody.appendChild(row);
@@ -70,12 +155,7 @@ function addRowEventListeners() {
         });
     });
 
-    document.querySelectorAll(".delete-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            const row = this.closest("tr");
-            deleteRow(row);
-        });
-    });
+    
 }
 
 // Toggle between edit and view modes
@@ -98,7 +178,7 @@ function toggleEditMode(row, isEditing) {
     row.querySelector(".edit-btn").style.display = isEditing ? "none" : "inline-block";
     row.querySelector(".update-btn").style.display = isEditing ? "inline-block" : "none";
     row.querySelector(".cancel-btn").style.display = isEditing ? "inline-block" : "none";
-    row.querySelector(".delete-btn").style.display = isEditing ? "none" : "inline-block";
+    row.querySelector(".view-btn").style.display = isEditing ? "none" : "inline-block";
 }
 
 // Update NCR with new values
@@ -126,13 +206,7 @@ function cancelEdit(row) {
     });
 }
 
-// Delete the row from the table
-function deleteRow(row) {
-    if (confirm("Are you sure you want to delete this NCR?")) {
-        row.remove();
-        alert("NCR deleted.");
-    }
-}
+
 document.getElementById("status-filter").addEventListener("change", applyStatusFilter);
 
 // Call the loadData function when the page loads

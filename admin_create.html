@@ -9,31 +9,52 @@
 <body>
     <header>      
         <div class="logo">
-            <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+            <a href="admin.html">
+                <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+            </a>
         </div>
-        <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+        <div class="header-icons">
+            <div class="notification-bell" id="bell">
+                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <div class="mail-dropdown" id="mailDropdown">
+                    <h4>Notifications</h4>
+                    <ul id="mailList"></ul>
+                </div>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="client.html" class="option">NCR LOG</a></li> 
-                <li><a href="client_create.html" class="option">NEW NCR</a></li>
-                <li><a href="client_report.html" class="option">REPORT</a></li>
-                <li><a href="client_help.html" class="option">HELP</a></li>  
-                <li><a href="client_logout.html" class="option">LOG OUT</a></li>     
+                <li><a href="admin.html" class="option">NCR LOG</a></li> 
+                <li><a href="admin_create.html" class="option">NEW NCR</a></li>
+                <li><a href="admin_report.html" class="option">REPORT</a></li>
+                <li><a href="admintools.html" class="option">TOOLS</a></li>  
+                <li><a href="admin_logout.html" class="option">LOG OUT</a></li>              
             </ul>
+            <ul> 
+                <div class="notification-bell-one" id="bell-one">
+                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <div class="mail-dropdown-one" id="mailDropdown-one">
+                    <h4>Notifications</h4>
+                    <ul id="mailList"></ul>
+                </div></ul>
         </nav>
     </header>
     <main>
+      
         <h1>Create Non-Conformance Report (NCR)</h1>
 <form id="ncrForm">
     <label for="ncr-number">NCR Number:</label>
     <input type="text" id="ncr-number" name="ncrNumber" value="2024-001" readonly><br><br>
 
     <label for="supplier-name">Supplier Name:</label>
-    <input type="text" id="supplier-name" name="supplierName" placeholder="Enter supplier name" required><br><br>
+<select id="supplier-name" name="supplierName" required>
+    <option value="">Select Supplier</option>
+</select><br><br>
 
     <label for="product-name">Product Name:</label>
     <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
@@ -66,14 +87,11 @@
     <label for="attachments">Attachments (Images, Videos):</label>
     <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4,.pdf,.docx" multiple><br><br>
 
+    <button type="submit" onclick="submitNCR()">Submit</button>
+    <button type="button" onclick="saveNCR()">Save</button>
 
     <!-- Success/Error message -->
     <div id="formMessage"></div>
-    
-    <div id="submit">
-        <button type="submit">Submit</button>
-        <button type="button" onclick="saveNCR()">Save</button>
-    </div>
 </form>
 
     </main>
@@ -83,5 +101,7 @@
     </footer>
     <script src="app.js"></script> 
     <script src="new_ncr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </body>
 </html>

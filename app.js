@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     hamburger.addEventListener('click', function() {
         header.classList.toggle('active');
         navBar.classList.toggle("active");
+       
     });
 
     // Add click event listener to each navigation link
@@ -136,6 +137,20 @@ document.getElementById("loginForm").addEventListener("submit", login);
         startSessionTimeout(); // Start session timeout on protected pages
     }
 })();
+
+async function loadMails() {
+  
+}
+function toggleMailDropdown() {
+    const dropdown = document.getElementById('mailDropdown');
+    const dropdown1 = document.getElementById('mailDropdown-one');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    dropdown1.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+// Call loadMails on window load
+window.onload = function() {
+    loadMails();
+};
 
 
 

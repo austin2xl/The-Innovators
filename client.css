@@ -32,6 +32,9 @@ header {
     height: 200px;
     margin-right: 100px;
 }
+.logo:hover{
+    cursor: pointer;
+}
 header.active {
     background: #5897c9;
 }
@@ -103,22 +106,6 @@ header.active .hamburger .line {
     
     font-weight: 600;
 }
-/*Help Page*/
-#helpPage{
-    text-align: center;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-#helpContent{
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-h1{
-    font-size: 25px;
-}
-h2{
-    font-size: 20px;
-}
 
 /* Main Content */
 main {
@@ -150,15 +137,13 @@ footer {
 
 /* Form Styles */
 form {
-    max-width: 85%;
+    width: 400px;
     margin: 0 auto;
     padding: 20px;
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
 }
-
 
 label {
     font-weight: bold;
@@ -235,7 +220,63 @@ th {
     color: white;
     font-size: 12px;
 }
+/*notification bell*/
+.notification-bell {
+    position: static; 
+    margin-left: 10px;
+    cursor: pointer;
+    
+}
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.bell-icon {
+    width: 30px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    
+}
 
+.bell-icon:hover {
+    opacity: 1;
+}
+
+.mail-dropdown {
+    display: none;
+    position: absolute;
+    margin-top: 25px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1000;
+    padding: 10px;
+    width: 250px;
+    top: 35px; /* Position the dropdown below the bell icon */
+}
+
+.mail-dropdown h4 {
+    margin: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.mail-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.mail-dropdown li {
+    padding: 8px;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 /* Responsive Design */
 @media screen and (min-width: 768px) {
     header {
@@ -253,23 +294,62 @@ th {
     th {
         font-size: 16px;
     }
-    h1{
-        font-size:  35px;
-    }
-    h2{
-        font-size: 30px;
-    }
-
-    #ncrForm{
     
-    column-count: 2;
+    #ncrForm{
+        width: 80%;
+        display: grid(1fr 1fr);
+        column-count: 2
+        ;
     }
-    #submit{
-        display: grid;
+    .notification-bell, .notification-bell-one  {
+        position: relative; /* Relative positioning for the dropdown */
+        cursor: pointer;
+    }
+    
+    .bell-icon , .bell-icon-one{
+        width: 30px;
+        opacity: 0.5;
+        transition: opacity 0.3s;
+    }
+    
+    .bell-icon:hover ,  .bell-icon-one:hover{
+        opacity: 1;
+    }
+    
+    .mail-dropdown, .mail-dropdown-one {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        z-index: 1000;
+        padding: 10px;
+        width: 250px;
+        top: 35px; /* Position the dropdown below the bell icon */
+    }
+    
+    .mail-dropdown h4 , .mail-dropdown-one h4{
+        margin: 0;
+        font-size: 16px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+    
+    .mail-dropdown ul , .mail-dropdown-one ul  {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0;
+    }
+    
+    .mail-dropdown li, .mail-dropdown-one li  {
+        padding: 8px;
+        border-bottom: 1px solid #f1f1f1;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        
-        width: 50%;
-    }
+    }  
+    
 }
 
 @media screen and (min-width: 1024px) {
@@ -295,7 +375,7 @@ th {
         text-align: left;
         opacity: 1;
         white-space: nowrap;
-        margin-left: auto;
+        margin-right: auto;
     }
     .nav-bar ul li {
         margin: 0;
@@ -308,6 +388,9 @@ th {
         font-size: 18px;
         white-space: nowrap;
         padding: 8px 10px;
+    }
+    #bell{
+        display: none;
     }
 }
 

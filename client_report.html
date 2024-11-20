@@ -143,12 +143,23 @@
 <body>
     <header>      
         <div class="logo">
-            <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+            <a href="client.html">
+                <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+            </a>
         </div>
-        <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+        <div class="header-icons">
+            <div class="notification-bell" id="bell">
+                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <div class="mail-dropdown" id="mailDropdown">
+                    <h4>Notifications</h4>
+                    <ul id="mailList"></ul>
+                </div>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
         </div>
         <nav class="nav-bar">
             <ul>
@@ -158,9 +169,18 @@
                 <li><a href="client_help.html" class="option">HELP</a></li>  
                 <li><a href="client_logout.html" class="option">LOG OUT</a></li>     
             </ul>
+            
+                <ul> 
+                    <div class="notification-bell-one" id="bell-one">
+                    <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                    <div class="mail-dropdown-one" id="mailDropdown-one">
+                        <h4>Notifications</h4>
+                        <ul id="mailList"></ul>
+                    </div></ul>
         </nav>
     </header>
     <main>
+     
     <h1>Reports</h1>
     <div class="report-container">
         <!-- Filter Section -->
@@ -231,5 +251,7 @@
 </main>
     <script src="app.js"></script>
     <script src="report.js"></script>
+
+        
 </body>
 </html>
