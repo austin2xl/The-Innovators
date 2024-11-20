@@ -111,8 +111,8 @@ function applyStatusFilter() {
     filteredNCRs.forEach(ncr => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td><span class="editable" data-field="ncrNumber">${ncr.NCRNumber}</span></td>
-            <td><span class="editable" data-field="supplier">${ncr.SupplierName}</span></td>
+            <td><span class="non-editable" data-field="ncrNumber">${ncr.NCRNumber}</span></td>
+            <td><span class="non-editable" data-field="supplier">${ncr.SupplierName}</span></td>
             <td><span class="editable" data-field="product">${ncr.ProductName}</span></td>
             <td><span class="editable" data-field="status">${ncr.Status}</span></td>
             <td><span class="editable" data-field="createdDate">${ncr.CreatedDate}</span></td>
@@ -172,7 +172,9 @@ function toggleEditMode(row, isEditing) {
                 span.textContent = input.value;
             }
         }
+        
     });
+ 
 
     // Toggle visibility of buttons
     row.querySelector(".edit-btn").style.display = isEditing ? "none" : "inline-block";

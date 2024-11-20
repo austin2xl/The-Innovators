@@ -144,8 +144,8 @@ async function loadMails() {
 function toggleMailDropdown() {
     const dropdown = document.getElementById('mailDropdown');
     const dropdown1 = document.getElementById('mailDropdown-one');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    dropdown1.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    dropdown.style.display = dropdown.style.display == 'block' ? 'none' : 'block';
+    dropdown1.style.display = dropdown.style.display == 'block' ? 'none' : 'block';
 }
 // Call loadMails on window load
 window.onload = function() {
