@@ -9,7 +9,7 @@
 <body>
     <header>      
         <div class="logo">
-            <a href="admin.html">
+            <a href="engineer.html">
                 <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
             </a>
         </div>
@@ -29,27 +29,28 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="admin.html" class="option">NCR LOG</a></li> 
-                <li><a href="admin_create.html" class="option">NEW NCR</a></li>
-                <li><a href="admin_report.html" class="option">REPORT</a></li>
-                <li><a href="admintools.html" class="option">TOOLS</a></li>  
-                <li><a href="admin_logout.html" class="option">LOG OUT</a></li>              
+                <li><a href="engineer.html" class="option">NCR LOG</a></li> 
+                <li><a href="engineer_create.html" class="option">NEW NCR</a></li>
+                <li><a href="engineer_report.html" class="option">REPORT</a></li>
+                 
+                <li><a href="engineer_logout.html" class="option">LOG OUT</a></li>     
             </ul>
-            <ul> 
-                <li>
-                <div class="notification-bell-one" id="bell-one">
-                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
-                <div class="mail-dropdown-one" id="mailDropdown-one">
-                    <h4>Notifications</h4>
-                    <ul id="mailList-one"></ul>
-                </div>
-                </div>
-            </li>
-            </ul>
+         
+                <ul> 
+                    <li>
+                        <div class="notification-bell-one" id="bell-one">
+                        <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                        <div class="mail-dropdown-one" id="mailDropdown-one">
+                            <h4>Notifications</h4>
+                            <ul id="mailList-one"></ul>
+                        </div>
+                        </div>
+                    </li>
+                </ul>
         </nav>
     </header>
     <main>
-      
+       
         <h1>Create Non-Conformance Report (NCR)</h1>
 <form id="ncrForm">
     <label for="ncr-number">NCR Number:</label>
@@ -59,7 +60,6 @@
 <select id="supplier-name" name="supplierName" required>
     <option value="">Select Supplier</option>
 </select><br><br>
-
     <label for="product-name">Product Name:</label>
     <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
 
@@ -106,6 +106,6 @@
     <script src="app.js"></script> 
     <script src="new_ncr.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+   
 </body>
 </html>

@@ -34,9 +34,10 @@ function displayNCRs(filteredNCRs) {
                 <button class="edit-btn">Edit</button>
                 <button class="update-btn" style="display: none;">Update</button>
                 <button class="cancel-btn" style="display: none;">Cancel</button>
-                <button class="view-btn">View</button>
+                 <button class="view-btn" data-id="${ncr.NCRID}">View</button>
             </td>
         `;
+        row.querySelector(".view-btn").addEventListener("click", () => viewNCRDetails(ncr.NCRID));
         ncrTableBody.appendChild(row);
     });
 
@@ -121,17 +122,20 @@ function cancelEdit(row) {
     });
 }
 
-// Function to show NCR details in a modal
-function viewDescription(ncr) {
-    document.getElementById("modal-ncr-number").innerText = ncr.NCRNumber;
-    document.getElementById("modal-supplier-name").innerText = ncr.SupplierName;
-    document.getElementById("modal-product-name").innerText = ncr.ProductName;
-    document.getElementById("modal-status").innerText = ncr.Status;
-    document.getElementById("modal-created-date").innerText = ncr.CreatedDate;
-    document.getElementById("modal-description").innerText = ncr.Description;
-    document.getElementById("ncrModal").style.display = "block";
-}
+function viewNCRDetails(ncrID) {
+    const selectedNCR = ncrs.find(ncr => ncr.NCRID == ncrID);
 
+    if (!selectedNCR) {
+        alert("NCR not found.");
+        return;
+    }
+
+    // Store selected NCR in sessionStorage
+    sessionStorage.setItem("selectedNCR", JSON.stringify(selectedNCR));
+
+    // Redirect to admin_view.html
+    window.location.href = "client_view.html";
+}
 // Function to close the modal
 function closeModal() {
     document.getElementById("ncrModal").style.display = "none";

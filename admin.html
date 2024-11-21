@@ -246,19 +246,23 @@
                 <li><a href="admin_logout.html" class="option">LOG OUT</a></li>              
             </ul>
             <ul> 
-                <div class="notification-bell-one" id="bell-one">
-                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
-                <div class="mail-dropdown-one" id="mailDropdown-one">
-                    <h4>Notifications</h4>
-                    <ul id="mailList"></ul>
-                </div></ul>
+                <li>
+                    <div class="notification-bell-one" id="bell-one">
+                    <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                    <div class="mail-dropdown-one" id="mailDropdown-one">
+                        <h4>Notifications</h4>
+                        <ul id="mailList-one"></ul>
+                    </div>
+                    </div>
+                </li>
+            </ul>
         </nav>
     </header>
    
 
     <main>
          <!-- Features Section -->
-    <section class="features-section">
+    <div class="features-section">
         <div class="feature-block" onclick="window.location.href='admin_create.html'">
             <img src="IMAGES/new.png" alt="Create NCR Icon" class="feature-icon">
             <div class="feature-title">Create NCR</div>
@@ -271,9 +275,9 @@
             <img src="IMAGES/tools.png" alt="Tools Icon" class="feature-icon">
             <div class="feature-title">Tools</div>
         </div>
-    </section>
- 
     </div>
+ 
+   
         <section class="ncr-list">
             <h1>List of Current NCRs</h1>
             
@@ -299,9 +303,7 @@
                 </thead>
                 <tbody>
                     <!-- Sample NCR Table Row with Edit and Delete Buttons -->
-                    <tr>
-                        
-                    </tr>
+                   
                     <!-- More rows... -->
                 </tbody>
             </table>
@@ -328,18 +330,23 @@
                     </div>
                 </div>
             </section>
-
-            <section class="dashboard-card">
+        
+            
+                <section class="dashboard-card">
                 <h2>NCR Status Distribution</h2>
                 <div class="chart-container">
                     <canvas id="statusChart"></canvas>
                 </div>
             </section>
-
-            <section class="dashboard-card">
-                <h2>Recent Activities</h2>
-                <div class="recent-activities" id="recentActivities"></div>
-            </section>
+        
+           
+            
+                <section class="dashboard-card">
+                    <h2>Recent Activities</h2>
+                    <div class="recent-activities" id="recentActivities"></div>
+                </section>
+            </div>
+            
 
         <!-- Modal Structure -->
         <div id="ncrModal" class="modal">

@@ -20,15 +20,27 @@
             
         </nav>
     </header>
-
-    <main>
-     
-
-    </main>
+            
+        <main>
+            <h1>NCR Details</h1>
+    <p><strong>NCR Number:</strong> <span id="ncrNumber"></span></p>
+    <p><strong>Supplier Name:</strong> <span id="supplier"></span></p>
+    <p><strong>Product Name:</strong> <span id="product"></span></p>
+    <p><strong>Status:</strong> <span id="status"></span></p>
+    <p><strong>Created Date:</strong> <span id="createdDate"></span></p>
+            <button onclick="goBack()">Back to Dashboard</button>
+        </main>
 
     <footer>
         <small>NCR-CROSS</small>
     </footer>
-    <script src="app.js"></script>   
+    <script src="app.js"></script> 
+    <script src="view.js"></script>  
+    <script>
+        // Go back to the dashboard
+        function goBack() {
+            window.location.href = "admin.html";
+        }
+    </script>
 </body>
 </html>

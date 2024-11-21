@@ -6,6 +6,7 @@
             "Password": "admin",
             "Role": "admin",
             "Email": "admin@example.com"
+            
         },
         {
             "UserID": 2,
@@ -13,13 +14,17 @@
             "Password": "client",
             "Role": "client",
             "Email": "client1@example.com"
+           
         },
         {
-            "UserID": 3,
-            "Username": "client_user2",
-            "Password": "hashed_password_3",
-            "Role": "client",
-            "Email": "client2@example.com"
+            
+                    "UserID": 3,
+                    "Username": "engineer_user",
+                    "Password": "engineer",
+                    "Role": "engineer",
+                    "Email": "engineer1@example.com"
+           
+                
         },
         {
             "UserID": 4,
@@ -167,6 +172,32 @@
             "Action": "Status updated to Closed",
             "ActionBy": 2,
             "ActionDate": "2024-09-01"
+        }
+    ],
+    "Mails": [
+        {
+            "MailID": 1,
+            "Subject": "System Maintenance",
+            "Body": "The platform will be down for maintenance on Saturday, 25th November.",
+            "Read": false
+        },
+        {
+            "MailID": 2,
+            "Subject": "Feature Update",
+            "Body": "New features have been added to the platform. Check the help section for more details.",
+            "Read": true
+        },
+        {
+            "MailID": 3,
+            "Subject": "Reminder",
+            "Body": "Please complete your pending NCRs before the end of the month.",
+            "Read": false
+        },
+        {
+            "MailID": 4,
+            "Subject": "Feedback Request",
+            "Body": "We would love to hear your feedback on our new features. Please take a moment to fill out the feedback form.",
+            "Read": true
         }
     ]
 }

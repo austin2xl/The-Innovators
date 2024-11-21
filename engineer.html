@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NCR | Client Dashboard</title>
-    <link rel="stylesheet" href="client.css">
+    <title>NCR | engineer Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
     <style>
         /* Styles for the feature blocks section */
         .features-section {
@@ -145,7 +145,7 @@
 <body>
     <header>      
         <div class="logo">
-            <a href="client.html">
+            <a href="engineer.html">
                 <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
             </a>
         </div>
@@ -161,16 +161,15 @@
                 <div class="line"></div>
                 <div class="line"></div>
                 <div class="line"></div>
-
             </div>
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="client.html" class="option">NCR LOG</a></li> 
-                <li><a href="client_create.html" class="option">NEW NCR</a></li>
-                <li><a href="client_report.html" class="option">REPORT</a></li>
-                <li><a href="client_help.html" class="option">HELP</a></li>  
-                <li><a href="client_logout.html" class="option">LOG OUT</a></li>     
+                <li><a href="engineer.html" class="option">NCR LOG</a></li> 
+                <li><a href="engineer_create.html" class="option">NEW NCR</a></li>
+                <li><a href="engineer_report.html" class="option">REPORT</a></li>
+                
+                <li><a href="engineer_logout.html" class="option">LOG OUT</a></li>     
             </ul>
                 <ul> 
                     <li>
@@ -191,18 +190,17 @@
 
         <!-- Features Section -->
         <div class="features-section">
-            
-            <div class="feature-block" onclick="window.location.href='client_create.html'">
+            <div class="feature-block" onclick="window.location.href='engineer_create.html'">
                 <img src="IMAGES/new.png" alt="Create NCR Icon" class="feature-icon">
                 <div class="feature-title">Create NCR</div>
             </div>
-            <div class="feature-block" onclick="window.location.href='client_report.html'">
+            <div class="feature-block" onclick="window.location.href='engineer_report.html'">
                 <img src="IMAGES/report.png" alt="Reports Icon" class="feature-icon">
                 <div class="feature-title">Reports</div>
             </div>
-            <div class="feature-block" onclick="window.location.href='client_help.html'">
-                <img src="IMAGES/help.png" alt="Help Icon" class="feature-icon">
-                <div class="feature-title">Help</div>
+            <div class="feature-block" onclick="window.location.href='engineer_logout.html'">
+                <img src="IMAGES/profile.png" alt="profile Icon" class="feature-icon">
+                <div class="feature-title">Log out</div>
             </div>
         </div>
 
@@ -265,6 +263,6 @@
 
 
 <script src="app.js"></script>
-<script src="Client_JS/client_dashboard.js"></script>
+<script src="Engineer_JS/engineer_dashboard.js"></script>
 </body>
 </html>

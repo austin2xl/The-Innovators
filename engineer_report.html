@@ -143,7 +143,7 @@
 <body>
     <header>      
         <div class="logo">
-            <a href="admin.html">
+            <a href="engineer.html">
                 <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
             </a>
         </div>
@@ -154,7 +154,7 @@
                     <h4>Notifications</h4>
                     <ul id="mailList"></ul>
                 </div>
-            </div> 
+            </div>
             <div class="hamburger">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -163,108 +163,109 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="admin.html" class="option">NCR LOG</a></li> 
-                <li><a href="admin_create.html" class="option">NEW NCR</a></li>
-                <li><a href="admin_report.html" class="option">REPORT</a></li>
-                <li><a href="admintools.html" class="option">TOOLS</a></li>  
-                <li><a href="admin_logout.html" class="option">LOG OUT</a></li>              
+                <li><a href="engineer.html" class="option">NCR LOG</a></li> 
+                <li><a href="engineer_create.html" class="option">NEW NCR</a></li>
+                <li><a href="engineer_report.html" class="option">REPORT</a></li>
+                <li><a href="engineer_logout.html" class="option">LOG OUT</a></li>     
             </ul>
-            <ul> 
-                <li>
-                    <div class="notification-bell-one" id="bell-one">
-                    <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
-                    <div class="mail-dropdown-one" id="mailDropdown-one">
-                        <h4>Notifications</h4>
-                        <ul id="mailList-one"></ul>
-                    </div>
-                    </div>
-                </li>
-            </ul>
+            
+                <ul> 
+                    <li>
+                        <div class="notification-bell-one" id="bell-one">
+                        <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                        <div class="mail-dropdown-one" id="mailDropdown-one">
+                            <h4>Notifications</h4>
+                            <ul id="mailList-one"></ul>
+                        </div>
+                        </div>
+                    </li>
+                </ul>
         </nav>
     </header>
     <main>
       
-    <h1>Reports</h1>
-    <div class="report-container">
-        <!-- Filter Section -->
-        <div class="filter-section">
-            <div>
-                <label for="status-filter">Status:</label>
-                <select id="status-filter">
-                    <option value="all">All</option>
-                    <option value="Open">Open</option>
-                    <option value="Closed">Closed</option>
-                    <option value="In Progress">In Progress</option>
-                </select>
+        <h1>Reports</h1>
+        <div class="report-container">
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div>
+                    <label for="status-filter">Status:</label>
+                    <select id="status-filter">
+                        <option value="all">All</option>
+                        <option value="Open">Open</option>
+                        <option value="Closed">Closed</option>
+                        <option value="In Progress">In Progress</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="date-filter">Date:</label>
+                    <input type="date" id="date-filter">
+                </div>
+                <div>
+                    <label for="priority-filter">Priority:</label>
+                    <select id="priority-filter">
+                        <option value="all">All</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <button onclick="applyFilters()" class="view-details-btn">Apply Filters</button>
+                <button onclick="clearFilters()" class="view-details-btn" style="background-color: #d9534f;margin-top: 5px;">Clear Filters</button>
             </div>
-            <div>
-                <label for="date-filter">Date:</label>
-                <input type="date" id="date-filter">
-            </div>
-            <div>
-                <label for="priority-filter">Priority:</label>
-                <select id="priority-filter">
-                    <option value="all">All</option>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
-            </div>
-            <button onclick="applyFilters()" class="view-details-btn">Apply Filters</button>
-            <button onclick="clearFilters()" class="view-details-btn" style="background-color: #d9534f;margin-top: 5px;">Clear Filters</button>
+    
+            <!-- Report Summary Table -->
+            <h2>Report Summary</h2>
+            <table class="report-summary">
+                <thead>
+                    <tr>
+                        <th>Report ID</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Date Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="reportSummaryTable">
+                    <!-- Dynamically filled rows based on report data -->
+                    <tr class="no-reports">
+                        <td colspan="6">No reports available. Adjust the filters to see results.</td>
+                    </tr>
+                </tbody>
+            </table>
+    
+            <!-- Report Details Table -->
+            <h2>Report Details</h2>
+            <table class="report-details">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody id="reportDetailsTable">
+                    <!-- Dynamically filled with details of selected report -->
+                    <tr class="no-reports">
+                        <td colspan="2">Select a report to view details.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="template-options">
+                <label><input type="checkbox" id="include-summary" > Include Summary</label><br>
+                <label><input type="checkbox" id="include-root-cause" > Include Root Cause Analysis</label><br>
+                <label><input type="checkbox" id="include-disposition" > Include Disposition and Corrective Actions</label><br>
+                <label><input type="checkbox" id="include-approval" > Include Approval History</label><br>
+                <button onclick="generatePDF()" class="view-details-btn">Generate PDF Report</button>
+            </div> 
         </div>
-
-        <!-- Report Summary Table -->
-        <h2>Report Summary</h2>
-        <table class="report-summary">
-            <thead>
-                <tr>
-                    <th>Report ID</th>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Priority</th>
-                    <th>Date Created</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="reportSummaryTable">
-                <!-- Dynamically filled rows based on report data -->
-                <tr class="no-reports">
-                    <td colspan="6">No reports available. Adjust the filters to see results.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Report Details Table -->
-        <h2>Report Details</h2>
-        <table class="report-details">
-            <thead>
-                <tr>
-                    <th>Field</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody id="reportDetailsTable">
-                <!-- Dynamically filled with details of selected report -->
-                <tr class="no-reports">
-                    <td colspan="2">Select a report to view details.</td>
-                </tr>
-            </tbody>
-        </table>
-        <div id="template-options">
-            <label><input type="checkbox" id="include-summary" > Include Summary</label><br>
-            <label><input type="checkbox" id="include-root-cause" > Include Root Cause Analysis</label><br>
-            <label><input type="checkbox" id="include-disposition" > Include Disposition and Corrective Actions</label><br>
-            <label><input type="checkbox" id="include-approval" > Include Approval History</label><br>
-            <button onclick="generatePDF()" class="view-details-btn">Generate PDF Report</button>
-        </div> 
-    </div>
-</main>
-    <script src="app.js"></script>
-    <script src="report.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    </main>
+        <script src="app.js"></script>
+        <script src="report.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 
 
+        
 </body>
 </html>
