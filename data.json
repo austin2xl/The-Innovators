@@ -45,8 +45,8 @@
             "LastModifiedBy": 2,
             "LastModifiedDate": "2024-10-05",
             "Priority": "High",
-            "SupplierName": "Supplier A",
-            "ProductName": "Product X"
+            "SupplierName": "Mc Donalds",
+            "ProductName": "Cheese Pack"
         },
         {
             "NCRID": 102,
@@ -58,144 +58,659 @@
             "LastModifiedBy": 1,
             "LastModifiedDate": "2024-09-20",
             "Priority": "Medium",
-            "SupplierName": "Supplier B",
-            "ProductName": "Product Y"
+            "SupplierName": "Apple",
+            "ProductName": "Processors"
         },
         {
-            "NCRID": 103,
-            "NCRNumber": "NCR003",
-            "Description": "Incorrect labeling on packaging",
-            "Status": "Closed",
+            "NCRID": 104,
+            "NCRNumber": "NCR004",
+            "Description": "Sample description for NCR 4",
+            "Status": "Open",
+            "CreatedBy": 1,
+            "CreatedDate": "2024-09-11",
+            "LastModifiedBy": 2,
+            "LastModifiedDate": "2024-08-16",
+            "Priority": "High",
+            "SupplierName": "Alpha Supplies Inc.",
+            "ProductName": "Bluetooth Speaker"
+        },
+        {
+            "NCRID": 105,
+            "NCRNumber": "NCR005",
+            "Description": "Sample description for NCR 5",
+            "Status": "In Progress",
             "CreatedBy": 2,
-            "CreatedDate": "2024-08-25",
-            "LastModifiedBy": 4,
-            "LastModifiedDate": "2024-09-01",
+            "CreatedDate": "2024-08-15",
+            "LastModifiedBy": 3,
+            "LastModifiedDate": "2024-10-15",
             "Priority": "Low",
-            "SupplierName": "Supplier C",
-            "ProductName": "Product Z"
+            "SupplierName": "Beta Components",
+            "ProductName": "Electric Drill"
+        },
+        {
+            "NCRID": 106,
+            "NCRNumber": "NCR006",
+            "Description": "Sample description for NCR 6",
+            "Status": "Open",
+            "CreatedBy": 3,
+            "CreatedDate": "2024-10-14",
+            "LastModifiedBy": 4,
+            "LastModifiedDate": "2024-09-20",
+            "Priority": "Medium",
+            "SupplierName": "Gamma Packaging Ltd.",
+            "ProductName": "Waterproof Jacket"
+        },
+        {
+            "NCRID": 107,
+            "NCRNumber": "NCR007",
+            "Description": "Sample description for NCR 7",
+            "Status": "In Progress",
+            "CreatedBy": 4,
+            "CreatedDate": "2024-09-13",
+            "LastModifiedBy": 1,
+            "LastModifiedDate": "2024-08-19",
+            "Priority": "Low",
+            "SupplierName": "Delta Electronics",
+            "ProductName": "Solar Panel"
+        },
+        {
+            "NCRID": 108,
+            "NCRNumber": "NCR008",
+            "Description": "Sample description for NCR 8",
+            "Status": "Open",
+            "CreatedBy": 1,
+            "CreatedDate": "2024-08-12",
+            "LastModifiedBy": 2,
+            "LastModifiedDate": "2024-10-18",
+            "Priority": "High",
+            "SupplierName": "Omega Parts Co.",
+            "ProductName": "Gaming Mouse"
+        },
+        {
+            "NCRID": 109,
+            "NCRNumber": "NCR009",
+            "Description": "Sample description for NCR 9",
+            "Status": "In Progress",
+            "CreatedBy": 2,
+            "CreatedDate": "2024-10-11",
+            "LastModifiedBy": 3,
+            "LastModifiedDate": "2024-09-17",
+            "Priority": "Medium",
+            "SupplierName": "Zeta Industries",
+            "ProductName": "Stainless Steel Bottle"
+        },
+        {
+            "NCRID": 110,
+            "NCRNumber": "NCR010",
+            "Description": "Sample description for NCR 10",
+            "Status": "Open",
+            "CreatedBy": 3,
+            "CreatedDate": "2024-09-15",
+            "LastModifiedBy": 4,
+            "LastModifiedDate": "2024-08-16",
+            "Priority": "High",
+            "SupplierName": "Eta Corp.",
+            "ProductName": "Noise-Cancelling Headphones"
+        },
+        {
+            "NCRID": 111,
+            "NCRNumber": "NCR011",
+            "Description": "Sample description for NCR 11",
+            "Status": "In Progress",
+            "CreatedBy": 4,
+            "CreatedDate": "2024-08-14",
+            "LastModifiedBy": 1,
+            "LastModifiedDate": "2024-10-15",
+            "Priority": "Low",
+            "SupplierName": "Theta Tools",
+            "ProductName": "USB-C Adapter"
+        },
+        {
+            "NCRID": 112,
+            "NCRNumber": "NCR012",
+            "Description": "Sample description for NCR 12",
+            "Status": "Open",
+            "CreatedBy": 1,
+            "CreatedDate": "2024-10-13",
+            "LastModifiedBy": 2,
+            "LastModifiedDate": "2024-09-20",
+            "Priority": "Medium",
+            "SupplierName": "Sigma Solutions",
+            "ProductName": "Portable Hard Drive"
+        },
+        {
+            "NCRID": 113,
+            "NCRNumber": "NCR013",
+            "Description": "Sample description for NCR 13",
+            "Status": "In Progress",
+            "CreatedBy": 2,
+            "CreatedDate": "2024-09-12",
+            "LastModifiedBy": 3,
+            "LastModifiedDate": "2024-08-19",
+            "Priority": "Low",
+            "SupplierName": "Lambda Logistics",
+            "ProductName": "Action Camera"
+        },
+        {
+            "NCRID": 114,
+            "NCRNumber": "NCR014",
+            "Description": "Sample description for NCR 14",
+            "Status": "Open",
+            "CreatedBy": 3,
+            "CreatedDate": "2024-08-11",
+            "LastModifiedBy": 4,
+            "LastModifiedDate": "2024-10-18",
+            "Priority": "High",
+            "SupplierName": "Nu Hardware",
+            "ProductName": "Ergonomic Chair"
+        },
+        {
+            "NCRID": 115,
+            "NCRNumber": "NCR015",
+            "Description": "Sample description for NCR 15",
+            "Status": "In Progress",
+            "CreatedBy": 4,
+            "CreatedDate": "2024-10-15",
+            "LastModifiedBy": 1,
+            "LastModifiedDate": "2024-09-17",
+            "Priority": "Medium",
+            "SupplierName": "Xi Machineries",
+            "ProductName": "Smart Thermostat"
         }
     ],
     "NCR_Details": [
         {
             "DetailID": 201,
             "NCRID": 101,
-            "Section": "Packaging",
-            "DetailText": "Packaging was torn upon arrival.",
-            "AttachmentPath": "/attachments/packaging_issue.jpg",
-            "ModifiedBy": 1,
-            "ModifiedDate": "2024-10-02"
+            "Section": "Section B",
+            "DetailText": "Detail text for NCR 101",
+            "AttachmentPath": "/attachments/detail_101.jpg",
+            "ModifiedBy": 2,
+            "ModifiedDate": "2024-09-11"
         },
         {
             "DetailID": 202,
             "NCRID": 102,
-            "Section": "Electronics",
-            "DetailText": "Capacitor was not working as expected.",
-            "AttachmentPath": "/attachments/electronics_issue.pdf",
+            "Section": "Section A",
+            "DetailText": "Detail text for NCR 102",
+            "AttachmentPath": "/attachments/detail_102.jpg",
             "ModifiedBy": 3,
-            "ModifiedDate": "2024-09-16"
+            "ModifiedDate": "2024-08-12"
         },
         {
             "DetailID": 203,
             "NCRID": 103,
-            "Section": "Labeling",
-            "DetailText": "Product label did not match the item description.",
-            "AttachmentPath": "/attachments/label_issue.png",
+            "Section": "Section B",
+            "DetailText": "Detail text for NCR 103",
+            "AttachmentPath": "/attachments/detail_103.jpg",
             "ModifiedBy": 4,
-            "ModifiedDate": "2024-08-26"
+            "ModifiedDate": "2024-10-13"
+        },
+        {
+            "DetailID": 204,
+            "NCRID": 104,
+            "Section": "Section A",
+            "DetailText": "Detail text for NCR 104",
+            "AttachmentPath": "/attachments/detail_104.jpg",
+            "ModifiedBy": 1,
+            "ModifiedDate": "2024-09-14"
+        },
+        {
+            "DetailID": 205,
+            "NCRID": 105,
+            "Section": "Section B",
+            "DetailText": "Detail text for NCR 105",
+            "AttachmentPath": "/attachments/detail_105.jpg",
+            "ModifiedBy": 2,
+            "ModifiedDate": "2024-08-10"
+        },
+        {
+            "DetailID": 206,
+            "NCRID": 106,
+            "Section": "Section A",
+            "DetailText": "Detail text for NCR 106",
+            "AttachmentPath": "/attachments/detail_106.jpg",
+            "ModifiedBy": 3,
+            "ModifiedDate": "2024-10-11"
+        },
+        {
+            "DetailID": 207,
+            "NCRID": 107,
+            "Section": "Section B",
+            "DetailText": "Detail text for NCR 107",
+            "AttachmentPath": "/attachments/detail_107.jpg",
+            "ModifiedBy": 4,
+            "ModifiedDate": "2024-09-12"
+        },
+        {
+            "DetailID": 208,
+            "NCRID": 108,
+            "Section": "Section A",
+            "DetailText": "Detail text for NCR 108",
+            "AttachmentPath": "/attachments/detail_108.jpg",
+            "ModifiedBy": 1,
+            "ModifiedDate": "2024-08-13"
+        },
+        {
+            "DetailID": 209,
+            "NCRID": 109,
+            "Section": "Section B",
+            "DetailText": "Detail text for NCR 109",
+            "AttachmentPath": "/attachments/detail_109.jpg",
+            "ModifiedBy": 2,
+            "ModifiedDate": "2024-10-14"
+        },
+        {
+            "DetailID": 210,
+            "NCRID": 110,
+            "Section": "Section A",
+            "DetailText": "Detail text for NCR 110",
+            "AttachmentPath": "/attachments/detail_110.jpg",
+            "ModifiedBy": 3,
+            "ModifiedDate": "2024-09-10"
+        },
+        {
+            "DetailID": 211,
+            "NCRID": 111,
+            "Section": "Section B",
+            "DetailText": "Detail text for NCR 111",
+            "AttachmentPath": "/attachments/detail_111.jpg",
+            "ModifiedBy": 4,
+            "ModifiedDate": "2024-08-11"
+        },
+        {
+            "DetailID": 212,
+            "NCRID": 112,
+            "Section": "Section A",
+            "DetailText": "Detail text for NCR 112",
+            "AttachmentPath": "/attachments/detail_112.jpg",
+            "ModifiedBy": 1,
+            "ModifiedDate": "2024-10-12"
+        },
+        {
+            "DetailID": 213,
+            "NCRID": 113,
+            "Section": "Section B",
+            "DetailText": "Detail text for NCR 113",
+            "AttachmentPath": "/attachments/detail_113.jpg",
+            "ModifiedBy": 2,
+            "ModifiedDate": "2024-09-13"
+        },
+        {
+            "DetailID": 214,
+            "NCRID": 114,
+            "Section": "Section A",
+            "DetailText": "Detail text for NCR 114",
+            "AttachmentPath": "/attachments/detail_114.jpg",
+            "ModifiedBy": 3,
+            "ModifiedDate": "2024-08-14"
+        },
+        {
+            "DetailID": 215,
+            "NCRID": 115,
+            "Section": "Section B",
+            "DetailText": "Detail text for NCR 115",
+            "AttachmentPath": "/attachments/detail_115.jpg",
+            "ModifiedBy": 4,
+            "ModifiedDate": "2024-10-10"
         }
     ],
     "NCR_Attachments": [
         {
             "AttachmentID": 301,
             "NCRID": 101,
-            "FilePath": "/attachments/inspection_report_101.pdf",
+            "FilePath": "/attachments/attachment_101.pdf",
             "FileType": "pdf",
             "UploadedBy": 2,
-            "UploadedDate": "2024-10-01"
+            "UploadedDate": "2024-09-14"
         },
         {
             "AttachmentID": 302,
             "NCRID": 102,
-            "FilePath": "/attachments/electronics_photos.zip",
-            "FileType": "zip",
+            "FilePath": "/attachments/attachment_102.pdf",
+            "FileType": "pdf",
             "UploadedBy": 3,
-            "UploadedDate": "2024-09-15"
+            "UploadedDate": "2024-08-13"
         },
         {
             "AttachmentID": 303,
             "NCRID": 103,
-            "FilePath": "/attachments/label_report.docx",
-            "FileType": "docx",
+            "FilePath": "/attachments/attachment_103.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 4,
+            "UploadedDate": "2024-10-12"
+        },
+        {
+            "AttachmentID": 304,
+            "NCRID": 104,
+            "FilePath": "/attachments/attachment_104.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 1,
+            "UploadedDate": "2024-09-11"
+        },
+        {
+            "AttachmentID": 305,
+            "NCRID": 105,
+            "FilePath": "/attachments/attachment_105.pdf",
+            "FileType": "pdf",
             "UploadedBy": 2,
-            "UploadedDate": "2024-08-25"
+            "UploadedDate": "2024-08-10"
+        },
+        {
+            "AttachmentID": 306,
+            "NCRID": 106,
+            "FilePath": "/attachments/attachment_106.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 3,
+            "UploadedDate": "2024-10-15"
+        },
+        {
+            "AttachmentID": 307,
+            "NCRID": 107,
+            "FilePath": "/attachments/attachment_107.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 4,
+            "UploadedDate": "2024-09-14"
+        },
+        {
+            "AttachmentID": 308,
+            "NCRID": 108,
+            "FilePath": "/attachments/attachment_108.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 1,
+            "UploadedDate": "2024-08-13"
+        },
+        {
+            "AttachmentID": 309,
+            "NCRID": 109,
+            "FilePath": "/attachments/attachment_109.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 2,
+            "UploadedDate": "2024-10-12"
+        },
+        {
+            "AttachmentID": 310,
+            "NCRID": 110,
+            "FilePath": "/attachments/attachment_110.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 3,
+            "UploadedDate": "2024-09-11"
+        },
+        {
+            "AttachmentID": 311,
+            "NCRID": 111,
+            "FilePath": "/attachments/attachment_111.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 4,
+            "UploadedDate": "2024-08-10"
+        },
+        {
+            "AttachmentID": 312,
+            "NCRID": 112,
+            "FilePath": "/attachments/attachment_112.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 1,
+            "UploadedDate": "2024-10-15"
+        },
+        {
+            "AttachmentID": 313,
+            "NCRID": 113,
+            "FilePath": "/attachments/attachment_113.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 2,
+            "UploadedDate": "2024-09-14"
+        },
+        {
+            "AttachmentID": 314,
+            "NCRID": 114,
+            "FilePath": "/attachments/attachment_114.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 3,
+            "UploadedDate": "2024-08-13"
+        },
+        {
+            "AttachmentID": 315,
+            "NCRID": 115,
+            "FilePath": "/attachments/attachment_115.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 4,
+            "UploadedDate": "2024-10-12"
         }
     ],
     "NCR_Log": [
         {
             "LogID": 401,
-            "NCRID": 101,
-            "Action": "Status updated to Open",
-            "ActionBy": 1,
-            "ActionDate": "2024-10-01"
+            "NCRID": 102,
+            "Action": "Action log 1 for NCR 102",
+            "ActionBy": 2,
+            "ActionDate": "2024-09-19"
         },
         {
             "LogID": 402,
-            "NCRID": 101,
-            "Action": "Status updated to In Progress",
-            "ActionBy": 2,
-            "ActionDate": "2024-10-05"
+            "NCRID": 103,
+            "Action": "Action log 2 for NCR 103",
+            "ActionBy": 3,
+            "ActionDate": "2024-08-18"
         },
         {
             "LogID": 403,
-            "NCRID": 102,
-            "Action": "Issue logged",
-            "ActionBy": 3,
-            "ActionDate": "2024-09-15"
+            "NCRID": 104,
+            "Action": "Action log 3 for NCR 104",
+            "ActionBy": 4,
+            "ActionDate": "2024-10-17"
         },
         {
             "LogID": 404,
-            "NCRID": 102,
-            "Action": "Status updated to In Progress",
+            "NCRID": 105,
+            "Action": "Action log 4 for NCR 105",
             "ActionBy": 1,
-            "ActionDate": "2024-09-20"
+            "ActionDate": "2024-09-16"
         },
         {
             "LogID": 405,
-            "NCRID": 103,
-            "Action": "Issue resolved",
-            "ActionBy": 4,
-            "ActionDate": "2024-09-01"
+            "NCRID": 106,
+            "Action": "Action log 5 for NCR 106",
+            "ActionBy": 2,
+            "ActionDate": "2024-08-15"
         },
         {
             "LogID": 406,
-            "NCRID": 103,
-            "Action": "Status updated to Closed",
+            "NCRID": 107,
+            "Action": "Action log 6 for NCR 107",
+            "ActionBy": 3,
+            "ActionDate": "2024-10-20"
+        },
+        {
+            "LogID": 407,
+            "NCRID": 108,
+            "Action": "Action log 7 for NCR 108",
+            "ActionBy": 4,
+            "ActionDate": "2024-09-19"
+        },
+        {
+            "LogID": 408,
+            "NCRID": 109,
+            "Action": "Action log 8 for NCR 109",
+            "ActionBy": 1,
+            "ActionDate": "2024-08-18"
+        },
+        {
+            "LogID": 409,
+            "NCRID": 110,
+            "Action": "Action log 9 for NCR 110",
             "ActionBy": 2,
-            "ActionDate": "2024-09-01"
+            "ActionDate": "2024-10-17"
+        },
+        {
+            "LogID": 410,
+            "NCRID": 111,
+            "Action": "Action log 10 for NCR 111",
+            "ActionBy": 3,
+            "ActionDate": "2024-09-16"
+        },
+        {
+            "LogID": 411,
+            "NCRID": 112,
+            "Action": "Action log 11 for NCR 112",
+            "ActionBy": 4,
+            "ActionDate": "2024-08-15"
+        },
+        {
+            "LogID": 412,
+            "NCRID": 113,
+            "Action": "Action log 12 for NCR 113",
+            "ActionBy": 1,
+            "ActionDate": "2024-10-20"
+        },
+        {
+            "LogID": 413,
+            "NCRID": 114,
+            "Action": "Action log 13 for NCR 114",
+            "ActionBy": 2,
+            "ActionDate": "2024-09-19"
+        },
+        {
+            "LogID": 414,
+            "NCRID": 115,
+            "Action": "Action log 14 for NCR 115",
+            "ActionBy": 3,
+            "ActionDate": "2024-08-18"
+        },
+        {
+            "LogID": 415,
+            "NCRID": 101,
+            "Action": "Action log 15 for NCR 101",
+            "ActionBy": 4,
+            "ActionDate": "2024-10-17"
+        },
+        {
+            "LogID": 416,
+            "NCRID": 102,
+            "Action": "Action log 16 for NCR 102",
+            "ActionBy": 1,
+            "ActionDate": "2024-09-16"
+        },
+        {
+            "LogID": 417,
+            "NCRID": 103,
+            "Action": "Action log 17 for NCR 103",
+            "ActionBy": 2,
+            "ActionDate": "2024-08-15"
+        },
+        {
+            "LogID": 418,
+            "NCRID": 104,
+            "Action": "Action log 18 for NCR 104",
+            "ActionBy": 3,
+            "ActionDate": "2024-10-20"
+        },
+        {
+            "LogID": 419,
+            "NCRID": 105,
+            "Action": "Action log 19 for NCR 105",
+            "ActionBy": 4,
+            "ActionDate": "2024-09-19"
+        },
+        {
+            "LogID": 420,
+            "NCRID": 106,
+            "Action": "Action log 20 for NCR 106",
+            "ActionBy": 1,
+            "ActionDate": "2024-08-18"
+        },
+        {
+            "LogID": 421,
+            "NCRID": 107,
+            "Action": "Action log 21 for NCR 107",
+            "ActionBy": 2,
+            "ActionDate": "2024-10-17"
+        },
+        {
+            "LogID": 422,
+            "NCRID": 108,
+            "Action": "Action log 22 for NCR 108",
+            "ActionBy": 3,
+            "ActionDate": "2024-09-16"
+        },
+        {
+            "LogID": 423,
+            "NCRID": 109,
+            "Action": "Action log 23 for NCR 109",
+            "ActionBy": 4,
+            "ActionDate": "2024-08-15"
+        },
+        {
+            "LogID": 424,
+            "NCRID": 110,
+            "Action": "Action log 24 for NCR 110",
+            "ActionBy": 1,
+            "ActionDate": "2024-10-20"
+        },
+        {
+            "LogID": 425,
+            "NCRID": 111,
+            "Action": "Action log 25 for NCR 111",
+            "ActionBy": 2,
+            "ActionDate": "2024-09-19"
+        },
+        {
+            "LogID": 426,
+            "NCRID": 112,
+            "Action": "Action log 26 for NCR 112",
+            "ActionBy": 3,
+            "ActionDate": "2024-08-18"
+        },
+        {
+            "LogID": 427,
+            "NCRID": 113,
+            "Action": "Action log 27 for NCR 113",
+            "ActionBy": 4,
+            "ActionDate": "2024-10-17"
+        },
+        {
+            "LogID": 428,
+            "NCRID": 114,
+            "Action": "Action log 28 for NCR 114",
+            "ActionBy": 1,
+            "ActionDate": "2024-09-16"
+        },
+        {
+            "LogID": 429,
+            "NCRID": 115,
+            "Action": "Action log 29 for NCR 115",
+            "ActionBy": 2,
+            "ActionDate": "2024-08-15"
+        },
+        {
+            "LogID": 430,
+            "NCRID": 101,
+            "Action": "Action log 30 for NCR 101",
+            "ActionBy": 3,
+            "ActionDate": "2024-10-20"
         }
     ],
     "Mails": [
         {
             "MailID": 1,
-            "Subject": "System Maintenance",
+            "Subject": "NCR 1 Ready",
             "Body": "The platform will be down for maintenance on Saturday, 25th November.",
-            "Read": false
+            "Read": true
         },
         {
             "MailID": 2,
-            "Subject": "Feature Update",
+            "Subject": "NCR 2 Ready",
             "Body": "New features have been added to the platform. Check the help section for more details.",
             "Read": true
         },
         {
             "MailID": 3,
-            "Subject": "Reminder",
+            "Subject": "New NCR Created",
             "Body": "Please complete your pending NCRs before the end of the month.",
-            "Read": false
+            "Read": true
         },
         {
             "MailID": 4,
-            "Subject": "Feedback Request",
+            "Subject": "NCR 5 Ready",
             "Body": "We would love to hear your feedback on our new features. Please take a moment to fill out the feedback form.",
             "Read": true
         }
