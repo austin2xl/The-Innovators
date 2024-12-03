@@ -6,6 +6,7 @@
     <title>NCR | engineer Dashboard</title>
     <link rel="stylesheet" href="admin.css">
     <style>
+       
         /* Styles for the feature blocks section */
         .features-section {
             display: flex;
@@ -20,7 +21,7 @@
             align-items: center;
             text-align: center;
             padding: 30px 120px 10px 120px;
-            background-color: white;
+            background-color: #F0F3FA;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             width: 150px;
@@ -41,7 +42,7 @@
         .feature-title {
             font-size: 16px;
             font-weight: bold;
-            color: #333;
+            color: #628ecb;
             margin: 10px 0 5px;
         }
     
@@ -87,8 +88,8 @@
         
         /* Button styling */
         button {
-            background-color: #173451;
-            color: white;
+            background-color: #628ecb;
+            color: #F0F3FA;
             border: none;
             padding: 4px 8px;
             font-size: 12px;
@@ -151,7 +152,7 @@
         </div>
         <div class="header-icons">
             <div class="notification-bell" id="bell">
-                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
                 <div class="mail-dropdown" id="mailDropdown">
                     <h4>Notifications</h4>
                     <ul id="mailList"></ul>
@@ -169,18 +170,19 @@
                 <li><a href="engineer_create.html" class="option">CREATE NCR</a></li>
                 <li><a href="engineer_ncr_log.html" class="option">NCR LOG</a></li>
                  
-                <li><a href="engineer_logout.html" class="option">LOG OUT</a></li>         
+                <li class="phone-icon"><a href="engineer_logout.html" class="option">LOG OUT</a></li>         
             </ul>
                 <ul> 
                     <li>
-                        <div class="notification-bell-one" id="bell-one">
-                        <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
-                        <div class="mail-dropdown-one" id="mailDropdown-one">
+                        <span class="notification-bell-one" id="bell-one">
+                        <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
+                        <span class="mail-dropdown-one" id="mailDropdown-one">
                             <h4>Notifications</h4>
                             <ul id="mailList-one"></ul>
-                        </div>
-                        </div>
-                    </li>
+                        </span>
+                    </span>
+                    </li>               
+                    <li><a href="engineer_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
                 </ul>
         </nav>
     </header>
