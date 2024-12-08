@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR | NEW NCR</title>
+    <link rel="stylesheet" href="qualityInspector.css">
+    <style>
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+h2{
+    text-align: center;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <header>      
+        <div class="logo">
+            <a href="qualityInspector.html">
+                <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+            </a>
+        </div>
+        <div class="header-icons">
+            <div class="notification-bell" id="bell">
+                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <div class="mail-dropdown" id="mailDropdown">
+                    <h4>Notifications</h4>
+                    <ul id="mailList"></ul>
+                </div>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="qualityInspector.html" class="option">DASHBOARD</a></li> 
+                <li><a href="qualityInspector_create.html" class="option">UPDATE NCR</a></li>
+                <li class="phone-icon"><a href="qualityInspector_help.html" class="option">HELP</a></li>                
+                <li class="phone-icon"><a href="qualityInspector_logout.html" class="option">LOG OUT</a></li> 
+                             
+            </ul>
+            <ul class="pc-icon"> 
+                
+                <li>
+                    <span class="notification-bell-one" id="bell-one">
+                    <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
+                    <span class="mail-dropdown-one" id="mailDropdown-one">
+                        <h4>Notifications</h4>
+                        <ul id="mailList-one"></ul>
+                    </span>
+                </span>
+                </li>
+                <li>
+                        <a href="qualityInspector_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px" ></a> 
+                </li>
+                <li><a href="qualityInspector_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <h1>Update NCR - Quality Inspector</h1>
+>       <section class="ncr-form-section">
+    <h2>Non-Conformance Report (NCR)</h2>
+    <form id="ncr-form">
+        <div class="form-group">
+            <label for="ncr-number">NCR Number:</label>
+            <select id="ncr-number" name="ncr-number" required>
+                <option value="">Select an NCR</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" disabled></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select id="status" name="status" required disabled>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Closed">Closed</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority" required>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="quality-notes">Quality Inspector Notes:</label>
+            <textarea id="quality-notes" name="quality-notes" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn">Submit</button>
+    </form>
+</section>
+
+    </main>
+  
+   
+    <footer>
+        <small>NCR-CROSS</small>
+    </footer>
+    <script src="app.js"></script> 
+    <script src="QualityInspector_JS/update.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</body>
+</html>

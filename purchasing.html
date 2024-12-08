@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR | engineer Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <style>
+       
+        /* Styles for the feature blocks section */
+        .features-section {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+            gap: 10px; /* Add gap for more space between feature blocks */
+        }
+    
+        .feature-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px 120px 10px 120px;
+            background-color: #F0F3FA;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+    
+        .feature-block:hover {
+            transform: scale(1.05);
+        }
+    
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+    
+        .feature-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #628ecb;
+            margin: 10px 0 5px;
+        }
+    
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            cursor: pointer;
+        }
+    
+        .modal-description {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        /* Button styling */
+        button {
+            background-color: #628ecb;
+            color: #F0F3FA;
+            border: none;
+            padding: 4px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 15px;
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+        .cancel-btn{
+            background-color: red;
+
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .dashboard-card {
+            background: #F0F3FA;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+    
+        /* Responsive Design for Smaller Screens */
+        @media (max-width: 768px) {
+            .features-section {
+                gap: 20px; /* Add more space between feature blocks */
+            }
+    
+            .feature-block {
+                width: 120px; /* Reduce width for mobile view */
+                padding: 15px; /* Reduce padding for a more compact design */
+            }
+    
+            .feature-icon {
+                width: 40px;
+                height: 40px; /* Reduce icon size */
+            }
+    
+            .feature-title {
+                font-size: 14px; /* Smaller font size for titles */
+                margin: 8px 0 4px;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .features-section {
+                flex-direction: column; /* Stack feature blocks vertically on small screens */
+                align-items: center;
+            }
+    
+            .feature-block {
+                width: 100%; /* Full width on very small screens */
+                max-width: 200px;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <header>      
+        <div class="logo">
+            <a href="engineer.html">
+                <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+            </a>
+        </div>
+        <div class="header-icons">
+            <div class="notification-bell" id="bell">
+                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <div class="mail-dropdown" id="mailDropdown">
+                    <h4>Notifications</h4>
+                    <ul id="mailList"></ul>
+                </div>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="purchasing.html" class="option">DASHBOARD</a></li> 
+                <li><a href="purchasing_create.html" class="option">COMPLETE NCR</a></li>
+                <li class="phone-icon"><a href="purchasing_help.html" class="option">HELP</a></li>
+                 
+                <li class="phone-icon"><a href="engineer_logout.html" class="option">LOG OUT</a></li>         
+            </ul>
+                <ul> 
+                    <li>
+                        <span class="notification-bell-one" id="bell-one">
+                        <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
+                        <span class="mail-dropdown-one" id="mailDropdown-one">
+                            <h4>Notifications</h4>
+                            <ul id="mailList-one"></ul>
+                        </span>
+                    </span>
+                    </li>      
+                    <li>
+                        <a href="purchasing_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px" ></a> 
+                </li>         
+                    <li><a href="purchasing_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
+                </ul>
+        </nav>
+    </header>
+   
+    <main>
+     
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <div class="feature-block" onclick="window.location.href='purchasing_create.html'">
+                <img src="IMAGES/new.png" alt="Create NCR Icon" class="feature-icon">
+                <div class="feature-title">Complete NCR</div>
+            </div>
+            <div class="feature-block" onclick="window.location.href='purchasing_help.html'">
+                <img src="IMAGES/help.png" alt="Reports Icon" class="feature-icon">
+                <div class="feature-title">Help</div>
+            </div>
+            <div class="feature-block" onclick="window.location.href='purchasing_logout.html'">
+                <img src="IMAGES/log-out.png" alt="profile Icon" class="feature-icon">
+                <div class="feature-title">Exit</div>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <section class="dashboard-section">
+                <h2>Processed NCRs</h2>
+                <table id="ncr-table" class="ncr-table">
+                    <thead>
+                        <tr>
+                            <th>NCR Number</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Quality Review</th>
+                            <th>Purchasing Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+       
+
+    </main>
+
+    <footer>
+        <small>NCR-CROSS</small>
+    </footer>
+
+
+<script src="app.js"></script>
+<script src="Purchasing_JS/dashboard.js"></script>
+
+</body>
+</html>

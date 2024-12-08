@@ -115,6 +115,12 @@ async function login(event) {
             case 'engineer':
                 window.location.href = 'engineer.html';
                 break;
+                case 'purchasing':
+                window.location.href = 'purchasing.html';
+                break;
+                case 'quality':
+                window.location.href = 'qualityInspector.html';
+                break;
             default:
                 alert("Unauthorized access. Role not recognized.");
         }
@@ -150,74 +156,132 @@ document.getElementById("loginForm").addEventListener("submit", login);
     }
 })();
 
-async function loadMails() {
+
+async function loadNotificationsByRole() {
     const mailList = document.getElementById("mailList");
-    mailList.innerHTML = ""; // Clear existing mails
+    
+    mailList.innerHTML = ""; // Clear existing notifications
 
     try {
-        const response = await fetch('data.json'); // Fetch mails from the JSON file
+        const response = await fetch('data.json'); // Fetch data from the JSON file
         const data = await response.json();
 
-        if (!data.Mails || data.Mails.length == 0) {
-            mailList.innerHTML = "<li>No mails available.</li>";
+        if (!data.Notifications || data.Notifications.length === 0) {
+            mailList.innerHTML = "<li>No notifications available.</li>";
             return;
         }
 
-        // Populate the mail dropdown
-        data.Mails.forEach(mail => {
-            const mailItem = document.createElement("li");
-            mailItem.className = `mail-item ${mail.Read ? "read" : "unread"}`;
-            mailItem.textContent = mail.Subject;
-            mailItem.onclick = () => alert(`${mail.Subject}\n\n${mail.Body}`);
-            mailItem.style.marginBottom = "5px"; // Add spacing between items
-            mailList.appendChild(mailItem);
-        });
-    } catch (error) {
-        console.error('Error loading mails:', error);
-        mailList.innerHTML = "<li>Error loading mails.</li>";
-    }
-}
-async function loadMailsOne() {
-    const mailList = document.getElementById("mailList-one");
-    mailList.innerHTML = ""; // Clear existing mails
+        // Get the logged-in user's role from session storage
+        const userRole = sessionStorage.getItem('role');
 
-    try {
-        const response = await fetch('data.json'); // Fetch mails from the JSON file
-        const data = await response.json();
+        // Filter notifications based on role
+        const roleNotifications = data.Notifications.filter(
+            notification => notification.Role === userRole
+        );
 
-        if (!data.Mails || data.Mails.length == 0) {
-            mailList.innerHTML = "<li>No mails available.</li>";
+        if (roleNotifications.length === 0) {
+            mailList.innerHTML = "<li>No notifications for your role.</li>";
             return;
         }
 
-        // Populate the mail dropdown
-        data.Mails.forEach(mail => {
-            const mailItem = document.createElement("li");
-            mailItem.className = `mail-item ${mail.Read ? "read" : "unread"}`;
-            mailItem.textContent = mail.Subject;
-            mailItem.onclick = () => alert(`${mail.Subject}\n\n${mail.Body}`);
-            mailItem.style.marginBottom = "5px"; // Add spacing between items
-            mailList.appendChild(mailItem);
+        // Populate the notifications
+        roleNotifications.forEach(notification => {
+            const notificationItem = document.createElement("li");
+            notificationItem.className = `notification-item ${
+                notification.Status === "Unread" ? "unread" : "read"
+            }`;
+            notificationItem.textContent = notification.Message;
+            notificationItem.onclick = () =>
+                alert(
+                    `Notification: ${notification.Message}\nDate: ${new Date(
+                        notification.CreatedDate
+                    ).toLocaleString()}`
+                );
+            mailList.appendChild(notificationItem);
         });
     } catch (error) {
-        console.error('Error loading mails:', error);
-        mailList.innerHTML = "<li>Error loading mails.</li>";
+        console.error("Error loading notifications:", error);
+        mailList.innerHTML = "<li>Error loading notifications.</li>";
     }
 }
 
-
+// Toggle notification dropdown visibility
 function toggleMailDropdown() {
-    const dropdown = document.getElementById('mailDropdown');
-    const dropdown1 = document.getElementById('mailDropdown-one');
-    dropdown.style.display = dropdown.style.display == 'block' ? 'none' : 'block';
-    if (dropdown.style.display == "block") {
-        loadMails(); // Load mails when the dropdown is shown
-    }
-    dropdown1.style.display = dropdown.style.display == 'block' ? 'none' : 'block';
-    if (dropdown1.style.display == "block") {
-        loadMailsOne(); // Load mails when the dropdown is shown
+    const mailDropdown = document.getElementById("mailDropdown");
+    mailDropdown.classList.toggle("show");
+}
+
+// Attach event listeners and initialize notifications
+document.getElementById("bell").addEventListener("click", toggleMailDropdown);
+
+// Load notifications on page load for the logged-in user
+document.addEventListener("DOMContentLoaded", () => {
+    loadNotificationsByRole();
+});
+
+async function loadNotificationsByRoleOne() {
+    const mailList1 = document.getElementById("mailList-one");
+  
+    mailList.innerHTML = ""; // Clear existing notifications
+
+    try {
+        const response = await fetch('data.json'); // Fetch data from the JSON file
+        const data = await response.json();
+
+        if (!data.Notifications || data.Notifications.length === 0) {
+            mailList1.innerHTML = "<li>No notifications available.</li>";
+            return;
+        }
+
+        // Get the logged-in user's role from session storage
+        const userRole = sessionStorage.getItem('role');
+
+        // Filter notifications based on role
+        const roleNotifications = data.Notifications.filter(
+            notification => notification.Role === userRole
+        );
+
+        if (roleNotifications.length === 0) {
+            mailList.innerHTML = "<li>No notifications for your role.</li>";
+            return;
+        }
+
+        // Populate the notifications
+        roleNotifications.forEach(notification => {
+            const notificationItem = document.createElement("li");
+            notificationItem.className = `notification-item ${
+                notification.Status === "Unread" ? "unread" : "read"
+            }`;
+            notificationItem.textContent = notification.Message;
+            notificationItem.onclick = () =>
+                alert(
+                    `Notification: ${notification.Message}\nDate: ${new Date(
+                        notification.CreatedDate
+                    ).toLocaleString()}`
+                );
+            mailList.appendChild(notificationItem);
+        });
+    } catch (error) {
+        console.error("Error loading notifications:", error);
+        mailList.innerHTML = "<li>Error loading notifications.</li>";
     }
 }
+
+// Toggle notification dropdown visibility
+function toggleMailDropdown() {
+    const mailDropdown1 = document.getElementById("mailDropdown-one");
+    mailDropdown1.classList.toggle("show");
+}
+
+// Attach event listeners and initialize notifications
+document.getElementById("bell").addEventListener("click", toggleMailDropdown);
+
+// Load notifications on page load for the logged-in user
+document.addEventListener("DOMContentLoaded", () => {
+    loadNotificationsByRoleOne();
+});
+
+
 // Call loadMails on window load
 window.onload = function() {
     loadMails();

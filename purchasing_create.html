@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR | COMPLETE NCR</title>
+    <link rel="stylesheet" href="qualityInspector.css">
+    <style>
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+h2{
+    text-align: center;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #628ecb;
+}
+
+input, select, textarea {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+fieldset {
+    border: 1px solid #628ecb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+    </style>
+</head>
+<body>
+    <header>      
+        <div class="logo">
+            <a href="purchasing.html">
+                <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+            </a>
+        </div>
+        <div class="header-icons">
+            <div class="notification-bell" id="bell">
+                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <div class="mail-dropdown" id="mailDropdown">
+                    <h4>Notifications</h4>
+                    <ul id="mailList"></ul>
+                </div>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="purchasing.html" class="option">DASHBOARD</a></li> 
+                <li><a href="purchasing_create.html" class="option">UPDATE NCR</a></li>
+                <li class="phone-icon"><a href="purchasing_help.html" class="option">help</a></li>                
+                <li class="phone-icon"><a href="purchasing_logout.html" class="option">LOG OUT</a></li> 
+                             
+            </ul>
+            <ul class="pc-icon"> 
+                
+                <li>
+                    <span class="notification-bell-one" id="bell-one">
+                    <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
+                    <span class="mail-dropdown-one" id="mailDropdown-one">
+                        <h4>Notifications</h4>
+                        <ul id="mailList-one"></ul>
+                    </span>
+                </span>
+                </li>
+                <li>
+                        <a href="purchasing_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px" ></a> 
+                </li>
+                <li><a href="purchasing_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <h1>NCR FORM</h1>
+        <section class="ncr-form-section">
+            <h2>Non-Conformance Report (NCR)</h2>
+            <form id="ncr-form">
+                <div class="form-group">
+                    <label for="ncr-number">NCR Number:</label>
+                    <select id="ncr-number" name="ncr-number" required>
+                        <option value="">Select an NCR</option>
+                    </select>
+                </div>
+
+                <!-- Read-Only Sections -->
+                <fieldset>
+                    <legend>Read-Only Sections</legend>
+                    <div class="form-group">
+                        <label for="quality-input">Quality Notes:</label>
+                        <textarea id="quality-input" name="quality-input" rows="3" readonly></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="engineering-input">Engineering Notes:</label>
+                        <textarea id="engineering-input" name="engineering-input" rows="3" readonly></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Editable Sections -->
+                <fieldset>
+                    <legend>Editable Sections</legend>
+                    <div class="form-group">
+                        <label for="purchase-order">Purchase Order Number:</label>
+                        <input type="text" id="purchase-order" name="purchase-order" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="supplier-feedback">Supplier Feedback/Details:</label>
+                        <textarea id="supplier-feedback" name="supplier-feedback" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="final-approvals">Final Approvals:</label>
+                        <select id="final-approvals" name="final-approvals" required>
+                            <option value="">Select Approval</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <button type="submit" id="submit-btn" >Submit NCR</button>
+            </form>
+        </section>
+
+    </main>
+  
+   
+    <footer>
+        <small>NCR-CROSS</small>
+    </footer>
+    <script src="app.js"></script> 
+    <script src="purchasing_JS/ncrForm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</body>
+</html>
