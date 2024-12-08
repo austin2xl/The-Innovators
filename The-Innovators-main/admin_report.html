@@ -8,7 +8,7 @@
     <style>
         /* Basic styling for the report page */
         body {
-            background-color: #D5DEEF;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 20px;
         }
@@ -16,7 +16,7 @@
         .report-container {
             max-width: 1000px;
             margin: auto;
-            background-color: #F0F3FA;
+            background-color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.116);
@@ -41,7 +41,7 @@
         select, input[type="date"] {
             padding: 8px;
             border-radius: 4px;
-            border: 1px solid #B1C9EF;
+            border: 1px solid #ddd;
             margin-right: 10px;
             width: 100%; /* Adjust for smaller screens */
         }
@@ -56,20 +56,20 @@
     
         .report-summary th, .report-summary td, .report-details th, .report-details td {
             padding: 10px;
-            border: 1px solid #B1C9EF;
+            border: 1px solid #ddd;
             text-align: left;
         }
     
         .report-summary th, .report-details th {
-            background-color: #628ecb;
-            color: #F0F3FA;
+            background-color: #173451;
+            color: white;
             font-weight: bold;
         }
     
         .view-details-btn {
             padding: 6px 10px;
-            background-color: #628ecb;
-            color: #F0F3FA;
+            background-color: #173451;
+            color: white;
             border: none;
             border-radius: 15px;
             cursor: pointer;
@@ -78,40 +78,14 @@
         }
     
         .view-details-btn:hover {
-            background-color: #B1C9EF;
+            background-color: #0056b3;
         }
     
         .no-reports {
             text-align: center;
             font-style: italic;
-            color: #D5DEEF;
+            color: #666;
         }
-
-        /* Upward Arrow Button */
-        #upwardArrow {
-            color: #fff;
-            border: none;
-            padding: 17px 25px;
-            background-image: url('IMAGES/uparrow.png');
-            background-color: transparent;
-            cursor: pointer;
-            position: fixed;
-            bottom: 20px;
-            right: 10px;
-            transition: background-color 0.3s;
-            display: none; /* Hidden by default */
-        }
-
-        #upwardArrow img {
-            width: 20px; /* Set the size of the image */
-            height: auto;
-        }
-
-        #upwardArrow:hover {
-            background-color: #e71717;
-        }
-
-
     
         /* Responsive Design for Smaller Screens */
         @media (max-width: 768px) {
@@ -175,12 +149,12 @@
         </div>
         <div class="header-icons">
             <div class="notification-bell" id="bell">
-                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
                 <div class="mail-dropdown" id="mailDropdown">
                     <h4>Notifications</h4>
                     <ul id="mailList"></ul>
                 </div>
-            </div>
+            </div> 
             <div class="hamburger">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -189,28 +163,22 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="admin.html" class="option">DASHBOARD</a></li> 
-                <li><a href="admin_create.html" class="option">CREATE NCR</a></li>
-                <li><a href="admin_ncr_log.html" class="option">NCR LOG</a></li>
+                <li><a href="admin.html" class="option">NCR LOG</a></li> 
+                <li><a href="admin_create.html" class="option">NEW NCR</a></li>
+                <li><a href="admin_report.html" class="option">REPORT</a></li>
                 <li><a href="admintools.html" class="option">TOOLS</a></li>  
-                <li class="phone-icon"><a href="admin_logout.html" class="option">LOG OUT</a></li> 
-                             
+                <li><a href="admin_logout.html" class="option">LOG OUT</a></li>              
             </ul>
-            <ul class="pc-icon"> 
-                
+            <ul> 
                 <li>
-                    <span class="notification-bell-one" id="bell-one">
-                    <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
-                    <span class="mail-dropdown-one" id="mailDropdown-one">
+                    <div class="notification-bell-one" id="bell-one">
+                    <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                    <div class="mail-dropdown-one" id="mailDropdown-one">
                         <h4>Notifications</h4>
                         <ul id="mailList-one"></ul>
-                    </span>
-                </span>
+                    </div>
+                    </div>
                 </li>
-                <li>
-                        <a href="admin_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px" ></a> 
-                </li>
-                <li><a href="admin_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
             </ul>
         </nav>
     </header>
@@ -283,24 +251,17 @@
                 </tr>
             </tbody>
         </table>
-
-        <!-- Upward Arrow Button -->
-        <button id="upwardArrow" onclick="scrollToSummary()">
-            <img src="uparrow.png" alt="">
-        </button>
-
         <div id="template-options">
             <label><input type="checkbox" id="include-summary" > Include Summary</label><br>
             <label><input type="checkbox" id="include-root-cause" > Include Root Cause Analysis</label><br>
             <label><input type="checkbox" id="include-disposition" > Include Disposition and Corrective Actions</label><br>
             <label><input type="checkbox" id="include-approval" > Include Approval History</label><br>
-            <button id="viewPdfReport" class="view-details-btn" style="background-color: #628ecb;">View PDF Report</button>
-
+            <button onclick="generatePDF()" class="view-details-btn">Generate PDF Report</button>
         </div> 
     </div>
 </main>
     <script src="app.js"></script>
-    <script src="ncr_log.js"></script>
+    <script src="report.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 

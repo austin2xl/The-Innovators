@@ -1,0 +1,203 @@
+{
+    "Users": [
+        {
+            "UserID": 1,
+            "Username": "admin_user",
+            "Password": "admin",
+            "Role": "admin",
+            "Email": "admin@example.com"
+            
+        },
+        {
+            "UserID": 2,
+            "Username": "client_user1",
+            "Password": "client",
+            "Role": "client",
+            "Email": "client1@example.com"
+           
+        },
+        {
+            
+                    "UserID": 3,
+                    "Username": "engineer_user",
+                    "Password": "engineer",
+                    "Role": "engineer",
+                    "Email": "engineer1@example.com"
+           
+                
+        },
+        {
+            "UserID": 4,
+            "Username": "client_user3",
+            "Password": "hashed_password_4",
+            "Role": "client",
+            "Email": "client3@example.com"
+        }
+    ],
+    "NCR": [
+        {
+            "NCRID": 101,
+            "NCRNumber": "NCR001",
+            "Description": "Non-conformance in product packaging",
+            "Status": "Open",
+            "CreatedBy": 1,
+            "CreatedDate": "2024-10-01",
+            "LastModifiedBy": 2,
+            "LastModifiedDate": "2024-10-05",
+            "Priority": "High",
+            "SupplierName": "Supplier A",
+            "ProductName": "Product X"
+        },
+        {
+            "NCRID": 102,
+            "NCRNumber": "NCR002",
+            "Description": "Defect in electronic component",
+            "Status": "In Progress",
+            "CreatedBy": 3,
+            "CreatedDate": "2024-09-15",
+            "LastModifiedBy": 1,
+            "LastModifiedDate": "2024-09-20",
+            "Priority": "Medium",
+            "SupplierName": "Supplier B",
+            "ProductName": "Product Y"
+        },
+        {
+            "NCRID": 103,
+            "NCRNumber": "NCR003",
+            "Description": "Incorrect labeling on packaging",
+            "Status": "Closed",
+            "CreatedBy": 2,
+            "CreatedDate": "2024-08-25",
+            "LastModifiedBy": 4,
+            "LastModifiedDate": "2024-09-01",
+            "Priority": "Low",
+            "SupplierName": "Supplier C",
+            "ProductName": "Product Z"
+        }
+    ],
+    "NCR_Details": [
+        {
+            "DetailID": 201,
+            "NCRID": 101,
+            "Section": "Packaging",
+            "DetailText": "Packaging was torn upon arrival.",
+            "AttachmentPath": "/attachments/packaging_issue.jpg",
+            "ModifiedBy": 1,
+            "ModifiedDate": "2024-10-02"
+        },
+        {
+            "DetailID": 202,
+            "NCRID": 102,
+            "Section": "Electronics",
+            "DetailText": "Capacitor was not working as expected.",
+            "AttachmentPath": "/attachments/electronics_issue.pdf",
+            "ModifiedBy": 3,
+            "ModifiedDate": "2024-09-16"
+        },
+        {
+            "DetailID": 203,
+            "NCRID": 103,
+            "Section": "Labeling",
+            "DetailText": "Product label did not match the item description.",
+            "AttachmentPath": "/attachments/label_issue.png",
+            "ModifiedBy": 4,
+            "ModifiedDate": "2024-08-26"
+        }
+    ],
+    "NCR_Attachments": [
+        {
+            "AttachmentID": 301,
+            "NCRID": 101,
+            "FilePath": "/attachments/inspection_report_101.pdf",
+            "FileType": "pdf",
+            "UploadedBy": 2,
+            "UploadedDate": "2024-10-01"
+        },
+        {
+            "AttachmentID": 302,
+            "NCRID": 102,
+            "FilePath": "/attachments/electronics_photos.zip",
+            "FileType": "zip",
+            "UploadedBy": 3,
+            "UploadedDate": "2024-09-15"
+        },
+        {
+            "AttachmentID": 303,
+            "NCRID": 103,
+            "FilePath": "/attachments/label_report.docx",
+            "FileType": "docx",
+            "UploadedBy": 2,
+            "UploadedDate": "2024-08-25"
+        }
+    ],
+    "NCR_Log": [
+        {
+            "LogID": 401,
+            "NCRID": 101,
+            "Action": "Status updated to Open",
+            "ActionBy": 1,
+            "ActionDate": "2024-10-01"
+        },
+        {
+            "LogID": 402,
+            "NCRID": 101,
+            "Action": "Status updated to In Progress",
+            "ActionBy": 2,
+            "ActionDate": "2024-10-05"
+        },
+        {
+            "LogID": 403,
+            "NCRID": 102,
+            "Action": "Issue logged",
+            "ActionBy": 3,
+            "ActionDate": "2024-09-15"
+        },
+        {
+            "LogID": 404,
+            "NCRID": 102,
+            "Action": "Status updated to In Progress",
+            "ActionBy": 1,
+            "ActionDate": "2024-09-20"
+        },
+        {
+            "LogID": 405,
+            "NCRID": 103,
+            "Action": "Issue resolved",
+            "ActionBy": 4,
+            "ActionDate": "2024-09-01"
+        },
+        {
+            "LogID": 406,
+            "NCRID": 103,
+            "Action": "Status updated to Closed",
+            "ActionBy": 2,
+            "ActionDate": "2024-09-01"
+        }
+    ],
+    "Mails": [
+        {
+            "MailID": 1,
+            "Subject": "System Maintenance",
+            "Body": "The platform will be down for maintenance on Saturday, 25th November.",
+            "Read": false
+        },
+        {
+            "MailID": 2,
+            "Subject": "Feature Update",
+            "Body": "New features have been added to the platform. Check the help section for more details.",
+            "Read": true
+        },
+        {
+            "MailID": 3,
+            "Subject": "Reminder",
+            "Body": "Please complete your pending NCRs before the end of the month.",
+            "Read": false
+        },
+        {
+            "MailID": 4,
+            "Subject": "Feedback Request",
+            "Body": "We would love to hear your feedback on our new features. Please take a moment to fill out the feedback form.",
+            "Read": true
+        }
+    ]
+}

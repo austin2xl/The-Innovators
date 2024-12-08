@@ -11,34 +11,28 @@ form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background: #F0F3FA;
+    background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.loginForm{
-    
-    width: 100%;
-    border-radius: 5px;
-}
 label {
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
-    color: #8AAEE0;
 }
 
 input[type="text"], input[type="password"] {
     width: 95%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #D5DEEF;
+    border: 1px solid #ddd;
     border-radius: 4px;
 }
 
 button[type="submit"] {
-    background-color: #8AAEE0;
-    color: #F0F3FA;
+    background-color: #173451;
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -50,7 +44,7 @@ button[type="submit"]:hover {
     opacity: 0.8;
 }
 h2 {
-    color: #8AAEE0;
+    color: #173451;
     text-align: center;
 }
     </style>
@@ -62,16 +56,10 @@ h2 {
     <main>
         <h2>Sign In</h2>
         <form id="loginForm">
-            <span style="display: flex; justify-content: center; padding-top: 5px; margin: 0;">
-                <img src="IMAGES/Crossfire Logo - no bkgd.png" alt="logo" width="150px" height="150px">
-            </span>
-            <div class="loginForm">
-                <label for="username">Username:</label>
+            <label for="username">Username:</label>
             <input type="text" id="username" name="username" required aria-label="Username"><br><br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required aria-label="Password"><br><br>
-            </div>
-            
             <span id="formMessage"></span>
             <button type="submit">Sign In</button>
         </form>

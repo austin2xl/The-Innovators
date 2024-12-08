@@ -6,7 +6,6 @@
     <title>NCR | Client Dashboard</title>
     <link rel="stylesheet" href="client.css">
     <style>
-       
         /* Styles for the feature blocks section */
         .features-section {
             display: flex;
@@ -21,33 +20,12 @@
             align-items: center;
             text-align: center;
             padding: 30px 120px 10px 120px;
-            background-color: #F0F3FA;
+            background-color: white;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             width: 150px;
             transition: transform 0.3s;
             cursor: pointer;
-        }
-        .dashboard-container{
-            background-color: #F0F3FA;
-            padding: 5px;
-            width: 10%;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-        .dashboard-container:hover {
-            transform: translateY(-5px);
-        }
-        .dashboard-card {
-            background: #F0F3FA;
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .dashboard-card:hover {
-            transform: translateY(-5px);
         }
     
         .feature-block:hover {
@@ -63,7 +41,7 @@
         .feature-title {
             font-size: 16px;
             font-weight: bold;
-            color: #628ecb;
+            color: #333;
             margin: 10px 0 5px;
         }
     
@@ -109,8 +87,8 @@
         
         /* Button styling */
         button {
-            background-color: #628ecb;
-            color: #F0F3FA;
+            background-color: #173451;
+            color: white;
             border: none;
             padding: 4px 8px;
             font-size: 12px;
@@ -173,7 +151,7 @@
         </div>
         <div class="header-icons">
             <div class="notification-bell" id="bell">
-                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
                 <div class="mail-dropdown" id="mailDropdown">
                     <h4>Notifications</h4>
                     <ul id="mailList"></ul>
@@ -188,28 +166,23 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="client.html" class="option">DASHBOARD</a></li> 
-                <li><a href="client_create.html" class="option">CREATE NCR</a></li>
-                <li><a href="client_ncr_log.html" class="option">NCR LOG</a></li>
-                <li class="phone-icon"><a href="client_help.html" class="option">HELP</a></li>  
-                <li class="phone-icon"><a href="client_logout.html" class="option">LOG OUT</a></li>       
+                <li><a href="client.html" class="option">NCR LOG</a></li> 
+                <li><a href="client_create.html" class="option">NEW NCR</a></li>
+                <li><a href="client_report.html" class="option">REPORT</a></li>
+                <li><a href="client_help.html" class="option">HELP</a></li>  
+                <li><a href="client_logout.html" class="option">LOG OUT</a></li>     
             </ul>
-            <ul class="pc-icon"> 
-                
-                <li>
-                    <span class="notification-bell-one" id="bell-one">
-                    <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
-                    <span class="mail-dropdown-one" id="mailDropdown-one">
-                        <h4>Notifications</h4>
-                        <ul id="mailList-one"></ul>
-                    </span>
-                </span>
-                </li>
-                <li>
-                        <a href="client_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px" ></a> 
-                </li>
-                <li><a href="client_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
-            </ul>
+                <ul> 
+                    <li>
+                        <div class="notification-bell-one" id="bell-one">
+                        <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                        <div class="mail-dropdown-one" id="mailDropdown-one">
+                            <h4>Notifications</h4>
+                            <ul id="mailList-one"></ul>
+                        </div>
+                        </div>
+                    </li>
+                </ul>
         </nav>
     </header>
    
@@ -223,7 +196,7 @@
                 <img src="IMAGES/new.png" alt="Create NCR Icon" class="feature-icon">
                 <div class="feature-title">Create NCR</div>
             </div>
-            <div class="feature-block" onclick="window.location.href='client_ncr_log.html'">
+            <div class="feature-block" onclick="window.location.href='client_report.html'">
                 <img src="IMAGES/report.png" alt="Reports Icon" class="feature-icon">
                 <div class="feature-title">Reports</div>
             </div>
@@ -241,34 +214,31 @@
             
             
             <!-- Filter by status -->
-             <div class="dashboard-container">
-                <label for="status-filter">Filter by Status:</label>
+            <label for="status-filter">Filter by Status:</label>
             <select id="status-filter" aria-label="Filter by Status">
                 <option value="Open">Open</option>
                 <option value="Closed">Closed</option>
                 <option value="all">All</option>
-  
+                
+                
             </select>
-        </div>
-            <div class="dashboard-card">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>NCR Number</th>
-                            <th>Supplier</th>
-                            <th>Product</th>
-                            <th>Status</th>
-                            <th>Created Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ncrTableBody">
-                        
-                    </tbody>
-                </table>
-            </div>
-            <!-- NCR Table -->
             
+            <!-- NCR Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>NCR Number</th>
+                        <th>Supplier</th>
+                        <th>Product</th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ncrTableBody">
+                    
+                </tbody>
+            </table>
         </section>
 
         <!-- Modal Structure -->

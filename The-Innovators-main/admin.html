@@ -20,7 +20,7 @@
             align-items: center;
             text-align: center;
             padding: 30px 120px 10px 120px;
-            background-color: #F0F3FA;
+            background-color: white;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             width: 150px;
@@ -41,7 +41,7 @@
         .feature-title {
             font-size: 16px;
             font-weight: bold;
-            color: #8AAEE0;
+            color: #333;
             margin: 10px 0 5px;
         }
     
@@ -59,7 +59,7 @@
         }
     
         .modal-content {
-            background-color: #F0F3FA;
+            background-color: #fefefe;
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
@@ -87,8 +87,8 @@
     
         /* Button styling */
         button {
-            background-color: #628ecb;
-            color: #F0F3FA;
+            background-color: #173451;
+            color: white;
             border: none;
             padding: 4px 8px;
             font-size: 12px;
@@ -110,7 +110,7 @@
 
        
         .dashboard-card {
-            background: #F0F3FA;
+            background: white;
             border-radius: 15px;
             padding: 15px;
             box-shadow: 0 3px 5px rgba(0,0,0,0.1);
@@ -129,7 +129,7 @@
         }
 
         .metric-card {
-            background: #D5DEEF;
+            background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
@@ -139,7 +139,7 @@
         .metric-value {
             font-size: 32px;
             font-weight: bold;
-            color: #8AAEE0;
+            color: #173451;
         }
 
         .metric-label {
@@ -195,13 +195,11 @@
     
         @media (max-width: 480px) {
             .dashboard-card {
-                padding: 10px;
-                width: 90%;
+                padding: 15px;
             }
 
             .metric-card {
-                padding: 10px;
-                width: 90%;
+                padding: 15px;
             }
             .features-section {
                 flex-direction: column; /* Stack feature blocks vertically on small screens */
@@ -227,7 +225,7 @@
         </div>
         <div class="header-icons">
             <div class="notification-bell" id="bell">
-                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
                 <div class="mail-dropdown" id="mailDropdown">
                     <h4>Notifications</h4>
                     <ul id="mailList"></ul>
@@ -241,28 +239,22 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="admin.html" class="option">DASHBOARD</a></li> 
-                <li><a href="admin_create.html" class="option">CREATE NCR</a></li>
-                <li><a href="admin_ncr_log.html" class="option">NCR LOG</a></li>
+                <li><a href="admin.html" class="option">NCR LOG</a></li> 
+                <li><a href="admin_create.html" class="option">NEW NCR</a></li>
+                <li><a href="admin_report.html" class="option">REPORT</a></li>
                 <li><a href="admintools.html" class="option">TOOLS</a></li>  
-                <li class="phone-icon"><a href="admin_logout.html" class="option">LOG OUT</a></li> 
-                             
+                <li><a href="admin_logout.html" class="option">LOG OUT</a></li>              
             </ul>
-            <ul class="pc-icon"> 
-                
+            <ul> 
                 <li>
-                    <span class="notification-bell-one" id="bell-one">
-                    <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
-                    <span class="mail-dropdown-one" id="mailDropdown-one">
+                    <div class="notification-bell-one" id="bell-one">
+                    <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                    <div class="mail-dropdown-one" id="mailDropdown-one">
                         <h4>Notifications</h4>
                         <ul id="mailList-one"></ul>
-                    </span>
-                </span>
+                    </div>
+                    </div>
                 </li>
-                <li>
-                        <a href="admin_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px" ></a> 
-                </li>
-                <li><a href="admin_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
             </ul>
         </nav>
     </header>
@@ -275,9 +267,9 @@
             <img src="IMAGES/new.png" alt="Create NCR Icon" class="feature-icon">
             <div class="feature-title">Create NCR</div>
         </div>
-        <div class="feature-block" onclick="window.location.href='admin_ncr_log.html'">
+        <div class="feature-block" onclick="window.location.href='admin_report.html'">
             <img src="IMAGES/report.png" alt="Reports Icon" class="feature-icon">
-            <div class="feature-title">NCR Log</div>
+            <div class="feature-title">Reports</div>
         </div>
         <div class="feature-block" onclick="window.location.href='admintools.html'">
             <img src="IMAGES/tools.png" alt="Tools Icon" class="feature-icon">
@@ -297,7 +289,24 @@
                 <option value="all">All</option>
             </select>
             
-            
+            <!-- NCR Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>NCR Number</th>
+                        <th>Supplier </th>
+                        <th>Product </th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                        <th>Edit/Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample NCR Table Row with Edit and Delete Buttons -->
+                   
+                    <!-- More rows... -->
+                </tbody>
+            </table>
         </section>
         <div class="dashboard-container">
             <section class="dashboard-card">
@@ -336,30 +345,6 @@
                     <h2>Recent Activities</h2>
                     <div class="recent-activities" id="recentActivities"></div>
                 </section>
-
-                <section class="dashboard-card">
-                    <h2>NCR List</h2>
-                    <!-- NCR Table -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>NCR Number</th>
-                        <th>Supplier </th>
-                        <th>Product </th>
-                        <th>Status</th>
-                        <th>Created Date</th>
-                        <th>Edit/Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Sample NCR Table Row with Edit and Delete Buttons -->
-                   
-                    <!-- More rows... -->
-                </tbody>
-            </table>
-
-                </section>
-
             </div>
             
 

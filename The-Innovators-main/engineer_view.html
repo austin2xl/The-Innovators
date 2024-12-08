@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCR | VIEW</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>      
+        <div class="logo">
+            <a href="engineer.html">
+                <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
+            </a>
+        </div>
+        <div class="header-icons">
+       
+        </div>
+        <nav class="nav-bar">
+            
+        </nav>
+    </header>
+    <main>
+        <h1>NCR Details</h1>
+<p><strong>NCR Number:</strong> <span id="ncrNumber"></span></p>
+<p><strong>Supplier Name:</strong> <span id="supplier"></span></p>
+<p><strong>Product Name:</strong> <span id="product"></span></p>
+<p><strong>Status:</strong> <span id="status"></span></p>
+<p><strong>Created Date:</strong> <span id="createdDate"></span></p>
+        <button onclick="goBack()">Back to Dashboard</button>
+    </main>
+
+
+    <footer>
+        <small>NCR-CROSS</small>
+    </footer>
+    <script src="app.js"></script> 
+    <script src="view.js"></script>  
+    <script>
+        // Go back to the dashboard
+        function goBack() {
+            window.location.href = "engineer.html";
+        }
+    </script>
+</body>
+</html>

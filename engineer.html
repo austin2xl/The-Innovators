@@ -45,6 +45,27 @@
             color: #628ecb;
             margin: 10px 0 5px;
         }
+        .dashboard-container{
+            background-color: #F0F3FA;
+            padding: 5px;
+            width: 10%;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .dashboard-container:hover {
+            transform: translateY(-5px);
+        }
+        .dashboard-card {
+            background: #F0F3FA;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
     
         /* Modal Styles */
         .modal {
@@ -196,13 +217,13 @@
                 <img src="IMAGES/new.png" alt="Create NCR Icon" class="feature-icon">
                 <div class="feature-title">Create NCR</div>
             </div>
-            <div class="feature-block" onclick="window.location.href='engineer_report.html'">
+            <div class="feature-block" onclick="window.location.href='engineer_ncr_log.html'">
                 <img src="IMAGES/report.png" alt="Reports Icon" class="feature-icon">
                 <div class="feature-title">Reports</div>
             </div>
             <div class="feature-block" onclick="window.location.href='engineer_logout.html'">
-                <img src="IMAGES/profile.png" alt="profile Icon" class="feature-icon">
-                <div class="feature-title">Log out</div>
+                <img src="IMAGES/log-out.png" alt="profile Icon" class="feature-icon">
+                <div class="feature-title">Exit</div>
             </div>
         </div>
 
@@ -214,31 +235,32 @@
             
             
             <!-- Filter by status -->
-            <label for="status-filter">Filter by Status:</label>
+            <div class="dashboard-container">
+                <label for="status-filter">Filter by Status:</label>
             <select id="status-filter" aria-label="Filter by Status">
                 <option value="Open">Open</option>
                 <option value="Closed">Closed</option>
                 <option value="all">All</option>
-                
-                
+  
             </select>
-            
-            <!-- NCR Table -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>NCR Number</th>
-                        <th>Supplier</th>
-                        <th>Product</th>
-                        <th>Status</th>
-                        <th>Created Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="ncrTableBody">
-                    
-                </tbody>
-            </table>
+        </div>
+            <div class="dashboard-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NCR Number</th>
+                            <th>Supplier</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ncrTableBody">
+                        
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <!-- Modal Structure -->

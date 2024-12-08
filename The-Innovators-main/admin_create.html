@@ -5,33 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NCR | NEW NCR</title>
     <link rel="stylesheet" href="admin.css">
-    
-    <style>
-        /* Styling for the plus button */
-        .plus-btn {
-            font-size: 20px;
-            cursor: pointer;
-            color: #4CAF50;
-            margin-left: 10px;
-        }
-
-        .plus-btn:hover {
-            color: #45a049;
-        }
-
-        /* Form to add a new supplier */
-        .new-supplier-form {
-            display: none;
-            margin-top: 10px;
-        }
-
-        .new-supplier-form input {
-            width: calc(100% - 20px);
-            margin-bottom: 10px;
-        }
-    </style>
-
-    
 </head>
 <body>
     <header>      
@@ -42,7 +15,7 @@
         </div>
         <div class="header-icons">
             <div class="notification-bell" id="bell">
-                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
                 <div class="mail-dropdown" id="mailDropdown">
                     <h4>Notifications</h4>
                     <ul id="mailList"></ul>
@@ -56,28 +29,22 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="admin.html" class="option">DASHBOARD</a></li> 
-                <li><a href="admin_create.html" class="option">CREATE NCR</a></li>
-                <li><a href="admin_ncr_log.html" class="option">NCR LOG</a></li>
+                <li><a href="admin.html" class="option">NCR LOG</a></li> 
+                <li><a href="admin_create.html" class="option">NEW NCR</a></li>
+                <li><a href="admin_report.html" class="option">REPORT</a></li>
                 <li><a href="admintools.html" class="option">TOOLS</a></li>  
-                <li class="phone-icon"><a href="admin_logout.html" class="option">LOG OUT</a></li> 
-                             
+                <li><a href="admin_logout.html" class="option">LOG OUT</a></li>              
             </ul>
-            <ul class="pc-icon"> 
-                
+            <ul> 
                 <li>
-                    <span class="notification-bell-one" id="bell-one">
-                    <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
-                    <span class="mail-dropdown-one" id="mailDropdown-one">
-                        <h4>Notifications</h4>
-                        <ul id="mailList-one"></ul>
-                    </span>
-                </span>
-                </li>
-                <li>
-                        <a href="admin_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px" ></a> 
-                </li>
-                <li><a href="admin_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
+                <div class="notification-bell-one" id="bell-one">
+                <img src="IMAGES/bell-regular-24.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <div class="mail-dropdown-one" id="mailDropdown-one">
+                    <h4>Notifications</h4>
+                    <ul id="mailList-one"></ul>
+                </div>
+                </div>
+            </li>
             </ul>
         </nav>
     </header>
@@ -91,14 +58,7 @@
     <label for="supplier-name">Supplier Name:</label>
 <select id="supplier-name" name="supplierName" required>
     <option value="">Select Supplier</option>
-</select>
-<span class="plus-btn" id="add-supplier-btn">+</span>
-</div>
-
-<div class="new-supplier-form" id="new-supplier-form">
-    <input type="text" id="new-supplier-name" placeholder="Enter new supplier name">
-    <button type="button" onclick="addNewSupplier()">Add Supplier</button>
-</div><br><br>
+</select><br><br>
 
     <label for="product-name">Product Name:</label>
     <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
@@ -123,16 +83,16 @@
     </select><br><br>
 
     <label for="created-date">Created Date:</label>
-    <input type="date" id="created-date" name="createdDate" readonly><br><br>
+    <input type="date" id="created-date" name="createdDate" required><br><br>
 
     <label for="last-modified-date">Last Modified Date:</label>
-    <input type="date" id="last-modified-date" readonly><br><br>
+    <input type="date" id="last-modified-date" name="lastModifiedDate"><br><br>
 
     <label for="attachments">Attachments (Images, Videos):</label>
     <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4,.pdf,.docx" multiple><br><br>
 
     <button type="submit" onclick="submitNCR()">Submit</button>
-    <button type="button" id="save-button" onclick="saveNCR()">Save</button>
+    <button type="button" onclick="saveNCR()">Save</button>
 
     <!-- Success/Error message -->
     <div id="formMessage"></div>

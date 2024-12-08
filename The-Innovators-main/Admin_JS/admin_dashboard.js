@@ -100,7 +100,7 @@ function applyStatusFilter() {
     const filteredNCRs = status == "all" ? ncrs : ncrs.filter(ncr => ncr.Status == status);
     displayNCRs(filteredNCRs);
 }
-// Function to display NCRs in the table
+// Function to display NCRs in the table 
     function displayNCRs(filteredNCRs) {
     const ncrTableBody = document.querySelector("tbody");
     ncrTableBody.innerHTML = '';
@@ -118,7 +118,7 @@ function applyStatusFilter() {
                 <button class="edit-btn">Edit</button>
                 <button class="update-btn" style="display: none;">Update</button>
                 <button class="cancel-btn" style="display: none;">Cancel</button>
-                <button class="view-btn" data-id="${ncr.NCRID}" >View</button>
+                <button class="view-btn" data-id="${ncr.NCRID}">View</button>
             </td>
         `;
         row.querySelector(".view-btn").addEventListener("click", () => viewNCRDetails(ncr.NCRID));

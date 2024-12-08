@@ -115,12 +115,6 @@ async function login(event) {
             case 'engineer':
                 window.location.href = 'engineer.html';
                 break;
-                case 'purchasing':
-                window.location.href = 'purchasing.html';
-                break;
-                case 'quality':
-                window.location.href = 'qualityInspector.html';
-                break;
             default:
                 alert("Unauthorized access. Role not recognized.");
         }
@@ -156,10 +150,74 @@ document.getElementById("loginForm").addEventListener("submit", login);
     }
 })();
 
+async function loadMails() {
+    const mailList = document.getElementById("mailList");
+    mailList.innerHTML = ""; // Clear existing mails
+
+    try {
+        const response = await fetch('data.json'); // Fetch mails from the JSON file
+        const data = await response.json();
+
+        if (!data.Mails || data.Mails.length == 0) {
+            mailList.innerHTML = "<li>No mails available.</li>";
+            return;
+        }
+
+        // Populate the mail dropdown
+        data.Mails.forEach(mail => {
+            const mailItem = document.createElement("li");
+            mailItem.className = `mail-item ${mail.Read ? "read" : "unread"}`;
+            mailItem.textContent = mail.Subject;
+            mailItem.onclick = () => alert(`${mail.Subject}\n\n${mail.Body}`);
+            mailItem.style.marginBottom = "5px"; // Add spacing between items
+            mailList.appendChild(mailItem);
+        });
+    } catch (error) {
+        console.error('Error loading mails:', error);
+        mailList.innerHTML = "<li>Error loading mails.</li>";
+    }
+}
+async function loadMailsOne() {
+    const mailList = document.getElementById("mailList-one");
+    mailList.innerHTML = ""; // Clear existing mails
+
+    try {
+        const response = await fetch('data.json'); // Fetch mails from the JSON file
+        const data = await response.json();
+
+        if (!data.Mails || data.Mails.length == 0) {
+            mailList.innerHTML = "<li>No mails available.</li>";
+            return;
+        }
+
+        // Populate the mail dropdown
+        data.Mails.forEach(mail => {
+            const mailItem = document.createElement("li");
+            mailItem.className = `mail-item ${mail.Read ? "read" : "unread"}`;
+            mailItem.textContent = mail.Subject;
+            mailItem.onclick = () => alert(`${mail.Subject}\n\n${mail.Body}`);
+            mailItem.style.marginBottom = "5px"; // Add spacing between items
+            mailList.appendChild(mailItem);
+        });
+    } catch (error) {
+        console.error('Error loading mails:', error);
+        mailList.innerHTML = "<li>Error loading mails.</li>";
+    }
+}
 
 
-
-
+function toggleMailDropdown() {
+    const dropdown = document.getElementById('mailDropdown');
+    const dropdown1 = document.getElementById('mailDropdown-one');
+    dropdown.style.display = dropdown.style.display == 'block' ? 'none' : 'block';
+    if (dropdown.style.display == "block") {
+        loadMails(); // Load mails when the dropdown is shown
+    }
+    dropdown1.style.display = dropdown.style.display == 'block' ? 'none' : 'block';
+    if (dropdown1.style.display == "block") {
+        loadMailsOne(); // Load mails when the dropdown is shown
+    }
+}
 // Call loadMails on window load
 window.onload = function() {
     loadMails();

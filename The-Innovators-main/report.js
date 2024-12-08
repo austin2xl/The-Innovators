@@ -30,7 +30,7 @@ function displayReportSummary(ncrData) {
             <td>${ncr.Status}</td>
             <td>${ncr.Priority}</td>
             <td>${ncr.CreatedDate}</td>
-            <td><button class="view-details-btn" onclick="viewReportDetails(${ncr.NCRID})" data-report-id="${ncr.NCRID}">View Details</button></td>
+            <td><button class="view-details-btn" onclick="viewReportDetails(${ncr.NCRID})">View Details</button></td>
         `;
         summaryTable.appendChild(row);
     });
@@ -53,55 +53,7 @@ function viewReportDetails(ncrID) {
         row.innerHTML = `<td>${field.charAt(0).toUpperCase() + field.slice(1)}</td><td>${value}</td>`;
         detailsTable.appendChild(row);
     }
-
-    
-
-    // Show the report details section and smooth scroll to it
-    document.getElementById("reportDetailsTable").scrollIntoView({ behavior: "smooth" });
-    
-    // Show the upward arrow for navigation back to the summary
-    document.getElementById('upwardArrow').style.display = 'inline-block';
-        
 }
-
-
-// Function to scroll smoothly back to the report summary
-function scrollToSummary() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });  // This scrolls to the very top of the page smoothly
-}
-
-
-// When a user clicks on a report, get the report ID and redirect to admin_view.html
-// Assuming you're rendering the button dynamically
-// Bind click event to all "View PDF Report" buttons
-document.querySelectorAll(".view-details-btn").forEach(button => {
-    button.addEventListener("click", function() {
-        const reportID = button.getAttribute('data-report-id');
-        if (reportID) {
-            // Redirect to admin_view.html with the report ID in the URL
-            window.location.href = `admin_view.html?reportID=${reportID}`;
-        } else {
-            alert("Please select a report to view.");
-        }
-    });
-});
-
-
-
-
-
-
-// Helper function to retrieve the selected report ID
-function getSelectedReportID() {
-    const selectedReport = document.querySelector('.view-details-btn.selected');  
-    return selectedReport ? selectedReport.getAttribute('data-report-id') : null;
-}
-
-function viewPDFReport(ncrID) {
-    window.location.href = `admin_view.html?reportID=${ncrID}`;
-}
-
-
 
 // Function to apply filters and display filtered NCRs in the summary table
 function applyFilters() {
@@ -131,8 +83,6 @@ function clearFilters() {
     // Display all NCRs
     displayReportSummary(ncrs);
 }
-
-
 async function generatePDF() {
     const { jsPDF } = window.jspdf;
 
@@ -220,37 +170,7 @@ async function generatePDF() {
 }
 
 
-async function loadNCRLogData() {
-    try {
-        const response = await fetch('data.json'); // Adjust the path as necessary
-        const data = await response.json();
-        const ncrLogs = data.NCR_Log; // Assuming NCR_Log is the key in your JSON
-        displayNCRLogs(ncrLogs);
-    } catch (error) {
-        console.error('Error loading NCR log data:', error);
-    }
-}
-
-function displayNCRLogs(ncrLogs) {
-    const ncrLogTableBody = document.getElementById('ncrLogTableBody');
-    ncrLogTableBody.innerHTML = ''; // Clear existing rows
-
-    ncrLogs.forEach(log => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${log.LogID}</td>
-            <td>${log.NCRID}</td>
-            <td>${log.Action}</td>
-            <td>${log.ActionBy}</td>
-            <td>${new Date(log.ActionDate).toLocaleDateString()}</td>
-        `;
-        ncrLogTableBody.appendChild(row);
-    });
-}
-
     
 
 // Call loadData to load NCR data and initialize the page when it loads
 window.onload = loadData;
-
-

@@ -31,22 +31,10 @@ document.getElementById("ncrForm").addEventListener("submit", function(event) {
     // Clear the form fields (optional)
     document.getElementById("ncrForm").reset();
 });
-
+// Function to fetch data from the JSON file and populate the dropdown
 
 // Optional: handle the "Save" button if you want to temporarily store data without submitting
-// Function to handle Save button click and update Last Modified Date
-document.getElementById('save-button').addEventListener('click', function() {
-    // Capture the current date
-    const now = new Date();
-    const lastModifiedDate = now.toISOString().split('T')[0]; // Format as YYYY-MM-DD
-
-    // Set the Last Modified Date field in the form
-    document.getElementById("last-modified-date").value = lastModifiedDate;
-
-    // Optionally, log the date to the console for debugging
-    console.log("Last Modified Date set to:", lastModifiedDate);
-
-    // Capture all form data
+function saveNCR() {
     const ncrData = {
         ncrNumber: document.getElementById("ncr-number").value,
         supplierName: document.getElementById("supplier-name").value,
@@ -55,21 +43,14 @@ document.getElementById('save-button').addEventListener('click', function() {
         priority: document.getElementById("priority").value,
         status: document.getElementById("status").value,
         createdDate: document.getElementById("created-date").value,
-        lastModifiedDate: lastModifiedDate, // Updated with current date (without time)
+        lastModifiedDate: document.getElementById("last-modified-date").value,
         attachments: Array.from(document.getElementById("attachments").files).map(file => file.name)
     };
 
-    // Log the saved data to the console (or send it to a server, or save to localStorage)
-    console.log("NCR Data Saved Locally:", ncrData);
-
-    // Provide feedback to the user
+    console.log("NCR Data Saved:", ncrData); // You could save to localStorage or perform other actions
     document.getElementById("formMessage").textContent = "NCR saved locally!";
     document.getElementById("formMessage").style.color = "blue";
-
-    // Optionally, store the data in localStorage for persistence (optional):
-    // localStorage.setItem("ncrData", JSON.stringify(ncrData));
-});
-
+}
 // Maximum file size in bytes (e.g., 5MB)
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_FILE_TYPES = ["image/jpeg", "image/png", "video/mp4", "application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
@@ -157,13 +138,7 @@ function generateNCRNumber() {
 function initializeNCRForm() {
     // Automatically populate the NCR number field
     document.getElementById("ncr-number").value = generateNCRNumber();
-
-    // Set the Created Date to today's date
-    const today = new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD
-    document.getElementById("created-date").value = today;
 }
-
-
 
 
 
@@ -253,30 +228,5 @@ function submitNCR() {
     
     // Load the supplier names when the page content is fully loaded
     document.addEventListener('DOMContentLoaded', loadSupplierNames);
-
-    // Show the form to add a new supplier when the plus sign is clicked
-document.getElementById('add-supplier-btn').addEventListener('click', function() {
-    document.getElementById('new-supplier-form').style.display = 'block';
-});
-
-// Function to add new supplier to the list
-function addNewSupplier() {
-    const supplierName = document.getElementById('new-supplier-name').value;
-    if (supplierName) {
-        const supplierSelect = document.getElementById('supplier-name');
-        const newOption = document.createElement('option');
-        newOption.value = supplierName;
-        newOption.textContent = supplierName;
-        supplierSelect.appendChild(newOption);
-
-        // Clear the input and hide the new supplier form
-        document.getElementById('new-supplier-name').value = '';
-        document.getElementById('new-supplier-form').style.display = 'none';
-    } else {
-        alert('Please enter a supplier name.');
-    }
-}
-
-
 // Call the initialize function when the page loads
 window.onload = initializeNCRForm;

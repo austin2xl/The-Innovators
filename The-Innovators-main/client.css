@@ -1,0 +1,445 @@
+/* General Styles */
+body {
+    font-family: "Josefin Sans", sans-serif; /* Ensure consistent font across the application */
+    margin: 0; /* Remove default margin */
+    background: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+/* Header and Navigation */
+header {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #ffffff, #e2e9fa);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: 0.1s ease;
+}
+
+.logo img {
+    height: 200px;
+    margin-right: 100px;
+}
+.logo:hover{
+    cursor: pointer;
+}
+header.active {
+    background: #5897c9;
+}
+
+header.active .hamburger .line {
+    background: #ffffff;
+}
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+    margin-left: auto; /* Pushes the hamburger to the right */
+}
+
+.hamburger .line {
+    width: 30px;
+    height: 3px;
+    background: #173451;
+    margin: 6px 0;
+    transition: 0.3s ease;
+}
+
+.nav-bar {
+    height: 0;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transition: 0.2s ease;
+    background: #5897c9;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.nav-bar.active {
+    height: 450px;
+}
+
+.nav-bar ul {
+    display: block;
+    width: fit-content;
+    margin: 80px auto 0 auto;
+    text-align: center;
+    transition: 0.5s;
+    opacity: 0;
+    list-style: none;
+}
+
+.nav-bar.active ul {
+    opacity: 1;
+}
+
+.nav-bar ul li a {
+    display: block;
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.2s;
+    margin-bottom: 12px;
+    white-space: nowrap; /* Prevent text from overflowing */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+.nav-bar ul li a:hover, .nav-bar ul li a.active {
+    
+    font-weight: 600;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    margin-left: 5px;
+    box-sizing: border-box;
+    margin-top: 100px;
+    width: 95%;      
+}
+
+h1 {
+    color: #173451;
+    text-align: center;
+}
+h2 ,h3{
+    color: #173451;
+}
+
+/* Footer */
+footer {
+    color: #173451;
+    background: #ffffff9c;
+    padding: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-family: "Josefin Sans", sans-serif;
+    margin-top: 140px;
+}
+
+/* Form Styles */
+form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"], textarea,  #ncrForm select,input[type="date"] , input[type="file"]{
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #173451;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.8;
+    background-color: #1d4363;
+}
+
+button[type="button"] {
+    background-color: #173451;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 30%;
+    margin-top: 5px;
+}
+
+button[type="button"]:hover {
+    opacity: 0.8;
+    background-color: #1d4363;
+}
+
+/* Form Message */
+#formMessage {
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+/* Table Styles */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+table, th, td {
+    border: 1px solid #ced0e0;
+}
+
+th, td {
+    padding:8px 10px;
+    text-align: left;
+    width: auto;
+}
+
+th {
+    background-color: #173451;
+    color: white;
+    font-size: 12px;
+}
+/*notification bell*/
+.notification-bell {
+    position: static; 
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    
+}
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.bell-icon {
+    width: 30px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+   
+    
+}
+
+.bell-icon:hover {
+    opacity: 1;
+}
+
+.mail-dropdown {
+    display: none;
+    position: absolute;
+    margin-top: 25px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1000;
+    padding: 10px;
+    
+    width: fit-content;
+    
+    top: 35px; /* Position the dropdown below the bell icon */
+}
+
+.mail-dropdown h4 {
+    margin: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.mail-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    width: fit-content;
+}
+
+.mail-dropdown li {
+    padding: 8px;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mail-item {
+    padding: 30px;
+    margin: 5px 0;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.mail-item.unread {
+    background-color: #d4edda; /* Green for unread mails */
+    color: #155724;
+}
+
+.mail-item.read {
+    background-color: #e2e3e5; /* Grey for read mails */
+    color: #6c757d;
+}
+
+.mail-item:hover {
+    opacity: 0.8;
+}
+
+
+/* Responsive Design */
+@media screen and (min-width: 768px) {
+    header {
+        padding: 0 50px; /* Adjust padding for larger screens */
+    }
+    .hamburger {
+        margin-left: auto;
+        padding-right: 0;
+    }
+    th, td {
+        padding: 12px;
+        
+    }
+    
+    th {
+        font-size: 16px;
+    }
+    
+    #ncrForm{
+        width: 80%;
+        display: grid(1fr 1fr);
+        column-count: 2
+        ;
+    }
+    .notification-bell, .notification-bell-one  {
+        position: relative; /* Relative positioning for the dropdown */
+        cursor: pointer;
+    }
+    
+    .bell-icon , .bell-icon-one{
+        width: 30px;
+        opacity: 0.5;
+        transition: opacity 0.3s;
+    }
+    
+    .bell-icon:hover ,  .bell-icon-one:hover{
+        opacity: 1;
+    }
+    
+    .mail-dropdown, .mail-dropdown-one { 
+        display: none;      
+        position: absolute;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        z-index: 1000;
+        padding: 10px;
+        width: fit-content;
+        top: 35px; /* Position the dropdown below the bell icon */
+    }
+    
+    .mail-dropdown h4 , .mail-dropdown-one h4{
+        margin: 0;
+        font-size: 16px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+    }
+    
+    .mail-dropdown ul  {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0;
+    }
+    
+    .mail-dropdown li {
+        padding: 8px;
+        border-bottom: 1px solid #f1f1f1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }  
+    
+}
+
+@media screen and (min-width: 1024px) {
+    header {
+        padding: 0 10px;
+    } 
+    .hamburger {
+        display: none;
+    }
+    .nav-bar {
+        height: auto;
+        position: static;
+        background: transparent;
+        display: flex;
+        justify-content: flex-start;
+        overflow: visible;
+        
+    }
+    .nav-bar ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        opacity: 1;
+        white-space: nowrap;
+        margin-right: auto;
+    }
+    .nav-bar ul li {
+        margin: 0;
+        padding: 0 10px;
+        list-style: none;
+    }
+    .nav-bar ul li a {
+        margin: 0;
+        color: #173451;
+        font-size: 18px;
+        white-space: nowrap;
+        padding: 8px 10px;
+    }
+    #bell{
+        display: none;
+    }
+
+    #mailList-one li{
+        padding: 5px;
+        border-bottom: 1px solid #f1f1f1;
+        display: flex;
+        flex-direction: column;
+        margin-top: 3px;
+        margin-right: 5px;
+        align-items: center;
+    }
+    
+}
+
+@media screen and (min-width: 1440px) {
+    header {
+        padding: 0 30px;
+    }
+    .nav-bar ul li {
+        padding: 0 20px;
+    }
+    .nav-bar ul li a {
+        font-size: 20px;
+    }
+}
