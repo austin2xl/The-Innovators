@@ -251,32 +251,56 @@ function submitNCR() {
             });
     }
     
-    // Load the supplier names when the page content is fully loaded
-    document.addEventListener('DOMContentLoaded', loadSupplierNames);
+// Load the supplier names when the page content is fully loaded
+document.addEventListener('DOMContentLoaded', loadSupplierNames);
 
-    // Show the form to add a new supplier when the plus sign is clicked
-document.getElementById('add-supplier-btn').addEventListener('click', function() {
-    document.getElementById('new-supplier-form').style.display = 'block';
-});
+// Show the form to add a new supplier when the plus sign is clicked
+document.getElementById('add-supplier-btn').addEventListener('click', function () {
+    const form = document.getElementById('new-supplier-form');
+    form.style.display = 'block';
+    document.getElementById('new-supplier-name').focus();
+// Show the minus button
+    document.getElementById('remove-supplier-form-btn').style.display = 'inline';
+    });
+
+// Hide the form when the minus sign is clicked
+document.getElementById('remove-supplier-form-btn').addEventListener('click', function () {
+    const form = document.getElementById('new-supplier-form');
+    form.style.display = 'none';
+    document.getElementById('new-supplier-name').value = '';
+// Hide the minus button
+    document.getElementById('remove-supplier-form-btn').style.display = 'none';
+    });
 
 // Function to add new supplier to the list
 function addNewSupplier() {
-    const supplierName = document.getElementById('new-supplier-name').value;
+    const supplierName = document.getElementById('new-supplier-name').value.trim();
+    const supplierSelect = document.getElementById('supplier-name');
     if (supplierName) {
-        const supplierSelect = document.getElementById('supplier-name');
+        const existingOptions = Array.from(supplierSelect.options);
+        const isDuplicate = existingOptions.some(option => option.value === supplierName);
+        if (isDuplicate) {
+            alert('This supplier already exists.');
+            return;
+        }
         const newOption = document.createElement('option');
         newOption.value = supplierName;
         newOption.textContent = supplierName;
         supplierSelect.appendChild(newOption);
 
-        // Clear the input and hide the new supplier form
         document.getElementById('new-supplier-name').value = '';
         document.getElementById('new-supplier-form').style.display = 'none';
+        document.getElementById('remove-supplier-form-btn').style.display = 'none'; // Hide minus button
     } else {
         alert('Please enter a supplier name.');
     }
 }
 
+function cancelAddSupplier() {
+    document.getElementById('new-supplier-name').value = '';
+    document.getElementById('new-supplier-form').style.display = 'none';
+    document.getElementById('remove-supplier-form-btn').style.display = 'none'; // Hide minus button
+}
 
 // Call the initialize function when the page loads
 window.onload = initializeNCRForm;

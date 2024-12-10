@@ -19,6 +19,18 @@
             color: #45a049;
         }
 
+        /* Styling for the minus button */
+        .minus-btn {
+            font-size: 20px;
+            cursor: pointer;
+            color: #4CAF50;
+            margin-left: 10px;
+        }
+
+        .minus-btn:hover {
+            color: #45a049;
+        }
+
         /* Form to add a new supplier */
         .new-supplier-form {
             display: none;
@@ -93,11 +105,13 @@
     <option value="">Select Supplier</option>
 </select>
 <span class="plus-btn" id="add-supplier-btn">+</span>
+<span class="minus-btn" id="remove-supplier-form-btn" style="display:none">-</span>
 </div>
 
 <div class="new-supplier-form" id="new-supplier-form">
     <input type="text" id="new-supplier-name" placeholder="Enter new supplier name">
     <button type="button" onclick="addNewSupplier()">Add Supplier</button>
+    <button type="button" onclick="cancelAddSupplier()">Cancel</button>
 </div><br><br>
 
     <label for="product-name">Product Name:</label>
