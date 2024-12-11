@@ -41,12 +41,78 @@
             width: calc(100% - 20px);
             margin-bottom: 10px;
         }
+        
     </style>
 
+<head>
+    <script type="text/javascript">
+        function confirmSubmission() {
+            return confirm("Are you sure you want to submit?");
+        }
     
+        document.getElementById('ncrForm').addEventListener('submit', function(event) {
+            if (!confirmSubmission()) {
+                event.preventReset(); // Prevent form submission if "Cancel" is clicked
+            }
+            return;
+        
+        });
+
+
+        function validateForm() {
+            const requiredFields = document.querySelectorAll('#ncrForm [required]');
+            for (let field of requiredFields) {
+                if (!field.value) {
+                    alert('Please fill out all required fields.');
+                    return false;
+                }
+            }
+            return true;
+        }
+        function submitNCR() {
+            if (validateForm()) {
+                alert('Form submitted successfully!');
+            }
+        }
+
+        function saveNCR() {
+            if (validateForm()) {
+                alert('Form saved successfully!');
+            }
+        }
+
+        function printNCR() {
+            if (validateForm()) {
+                window.print();
+            }
+        }
+
+        function downloadPDF() {
+            if (validateForm()) {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                doc.text("Non-Conformance Report (NCR)", 10, 10);
+                doc.text(`NCR Number: ${document.getElementById('ncr-number').value}`, 10, 20);
+                doc.text(`Supplier Name: ${document.getElementById('supplier-name').value}`, 10, 30);
+                doc.text(`Product Name: ${document.getElementById('product-name').value}`, 10, 40);
+                doc.text(`Description: ${document.getElementById('description').value}`, 10, 50);
+                doc.text(`Priority: ${document.getElementById('priority').value}`, 10, 60);
+                doc.text(`Status: ${document.getElementById('status').value}`, 10, 70);
+                doc.text(`Created Date: ${document.getElementById('created-date').value}`, 10, 80);
+                doc.text(`Last Modified Date: ${document.getElementById('last-modified-date').value}`, 10, 90);
+
+                doc.save('NCR_Report.pdf');
+            }
+        }
+
+
+    </script>
+</head>
+</head>
 </head>
 <body>
-    <header>      
+    <header>
         <div class="logo">
             <a href="admin.html">
                 <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
@@ -68,98 +134,92 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="admin.html" class="option">DASHBOARD</a></li> 
+                <li><a href="admin.html" class="option">DASHBOARD</a></li>
                 <li><a href="admin_create.html" class="option">CREATE NCR</a></li>
                 <li><a href="admin_ncr_log.html" class="option">NCR LOG</a></li>
-                <li><a href="admintools.html" class="option">TOOLS</a></li>  
-                <li class="phone-icon"><a href="admin_logout.html" class="option">LOG OUT</a></li> 
-                             
+                <li><a href="admintools.html" class="option">TOOLS</a></li>
+                <li class="phone-icon"><a href="admin_logout.html" class="option">LOG OUT</a></li>
             </ul>
-            <ul class="pc-icon"> 
-                
+            <ul class="pc-icon">
                 <li>
                     <span class="notification-bell-one" id="bell-one">
-                    <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
-                    <span class="mail-dropdown-one" id="mailDropdown-one">
-                        <h4>Notifications</h4>
-                        <ul id="mailList-one"></ul>
+                        <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                        <span class="mail-dropdown-one" id="mailDropdown-one">
+                            <h4>Notifications</h4>
+                            <ul id="mailList-one"></ul>
+                        </span>
                     </span>
-                </span>
                 </li>
                 <li>
-                        <a href="admin_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px" ></a> 
+                    <a href="admin_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px"></a>
                 </li>
-                <li><a href="admin_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
+                <li><a href="admin_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li>
             </ul>
         </nav>
     </header>
     <main>
-      
         <h1>Create Non-Conformance Report (NCR)</h1>
-<form id="ncrForm">
-    <label for="ncr-number">NCR Number:</label>
-    <input type="text" id="ncr-number" name="ncrNumber" value="2024-001" readonly><br><br>
+        <form id="ncrForm" onsubmit="return confirmSubmission()">
+            <label for="ncr-number">NCR Number:</label>
+            <input type="text" id="ncr-number" name="ncrNumber" value="2024-001" readonly><br><br>
 
-    <label for="supplier-name">Supplier Name:</label>
-<select id="supplier-name" name="supplierName" required>
-    <option value="">Select Supplier</option>
-</select>
-<span class="plus-btn" id="add-supplier-btn">+</span>
-<span class="minus-btn" id="remove-supplier-form-btn" style="display:none">-</span>
-</div>
+            <label for="supplier-name">*Supplier Name:</label>
+            <select id="supplier-name" name="supplierName" required>
+                <option value="">Select Supplier</option>
+            </select>
+            <span class="plus-btn" id="add-supplier-btn">+</span>
+            <span class="minus-btn" id="remove-supplier-form-btn" style="display:none">-</span>
+            <div class="new-supplier-form" id="new-supplier-form">
+                <input type="text" id="new-supplier-name" placeholder="Enter new supplier name">
+                <button type="button" onclick="addNewSupplier()">Add Supplier</button>
+                <button type="button" onclick="cancelAddSupplier()">Cancel</button>
+            </div><br><br>
 
-<div class="new-supplier-form" id="new-supplier-form">
-    <input type="text" id="new-supplier-name" placeholder="Enter new supplier name">
-    <button type="button" onclick="addNewSupplier()">Add Supplier</button>
-    <button type="button" onclick="cancelAddSupplier()">Cancel</button>
-</div><br><br>
+            <label for="product-name">*Product Name:</label>
+            <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
 
-    <label for="product-name">Product Name:</label>
-    <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
+            <label for="description">*Description of Non-Conformance:</label>
+            <textarea id="description" name="description" placeholder="Describe the non-conformance" rows="5" required></textarea><br><br>
 
-    <label for="description">Description of Non-Conformance:</label>
-    <textarea id="description" name="description" placeholder="Describe the non-conformance" rows="5" required></textarea><br><br>
+            <label for="priority">*Priority:</label>
+            <select id="priority" name="priority" required>
+                <option value="">Select Priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select><br><br>
 
-    <label for="priority">Priority:</label>
-    <select id="priority" name="priority" required>
-        <option value="">Select Priority</option>
-        <option value="Low">Low</option>
-        <option value="Medium">Medium</option>
-        <option value="High">High</option>
-    </select><br><br>
+            <label for="status">*Status:</label>
+            <select id="status" name="status" required>
+                <option value="">Select Status</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Closed">Closed</option>
+            </select><br><br>
 
-    <label for="status">Status:</label>
-    <select id="status" name="status" required>
-        <option value="">Select Status</option>
-        <option value="Open">Open</option>
-        <option value="In Progress">In Progress</option>
-        <option value="Closed">Closed</option>
-    </select><br><br>
+            <label for="created-date">Created Date:</label>
+            <input type="date" id="created-date" name="createdDate" readonly><br><br>
 
-    <label for="created-date">Created Date:</label>
-    <input type="date" id="created-date" name="createdDate" readonly><br><br>
+            <label for="last-modified-date">Last Modified Date:</label>
+            <input type="date" id="last-modified-date" readonly><br><br>
 
-    <label for="last-modified-date">Last Modified Date:</label>
-    <input type="date" id="last-modified-date" readonly><br><br>
+            <label for="attachments">Attachments (Images, Videos):</label>
+            <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4,.pdf,.docx" multiple><br><br>
 
-    <label for="attachments">Attachments (Images, Videos):</label>
-    <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4,.pdf,.docx" multiple><br><br>
+            <button type="submit" onclick="submitNCR()">Submit</button>
+            <button type="button" id="save-button" onclick="saveNCR()">Save</button>
+            <button type="button" onclick="printNCR()">Print</button>
+            <button type="button" onclick="downloadPDF()">Download PDF</button>
 
-    <button type="submit" onclick="submitNCR()">Submit</button>
-    <button type="button" id="save-button" onclick="saveNCR()">Save</button>
-
-    <!-- Success/Error message -->
-    <div id="formMessage"></div>
-</form>
-
+            <!-- Success/Error message -->
+            <div id="formMessage"></div>
+        </form>
     </main>
-   
     <footer>
         <small>NCR-CROSS</small>
     </footer>
-    <script src="app.js"></script> 
+    <script src="app.js"></script>
     <script src="new_ncr.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 </body>
 </html>
