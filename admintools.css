@@ -1,0 +1,324 @@
+/*admin tools css*/
+/* Basic layout styling */
+body, html {
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    background-color: #628ecb;
+    position: fixed;
+    color: #F0F3FA;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    height: 100%;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 22px;
+    color: #fff;
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    color: #F0F3FA;
+    display: block;
+    transition: background 0.3s;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    background-color: #d5deef5b;
+}
+
+/* Main content styling */
+main {
+    display: flex; 
+    flex-grow: 1;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+}
+
+.main-content h2 {
+    font-size: 24px;
+    color: #628ecb;
+}
+
+.tool-section {
+    background-color: #F0F3FA;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.tool-section p {
+    color: #666;
+}
+
+.tool-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #628ecb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tool-button:hover {
+    background-color: #B1C9EF;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #628ecb;
+    color: #fff;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.header-icons .notification-bell {
+    position: relative;
+}
+
+.header-icons .hamburger {
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.header-icons .hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #628ecb;
+    color: #fff;
+}
+
+.nav-bar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar ul li {
+    margin-left: 20px;
+}
+
+.nav-bar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-bar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Dropdown styles */
+.mail-dropdown, .mail-dropdown-one {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    min-width: 300px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.mail-dropdown h4, .mail-dropdown-one h4 {
+    padding: 10px;
+    margin: 0;
+    background-color: #628ecb;
+    color: #fff;
+}
+
+.mail-dropdown ul, .mail-dropdown-one ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.mail-dropdown ul li, .mail-dropdown-one ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Table Styles */
+#userList {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#userList th, #userList td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#userList th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+#userList tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#userList tr:hover {
+    background-color: #ddd;
+}
+
+#userList td select, #userList td button {
+    margin-top: 5px;
+}
+
+/* Button Styles */
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/*admin tools css completed*/

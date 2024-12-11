@@ -47,6 +47,13 @@
             "Email": "purchasing@example.com"
           }
     ],
+
+    "RecentActivities":
+     [ { "ActivityID": 1,
+      "Action": "User Login", 
+      "Username": "admin_user", 
+      "Date": "2024-12-11T14:30:00Z" }],
+
     "NCR": [
         {
           "NCRID": 101,

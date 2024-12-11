@@ -3,36 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Help Page</title>
+    <title>NCR | HELP</title>
     <link rel="stylesheet" href="client.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        /* General Styles */
+        /* Footer Styling */
+
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+   
+    .footer-text p {
+        font-size: 12px;
+        color: rgb(252, 255, 255);
+        text-decoration:solid;
+    }
+    .footer{
+        height: 10px;
+
+    }
+}
+
         body {
-            font-family: Arial, sans-serif;
+            background-color: #D5DEEF;
             margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
         }
 
-        /* Heading styles */
-        h2 {
-            color: #628ecb;  
-            font-size: 28px;
+        .help-container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #F0F3FA;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.116);
+        }
+
+        h1, h2 {
+            color: #628ecb;
             text-align: center;
-            transition: font-weight 0.3s ease;
         }
 
-        h2:hover {
+        .faq-section {
+            margin: 20px 0;
+        }
+
+        .faq {
+            margin-bottom: 15px;
+        }
+
+        .faq-question {
             font-weight: bold;
+            cursor: pointer;
+            background-color: #628ecb;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
+        .faq-question:hover {
+            background-color: #B1C9EF;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #F0F3FA;
+            border-left: 4px solid #628ecb;
+            border-radius: 5px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+        }
+
+        .contact-support {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .contact-support button {
+            padding: 10px 20px;
+            background-color: #628ecb;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-support button:hover {
+            background-color: #B1C9EF;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .faq-question {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .faq-answer {
+                font-size: 14px;
+            }
+
+            .contact-support button {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>      
+    <header>
         <div class="logo">
             <a href="client.html">
-                <img src="IMAGES/CrossfireLogo.png" alt="Crossfire Logo">
+                <img src="IMAGES/CrossfireLogo.png" alt="NCR Logo">
             </a>
         </div>
         <div class="header-icons">
@@ -51,92 +139,90 @@
         </div>
         <nav class="nav-bar">
             <ul>
-                <li><a href="client.html" class="option">DASHBOARD</a></li> 
+                <li><a href="client.html" class="option">DASHBOARD</a></li>
                 <li><a href="client_create.html" class="option">CREATE NCR</a></li>
                 <li><a href="client_ncr_log.html" class="option">NCR LOG</a></li>
-                <li class="phone-icon"><a href="client_help.html" class="option">HELP</a></li>  
-                <li class="phone-icon"><a href="client_logout.html" class="option">LOG OUT</a></li>       
-            </ul>
-            <ul class="pc-icon"> 
-                <li>
-                    <span class="notification-bell-one" id="bell-one">
-                    <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon"  onclick="toggleMailDropdown()">
-                    <span class="mail-dropdown-one" id="mailDropdown-one">
-                        <h4>Notifications</h4>
-                        <ul id="mailList-one"></ul>
-                    </span>
-                </span>
-                </li>
-                <li>
-                        <a href="client_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px" ></a> 
-                </li>
-                <li><a href="client_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li> 
+                <li><a href="client_help.html" class="option active">HELP</a></li>
+                <li><a href="client_logout.html" class="option">LOG OUT</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="about">
-            <h2>About Cross NCR</h2>
-            <p>Cross NCR is a comprehensive system designed to streamline the management and reporting of Non-Conformance Reports (NCRs). This tool helps businesses to efficiently handle issues with suppliers, manage corrective actions, and maintain compliance standards. With features like real-time reporting, status tracking, and integration with external systems, Cross NCR ensures that non-conformance issues are addressed promptly and accurately.</p>
-        </section>
-
-        <section id="faq">
+        <div class="help-container">
+            <h1>Help Center</h1>
             <h2>Frequently Asked Questions</h2>
-            <ul>
-                <li onclick="toggleAnswer(this)">
-                    <strong>What is the NCR system?</strong>
-                    <div class="answer">
-                        <p>The NCR (Non-Conformance Report) system helps businesses report, track, and resolve issues related to products or suppliers that don't meet quality standards.</p>
-                    </div>
-                </li>
-                <li onclick="toggleAnswer(this)">
-                    <strong>How can I create an NCR?</strong>
-                    <div class="answer">
-                        <p>To create an NCR, log in to your account and go to the "Create NCR" page. Fill in the necessary information and submit the form.</p>
-                    </div>
-                </li>
-                <li onclick="toggleAnswer(this)">
-                    <strong>Can I track NCR status?</strong>
-                    <div class="answer">
-                        <p>Yes, NCR status can be tracked via the NCR Log. The status is updated as the issue progresses.</p>
-                    </div>
-                </li>
-                <li onclick="toggleAnswer(this)">
-                    <strong>How do I escalate an NCR issue?</strong>
-                    <div class="answer">
-                        <p>If an NCR issue requires escalation, contact your system administrator for guidance on the next steps.</p>
-                    </div>
-                </li>
-                <li onclick="toggleAnswer(this)">
-                    <strong>Can I upload documents for an NCR?</strong>
-                    <div class="answer">
-                        <p>Yes, documents such as images or reports can be attached when creating or editing an NCR.</p>
-                    </div>
-                </li>
-                <li onclick="toggleAnswer(this)">
-                    <strong>How do I request a quote?</strong>
-                    <div class="answer">
-                        <p>To request a quote, please fill out the contact form below with your details, including any additional media that may assist in your request.</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
 
-        <section id="contact-us">
-            <h2>Contact Us for Support or Get a Quote</h2>
-            <form action="submit-form.php" method="post" enctype="multipart/form-data">
-                <input type="text" name="first-name" placeholder="First Name" required>
-                <input type="text" name="last-name" placeholder="Last Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <textarea name="message" placeholder="Describe your issue or request" rows="4" required></textarea>
-                <label for="media-upload">Attach Media (optional):</label>
-                <input type="file" name="media" id="media-upload">
-                <button type="submit">Submit</button>
-            </form>
-        </section>
+            <div class="faq-section">
+                <div class="faq">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        How do I create a new NCR?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To create a new NCR, navigate to the '<a href="client_create.html">Create NCR </a>' page and fill out the required fields. Ensure all mandatory information is provided before submitting the form.</p>
+                    </div>
+                </div>
+
+                <div class="faq">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        How can I filter reports?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Go to the '<a href="client_report.html">REPORTS</a>' page, and use the filter options available at the top of the page. You can filter by status, priority, and date.</p>
+                    </div>
+                </div>
+
+                <div class="faq">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        Can I download reports?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, reports can be downloaded as PDFs. Use the 'Generate PDF' button on the 'REPORTS' page after selecting the desired options.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-support">
+                <h2>Still Need Help?</h2>
+                <p>Contact our support team for additional assistance.</p>
+                <button onclick="contactSupport()">Contact Support</button>
+            </div>
+        </div>
     </main>
-    <script src="footer.js"></script>
+    <footer>
+    <!-- Copyright Section -->
+            <div class="footer-text">
+                <p>&copy; 2024 NCR CrossFire. All rights reserved.</p>
+                <p>Developed by The Innovators</p>
+            </div>
+        
+    </footer>
+    
+
+         
     <script src="app.js"></script>
+
+    <script>
+        // Toggle FAQ answers
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            const plusMinus = element.querySelector('span');
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                plusMinus.textContent = '+';
+            } else {
+                answer.style.display = 'block';
+                plusMinus.textContent = '−';
+            }
+        }
+
+        // Contact Support placeholder function
+        function contactSupport() {
+            alert('Contact support at support@ncr.com or call 1-800-123-4567.');
+        }
+    </script>
 </body>
 </html>

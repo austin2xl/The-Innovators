@@ -1,0 +1,72 @@
+[
+    {
+        "UserID": 1,
+        "Username": "admin_user",
+        "Password": "admin",
+        "Role": "admin",
+        "Email": "cameron@example.com"
+    },
+    {
+        "UserID": 2,
+        "Username": "john_doe",
+        "Password": "password123",
+        "Role": "engineer",
+        "Email": "johndoe@example.com"
+    },
+    {
+        "UserID": 3,
+        "Username": "jane_smith",
+        "Password": "password456",
+        "Role": "quality inspector",
+        "Email": "janesmith@example.com"
+    },
+    {
+        "UserID": 4,
+        "Username": "michael_jones",
+        "Password": "password789",
+        "Role": "engineer",
+        "Email": "michaeljones@example.com"
+    },
+    {
+        "UserID": 5,
+        "Username": "emily_davis",
+        "Password": "password",
+        "Role": "admin",
+        "Email": "emilydavis@example.com"
+    },
+    {
+        "UserID": 6,
+        "Username": "chris_wilson",
+        "Password": "password",
+        "Role": "quality inspector",
+        "Email": "chriswilson@example.com"
+    },
+    {
+        "UserID": 7,
+        "Username": "sarah_brown",
+        "Password": "password",
+        "Role": "engineer",
+        "Email": "sarahbrown@example.com"
+    },
+    {
+        "UserID": 8,
+        "Username": "david_miller",
+        "Password": "password",
+        "Role": "admin",
+        "Email": "davidmiller@example.com"
+    },
+    {
+        "UserID": 9,
+        "Username": "laura_moore",
+        "Password": "password",
+        "Role": "quality inspector",
+        "Email": "lauramoore@example.com"
+    },
+    {
+        "UserID": 10,
+        "Username": "james_anderson",
+        "Password": "password",
+        "Role": "engineer",
+        "Email": "jamesanderson@example.com"
+    }
+]

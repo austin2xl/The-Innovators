@@ -5,72 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NCR | NEW NCR</title>
     <link rel="stylesheet" href="client.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<title>Confirmation Pop-up</title>
-<script type="text/javascript">
-    function confirmSubmission() {
-        return confirm("Are you sure you want to submit?");
-    }
-
-    document.getElementById('ncrForm').addEventListener('submit', function(event) {
-        if (!confirmSubmission()) {
-            event.preventDefault(); // Prevent form submission if "Cancel" is clicked
-        }
-        return;
-    
-    });
-
-
-    function validateForm() {
-        const requiredFields = document.querySelectorAll('#ncrForm [required]');
-        for (let field of requiredFields) {
-            if (!field.value) {
-                alert('Please fill out all required fields.');
-                return false;
-            }
-        }
-        return true;
-    }
-    function submitNCR() {
-        if (validateForm()) {
-            alert('Form submitted successfully!');
-        }
-    }
-
-    function saveNCR() {
-        if (validateForm()) {
-            alert('Form saved successfully!');
-        }
-    }
-
-    function printNCR() {
-        if (validateForm()) {
-            window.print();
-        }
-    }
-
-    function downloadPDF() {
-        if (validateForm()) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            doc.text("Non-Conformance Report (NCR)", 10, 10);
-            doc.text(`NCR Number: ${document.getElementById('ncr-number').value}`, 10, 20);
-            doc.text(`Supplier Name: ${document.getElementById('supplier-name').value}`, 10, 30);
-            doc.text(`Product Name: ${document.getElementById('product-name').value}`, 10, 40);
-            doc.text(`Description: ${document.getElementById('description').value}`, 10, 50);
-            doc.text(`Priority: ${document.getElementById('priority').value}`, 10, 60);
-            doc.text(`Status: ${document.getElementById('status').value}`, 10, 70);
-            doc.text(`Created Date: ${document.getElementById('created-date').value}`, 10, 80);
-            doc.text(`Last Modified Date: ${document.getElementById('last-modified-date').value}`, 10, 90);
-
-            doc.save('NCR_Report.pdf');
-        }
-    }
-
-
-</script>
 <body>
     <header>      
         <div class="logo">
@@ -122,21 +57,21 @@
     <main>
        
         <h1>Create Non-Conformance Report (NCR)</h1>
-<form id="ncrForm" onsubmit="return confirmSubmission()">
+<form id="ncrForm">
     <label for="ncr-number">NCR Number:</label>
     <input type="text" id="ncr-number" name="ncrNumber" value="2024-001" readonly><br><br>
 
-    <label for="supplier-name">*Supplier Name:</label>
+    <label for="supplier-name">Supplier Name:</label>
 <select id="supplier-name" name="supplierName" required>
     <option value="">Select Supplier</option>
 </select><br><br>
-    <label for="product-name">*Product Name:</label>
+    <label for="product-name">Product Name:</label>
     <input type="text" id="product-name" name="productName" placeholder="Enter product name" required><br><br>
 
-    <label for="description">*Description of Non-Conformance:</label>
+    <label for="description">Description of Non-Conformance:</label>
     <textarea id="description" name="description" placeholder="Describe the non-conformance" rows="5" required></textarea><br><br>
 
-    <label for="priority">*Priority:</label>
+    <label for="priority">Priority:</label>
     <select id="priority" name="priority" required>
         <option value="">Select Priority</option>
         <option value="Low">Low</option>
@@ -144,7 +79,7 @@
         <option value="High">High</option>
     </select><br><br>
 
-    <label for="status">*Status:</label>
+    <label for="status">Status:</label>
     <select id="status" name="status" required>
         <option value="">Select Status</option>
         <option value="Open">Open</option>
@@ -160,10 +95,9 @@
 
     <label for="attachments">Attachments (Images, Videos):</label>
     <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4,.pdf,.docx" multiple><br><br>
+
     <button type="submit" onclick="submitNCR()">Submit</button>
-    <button type="button" id="save-button" onclick="saveNCR()">Save</button>
-    <button type="button" onclick="printNCR()">Print</button>
-    <button type="button" onclick="downloadPDF()">Download PDF</button>
+    <button type="button" onclick="saveNCR()">Save</button>
 
     <!-- Success/Error message -->
     <div id="formMessage"></div>
@@ -172,47 +106,13 @@
     </main>
    
     <footer>
-        <div class="footer-links">
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-instagram"></a>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2024 Crossfire NCR. All Rights Reserved.</p>
-        </div>
+        <small>NCR-CROSS</small>
     </footer>
-
     <script src="app.js"></script> 
     <script src="new_ncr.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-    function confirmSubmission() {
-        return confirm("Are you sure you want to submit?");
-    }
-
-    document.getElementById('ncrForm').addEventListener('submit', function(event) {
-        if (!confirmSubmission()) {
-            event.preventDefault(); // Prevent form submission if "Cancel" is clicked
-        } else {
-            updateLastModifiedDate();
-        }
-    });
-
-    document.getElementById('save-button').addEventListener('click', function() {
-        updateLastModifiedDate();
-    });
-
-    function updateLastModifiedDate() {
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('last-modified-date').value = today;
-    }
-
-    window.onload = function() {
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('created-date').value = today;
-        document.getElementById('last-modified-date').value = today;
-    };
-</script>
+    
+        </script>
 </body>
 </html>

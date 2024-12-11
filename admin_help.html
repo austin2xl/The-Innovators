@@ -1,32 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Help Page</title>
+    <title>NCR | VIEW</title>
     <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        /* Heading styles */
-        h2 {
-            color: #628ecb;  
-            font-size: 28px;
-            text-align: center;
-            transition: font-weight 0.3s ease;
-        }
-
-        h2:hover {
-            font-weight: bold;
-        }
-
-
-    </style>
 </head>
 <body>
     <header>      
@@ -36,76 +14,20 @@
             </a>
         </div>
         <div class="header-icons">
-            <div class="notification-bell" id="bell">
-                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
-                <div class="mail-dropdown" id="mailDropdown">
-                    <h4>Notifications</h4>
-                    <ul id="mailList"></ul>
-                </div>
-            </div>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+       
         </div>
         <nav class="nav-bar">
-            <ul>
-                <li><a href="admin.html" class="option">DASHBOARD</a></li>
-                <li><a href="admin_create.html" class="option">CREATE NCR</a></li>
-                <li><a href="admin_ncr_log.html" class="option">NCR LOG</a></li>
-                <li><a href="admintools.html" class="option">TOOLS</a></li>
-                <li class="phone-icon"><a href="admin_logout.html" class="option">LOG OUT</a></li>
-            </ul>
-            <ul class="pc-icon"> 
-                <li>
-                    <span class="notification-bell-one" id="bell-one">
-                        <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
-                        <span class="mail-dropdown-one" id="mailDropdown-one">
-                            <h4>Notifications</h4>
-                            <ul id="mailList-one"></ul>
-                        </span>
-                    </span>
-                </li>
-                <li>
-                    <a href="admin_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px"></a>
-                </li>
-                <li><a href="admin_logout.html" class="option"><img src="IMAGES/log-out.png" alt="" width="28px"></a></li>
-            </ul>
+            
         </nav>
     </header>
+            
+        <main>
+    
 
-    <main>
-        <section id="about">
-            <h2>About Cross NCR</h2>
-            <p>Cross NCR is a comprehensive system designed to streamline the management and reporting of Non-Conformance Reports (NCRs). This tool helps businesses to efficiently handle issues with suppliers, manage corrective actions, and maintain compliance standards. With features like real-time reporting, status tracking, and integration with external systems, Cross NCR ensures that non-conformance issues are addressed promptly and accurately.</p>
-        </section>
+    <footer>
+        <small>NCR-CROSS</small>
+    </footer>
+    <script src="app.js"></script>  
 
-        <section id="faq">
-            <h2>Frequently Asked Questions</h2>
-            <ul>
-                <li onclick="toggleAnswer(this)">
-                    <strong>How do I reset my password?</strong>
-                    <div class="answer">
-                        <p>If you need to reset your password, please contact the tech support team.</p>
-                    </div>
-                </li>
-                <li onclick="toggleAnswer(this)">
-                    <strong>How can I manage users in the admin panel?</strong>
-                    <div class="answer">
-                        <p>Admins can manage users directly through the dashboard by navigating to the <a href = "admintools.html">User Management</a> section.</p>
-                    </div>
-                </li>
-                <li onclick="toggleAnswer(this)">
-                    <strong>What should I do if I encounter an issue?</strong>
-                    <div class="answer">
-                        <p>If you encounter any issues, please contact the tech support team from 9:00 AM to 5:00 PM on all business days</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-    </main>
-
-    <script src="footer.js"></script>
-
-    <script src="app.js"></script>
+</body>
+</html>

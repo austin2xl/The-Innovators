@@ -1,0 +1,60 @@
+{
+    "Notifications": [
+        {
+            "NotificationID": 1,
+            "Role": "admin",
+            "Message": "System update required on NCR-001",
+            "Timestamp": "2024-12-11T10:00:00Z",
+            "Status": "unread"
+        },
+        {
+            "NotificationID": 2,
+            "Role": "admin",
+            "Message": "Backup completed successfully",
+            "Timestamp": "2024-12-11T11:00:00Z",
+            "Status": "unread"
+        },
+        {
+            "NotificationID": 3,
+            "Role": "engineer",
+            "Message": "Engineering review needed for NCR-002",
+            "Timestamp": "2024-12-11T09:30:00Z",
+            "Status": "unread"
+        },
+        {
+            "NotificationID": 4,
+            "Role": "engineer",
+            "Message": "New task assigned: Review specs for NCR-003",
+            "Timestamp": "2024-12-11T12:15:00Z",
+            "Status": "unread"
+        },
+        {
+            "NotificationID": 5,
+            "Role": "quality inspector",
+            "Message": "Quality inspector action needed on NCR-004",
+            "Timestamp": "2024-12-11T08:45:00Z",
+            "Status": "unread"
+        },
+        {
+            "NotificationID": 6,
+            "Role": "quality inspector",
+            "Message": "New quality audit scheduled",
+            "Timestamp": "2024-12-11T13:00:00Z",
+            "Status": "unread"
+        },
+        {
+            "NotificationID": 7,
+            "Role": "purchasing",
+            "Message": "Purchasing action needed on NCR-004",
+            "Timestamp": "2024-12-11T07:30:00Z",
+            "Status": "unread"
+        },
+        {
+            "NotificationID": 8,
+            "Role": "purchasing",
+            "Message": "New supplier contract approval required",
+            "Timestamp": "2024-12-11T14:20:00Z",
+            "Status": "unread"
+        }
+    ]
+}

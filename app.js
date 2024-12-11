@@ -157,25 +157,7 @@ document.getElementById("loginForm").addEventListener("submit", login);
 })();
 
 
-// Function to toggle the answer visibility when clicking on an FAQ item
-function toggleAnswer(faqItem) {
-    // Get all FAQ items
-    var allFaqItems = document.querySelectorAll('#faq li');
-    
-    // Close all answers before opening the clicked one
-    allFaqItems.forEach(function(item) {
-        var answer = item.querySelector('.answer');
-        answer.style.display = "none"; // Hide all answers
-    });
 
-    // Get the answer element within the clicked FAQ item
-    var answer = faqItem.querySelector('.answer');
-    
-    // Toggle the visibility of the answer (show it if it's hidden)
-    if (answer.style.display === "none" || answer.style.display === "") {
-        answer.style.display = "block";
-    }
-}
 
 
 // Call loadMails on window load
