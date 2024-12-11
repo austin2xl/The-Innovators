@@ -14,7 +14,7 @@
 
     document.getElementById('ncrForm').addEventListener('submit', function(event) {
         if (!confirmSubmission()) {
-            event.preventReset(); // Prevent form submission if "Cancel" is clicked
+            event.preventDefault(); // Prevent form submission if "Cancel" is clicked
         }
         return;
     
@@ -147,11 +147,11 @@
             </select><br><br>
         
             <label for="created-date">Created Date:</label>
-            <input type="date" id="created-date" name="createdDate" required><br><br>
-        
+            <input type="date" id="created-date" name="createdDate" readonly><br><br>
+
             <label for="last-modified-date">Last Modified Date:</label>
-            <input type="date" id="last-modified-date" name="lastModifiedDate"><br><br>
-        
+            <input type="date" id="last-modified-date" readonly><br><br>
+
             <label for="attachments">Attachments (Images, Videos):</label>
             <input type="file" id="attachments" name="attachments[]" accept=".jpg,.jpeg,.png,.mp4,.pdf,.docx" multiple><br><br>
             <button type="submit" onclick="submitNCR()">Submit</button>
@@ -172,7 +172,32 @@
             <script src="new_ncr.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
             <script>
+                function confirmSubmission() {
+                    return confirm("Are you sure you want to submit?");
+                }
             
-                </script>
+                document.getElementById('ncrForm').addEventListener('submit', function(event) {
+                    if (!confirmSubmission()) {
+                        event.preventDefault(); // Prevent form submission if "Cancel" is clicked
+                    } else {
+                        updateLastModifiedDate();
+                    }
+                });
+            
+                document.getElementById('save-button').addEventListener('click', function() {
+                    updateLastModifiedDate();
+                });
+            
+                function updateLastModifiedDate() {
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById('last-modified-date').value = today;
+                }
+            
+                window.onload = function() {
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById('created-date').value = today;
+                    document.getElementById('last-modified-date').value = today;
+                };
+            </script>
         </body>
         </html>

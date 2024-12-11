@@ -14,7 +14,7 @@
 
     document.getElementById('ncrForm').addEventListener('submit', function(event) {
         if (!confirmSubmission()) {
-            event.preventReset(); // Prevent form submission if "Cancel" is clicked
+            event.preventDefault(); // Prevent form submission if "Cancel" is clicked
         }
         return;
     
@@ -177,7 +177,32 @@
     <script src="new_ncr.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-    
-        </script>
+    function confirmSubmission() {
+        return confirm("Are you sure you want to submit?");
+    }
+
+    document.getElementById('ncrForm').addEventListener('submit', function(event) {
+        if (!confirmSubmission()) {
+            event.preventDefault(); // Prevent form submission if "Cancel" is clicked
+        } else {
+            updateLastModifiedDate();
+        }
+    });
+
+    document.getElementById('save-button').addEventListener('click', function() {
+        updateLastModifiedDate();
+    });
+
+    function updateLastModifiedDate() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('last-modified-date').value = today;
+    }
+
+    window.onload = function() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('created-date').value = today;
+        document.getElementById('last-modified-date').value = today;
+    };
+</script>
 </body>
 </html>
