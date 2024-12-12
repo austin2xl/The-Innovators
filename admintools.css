@@ -140,7 +140,7 @@ th {
 /* Header styles */
 header {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     padding: 10px 20px;
     background-color: #628ecb;
@@ -148,7 +148,8 @@ header {
 }
 
 .logo img {
-    height: 50px;
+    height: 100px;
+    width: 100px;
 }
 
 .header-icons {
