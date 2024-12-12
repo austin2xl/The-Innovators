@@ -6,7 +6,6 @@ async function fetchNCRData() {
         return data.NCR.filter(ncr => ncr.CreatedBy == 5); // Filter NCRs for Quality Inspector
     } catch (error) {
         console.error('Error fetching NCR data:', error);
-        tableBody.innerHTML = '<tr><td colspan="6">Failed to load data. Please try again later.</td></tr>';
         return [];
     }
 }
@@ -37,9 +36,6 @@ function renderNCRTable(ncrs) {
     });
 }
 
-
-
-
 // Apply filters and re-render the table
 async function applyFilters() {
     const ncrs = await fetchNCRData();
@@ -57,15 +53,6 @@ async function applyFilters() {
 
     renderNCRTable(filteredNCRs);
 }
-
-// cancel filters
-document.getElementById('cancel-btn').addEventListener('click', function () {
-    document.getElementById('status-filter').value = 'all';
-    document.getElementById('priority-filter').value = 'all';
-    document.getElementById('date-filter').value = '';
-    renderNCRTable(ncrs);
-});
-
 
 // Initialize the dashboard
 async function initDashboard() {
