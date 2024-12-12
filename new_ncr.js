@@ -161,6 +161,9 @@ function initializeNCRForm() {
     // Set the Created Date to today's date
     const today = new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD
     document.getElementById("created-date").value = today;
+
+    const modifiedtoday = new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD
+    document.getElementById("last-modified-date").value = today;
 }
 
 
@@ -221,8 +224,8 @@ function submitNCR() {
     doc.text(`Created Date: ${createdDate}`, 10, 80);
     doc.text(`Last Modified Date: ${lastModifiedDate}`, 10, 90);
 
-    // Save the PDF
-    doc.save(`NCR_${ncrNumber}.pdf`);
+    
+
 }
     // Function to fetch data from the JSON file and populate the dropdown
     function loadSupplierNames() {
