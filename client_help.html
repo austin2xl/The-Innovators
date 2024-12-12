@@ -93,13 +93,13 @@
                 <li onclick="toggleAnswer(this)">
                     <strong>How can I create an NCR?</strong>
                     <div class="answer">
-                        <p>To create an NCR, log in to your account and go to the "Create NCR" page. Fill in the necessary information and submit the form.</p>
+                        <p>To create an NCR, log in to your account and go to the<a href=client_create.html>"Create NCR"</a> page. Fill in the necessary information and submit the form.</p>
                     </div>
                 </li>
                 <li onclick="toggleAnswer(this)">
                     <strong>Can I track NCR status?</strong>
                     <div class="answer">
-                        <p>Yes, NCR status can be tracked via the NCR Log. The status is updated as the issue progresses.</p>
+                        <p>Yes, NCR status can be tracked via the <a href="client_ncr_log.html">NCR Reports</a>. The status is updated as the issue progresses.</p>
                     </div>
                 </li>
                 <li onclick="toggleAnswer(this)">
@@ -111,7 +111,7 @@
                 <li onclick="toggleAnswer(this)">
                     <strong>Can I upload documents for an NCR?</strong>
                     <div class="answer">
-                        <p>Yes, documents such as images or reports can be attached when creating or editing an NCR.</p>
+                        <p>Yes, documents such as <a href="client_create.html">images or reports</a> can be attached when creating or editing an NCR.</p>
                     </div>
                 </li>
                 <li onclick="toggleAnswer(this)">
@@ -122,12 +122,11 @@
                 </li>
             </ul>
         </section>
-
         <section id="contact-us">
             <h2>Contact Us for Support or Get a Quote</h2>
-            <form action="submit-form.php" method="post" enctype="multipart/form-data">
-                <input type="text" name="first-name" placeholder="First Name" required>
-                <input type="text" name="last-name" placeholder="Last Name" required>
+            <form id="quoteForm">
+                <input type="text" name="firstName" placeholder="First Name" required>
+                <input type="text" name="lastName" placeholder="Last Name" required>
                 <input type="email" name="email" placeholder="Email Address" required>
                 <textarea name="message" placeholder="Describe your issue or request" rows="4" required></textarea>
                 <label for="media-upload">Attach Media (optional):</label>
@@ -135,7 +134,34 @@
                 <button type="submit">Submit</button>
             </form>
         </section>
-    </main>
+        
+        <script>
+            // Listen for the form submission
+            document.getElementById('quoteForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+        
+                // Collect the form data
+                const formData = new FormData(this);
+                const notification = {
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    email: formData.get('email'),
+                    message: formData.get('message'),
+                    timestamp: new Date().toLocaleString(),
+                };
+        
+                // Store the notification in localStorage
+                const notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+                notifications.push(notification);
+                localStorage.setItem('notifications', JSON.stringify(notifications));
+        
+                alert('Notification sent to admin successfully!');
+        
+                // Optionally clear the form
+                this.reset();
+            });
+        </script>
+        
     <script src="footer.js"></script>
     <script src="app.js"></script>
 </body>

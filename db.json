@@ -1,0 +1,18 @@
+{
+    "notifications": [
+        {
+          
+                "firstName": "John",
+                "lastName": "Doe",
+                "email": "john.doe@example.com",
+                "message": "This is a notification message.",
+                "attachmentUrl": "https://example.com/file.pdf"
+           
+            
+        }
+        
+        
+          
+     
+    ]
+}

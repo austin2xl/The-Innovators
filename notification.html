@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Notification Bell */
+        .notification-bell {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            max-height: 500px;
+            overflow-y: auto;
+            z-index: 1000;
+            border-radius: 8px;
+        }
+
+        .modal-header {
+            background-color: #abcdef;
+            color: white;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 15px;
+        }
+
+        .modal-body ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .modal-body ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .modal-body ul li:last-child {
+            border-bottom: none;
+        }
+
+        .modal-body ul li span {
+            display: block;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .modal-footer {
+            padding: 10px;
+            text-align: right;
+            border-top: 1px solid #ddd;
+        }
+
+        .modal-footer button {
+            background-color: #a8c9ea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal-footer button:hover {
+            background-color: #84bbf2;
+        }
+
+        /* Backdrop */
+        .backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(210, 225, 238, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Triggering link or bell icon -->
+    <div class="notification-bell" id="bell">
+        <img src="IMAGES/bell.png" alt="Notification" class="bell-icon" width="30px">
+        <span id="notificationCount" style="background: rgb(200, 234, 238); color: white; font-size: 12px; padding: 3px 7px; border-radius: 50%; position: absolute; top: 5px; right: 5px;">0</span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="notificationModal">
+        <div class="modal-header">
+            <span>Notifications</span>
+            <button onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <ul id="notificationList">
+                <li>No notifications available.</li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button onclick="clearNotifications()">Clear All</button>
+        </div>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="backdrop" id="modalBackdrop" onclick="closeModal()"></div>
+
+    <script>
+        // Fetch notifications from localStorage and display them
+        function fetchNotifications() {
+            const notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+            const notificationList = document.getElementById('notificationList');
+            const notificationCount = document.getElementById('notificationCount');
+
+            // Update notification count
+            notificationCount.textContent = notifications.length;
+
+            // Clear the list
+            notificationList.innerHTML = '';
+
+            if (notifications.length === 0) {
+                notificationList.innerHTML = '<li>No notifications available.</li>';
+                return;
+            }
+
+            notifications.forEach(notification => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = ` 
+                    <strong>${notification.firstName} ${notification.lastName}</strong> (${notification.email})
+                    <p>${notification.message}</p>
+                    <span>${notification.timestamp}</span>
+                    ${notification.attachmentUrl ? `<a href="${notification.attachmentUrl}" target="_blank">View Attachment</a>` : ''}
+                `;
+                notificationList.appendChild(listItem);
+            });
+        }
+
+        // Open modal
+        function openModal() {
+            document.getElementById('notificationModal').style.display = 'block';
+            document.getElementById('modalBackdrop').style.display = 'block';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('notificationModal').style.display = 'none';
+            document.getElementById('modalBackdrop').style.display = 'none';
+        }
+
+        // Clear notifications
+        function clearNotifications() {
+            localStorage.removeItem('notifications');
+            fetchNotifications();
+            closeModal();
+        }
+
+        // Add event listener to the bell icon or link
+        document.getElementById('bell').addEventListener('click', openModal);
+
+        // WebSocket connection (example)
+        const socket = new WebSocket('wss://your-websocket-url.com'); 
+
+        socket.addEventListener('message', function(event) {
+            console.log('Received WebSocket message:', event.data);
+            try {
+                const data = JSON.parse(event.data); // Assuming data is a JSON object with message details
+
+                if (data && data.message) {
+                    // Store the notification in localStorage
+                    let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+                    notifications.push({
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email,
+                        message: data.message,
+                        timestamp: new Date().toLocaleString(),
+                        attachmentUrl: data.attachmentUrl || ''  // Optional attachment URL
+                    });
+                    localStorage.setItem('notifications', JSON.stringify(notifications));
+
+                    // Update the notification UI
+                    fetchNotifications();
+                }
+            } catch (error) {
+                console.error('Error processing WebSocket message:', error);
+            }
+        });
+
+        // Fetch notifications on page load
+        fetchNotifications();
+    </script>
+</body>
+</html>

@@ -194,3 +194,4 @@ function logout() {
     sessionStorage.removeItem('username'); // Clear the role as well
     window.location.href = 'index.html'; // Redirect to login page
 }
+

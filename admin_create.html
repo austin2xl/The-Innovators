@@ -41,6 +41,38 @@
             width: calc(100% - 20px);
             margin-bottom: 10px;
         }
+        .notification-bell {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+        }
+
+        .mail-dropdown {
+            display: none;
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            z-index: 1000;
+        }
+
+        .mail-dropdown ul {
+            list-style-type: none;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .mail-dropdown ul li {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .mail-dropdown ul li:last-child {
+            border-bottom: none;
+        }
         
     </style>
 
@@ -106,10 +138,7 @@
             }
         }
 
-
     </script>
-</head>
-</head>
 </head>
 <body>
     <header>
@@ -120,12 +149,13 @@
         </div>
         <div class="header-icons">
             <div class="notification-bell" id="bell">
-                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon">
                 <div class="mail-dropdown" id="mailDropdown">
                     <h4>Notifications</h4>
                     <ul id="mailList"></ul>
                 </div>
             </div>
+                    
             <div class="hamburger">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -141,15 +171,13 @@
                 <li class="phone-icon"><a href="admin_logout.html" class="option">LOG OUT</a></li>
             </ul>
             <ul class="pc-icon">
-                <li>
-                    <span class="notification-bell-one" id="bell-one">
-                        <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
-                        <span class="mail-dropdown-one" id="mailDropdown-one">
-                            <h4>Notifications</h4>
-                            <ul id="mailList-one"></ul>
-                        </span>
-                    </span>
-                </li>
+                <div class="notification-bell" id="bell">
+                    <img src="IMAGES/bell.png" alt="bell-icon" class="bell-icon" onclick="toggleMailDropdown()">
+                    <span class="badge" id="notificationCount">0</span>
+                    <div class="mail-dropdown" id="mailDropdown">
+                    
+                    </div>
+                </div>
                 <li>
                     <a href="admin_help.html"><img src="IMAGES/help.png" alt="help-icon" width="30px"></a>
                 </li>
@@ -246,6 +274,43 @@
             document.getElementById('created-date').value = today;
             document.getElementById('last-modified-date').value = today;
         };
+        
+    </script>
+    <script>
+        // Simulate receiving notifications
+        function receiveNotification(message) {
+            const notificationList = document.getElementById('mailList');
+            const newNotification = document.createElement('li');
+            newNotification.textContent = message;
+    
+            // Add new notification to the top
+            notificationList.insertBefore(newNotification, notificationList.firstChild);
+            
+            // Update the badge count
+            const notificationCount = document.getElementById('notificationCount');
+            notificationCount.textContent = parseInt(notificationCount.textContent) + 1;
+        }
+    
+        // Toggle the mail dropdown visibility when the bell icon is clicked
+        function toggleMailDropdown() {
+            const dropdown = document.getElementById('mailDropdown');
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        }
+    
+        // Add some test notifications after a delay (simulating new notifications)
+        setTimeout(() => {
+            receiveNotification("New order placed by supplier A.");
+        }, 3000); // 3 seconds delay
+    
+        setTimeout(() => {
+            receiveNotification("Product B quality issue reported.");
+        }, 6000); // 6 seconds delay
+    
+        setTimeout(() => {
+            receiveNotification("NCR closed for product C.");
+        }, 9000); // 9 seconds delay
+    
+        // Example: You could call receiveNotification with actual notification messages when they come in
     </script>
 </body>
 </html>
